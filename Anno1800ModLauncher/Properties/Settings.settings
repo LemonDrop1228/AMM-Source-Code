@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Anno1800ModLauncher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GameRootPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ModDirectory" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mods</Value>
+    </Setting>
+    <Setting Name="GameExecutablePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bin\Win64\Anno1800.exe</Value>
+    </Setting>
+    <Setting Name="ModLoaderPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bin\Win64\python35_ubi.dll</Value>
+    </Setting>
+    <Setting Name="ModLoaderRoot" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bin\Win64\</Value>
+    </Setting>
+    <Setting Name="CurrentModLoaderVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Version 0.7.8</Value>
+    </Setting>
+    <Setting Name="NewsUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.anno-union.com/en/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,193 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Anno1800ModLauncher.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Helpers="clr-namespace:Anno1800ModLauncher.Helpers" x:Class="Anno1800ModLauncher.Views.ModListView"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="r0"/>
+            <RowDefinition x:Name="r1" Height="0.35*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="c0"/>
+            <ColumnDefinition x:Name="c1" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.Row="0" Margin="0,0,2,3" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                      Kind="ClipboardList"
+                      Height="24"
+                      Width="24"
+                            Margin="4,5,0,5"
+                      VerticalAlignment="Center" />
+                        <TextBlock
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                      Text="Mod List" />
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <ListBox x:Name="ModListBox" 
+                 ItemsSource="{Binding Path=modDirectoryManager.modList}" SelectionChanged="ModListBox_SelectionChanged" SourceUpdated="ModListBox_SourceUpdated" DataContextChanged="ModListBox_DataContextChanged" DragEnter="ModListBox_DragEnter" Drop="ModListBox_Drop" SelectionMode="Extended" MouseLeftButtonUp="ModListBox_MouseLeftButtonUp">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Margin="5,2" Style="{StaticResource MaterialDesignLightCheckBox}"
+                                          IsChecked="{Binding IsSelected}">
+                            </CheckBox>
+                            <materialDesign:PackIcon Margin="0,0,10,0" Kind="{Binding Icon}" Foreground="{Binding Color}"/>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="0" Margin="2,0,0,3" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                      Kind="Information"
+                      Height="24"
+                      Width="24"
+                            Margin="4,5,0,5"
+                      VerticalAlignment="Center" />
+                        <TextBlock
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                      Text="Mod Details" />
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.75*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="ModBannerImg" 
+                       Margin="0" 
+                       Source="/Anno1800ModLauncher;component/Images/ModImg_PlaceHolder.png" 
+                       Grid.Row="0" Stretch="Fill"/>
+            <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
+                    <TextBox Foreground="{StaticResource PrimaryHueLightForegroundBrush}" x:Name="ReadMeTextBox" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" />
+            </ScrollViewer>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,3,0,0" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                      Kind="HandPointingUp"
+                      Height="24"
+                      Width="24"
+                            Margin="4,5,0,5"
+                      VerticalAlignment="Center" />
+                        <TextBlock
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                      Text="Manage" />
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Activate_Mod">
+                        <DockPanel>
+                            <materialDesign:PackIcon
+                            Kind="ThumbsUp"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                            <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="Activate"/></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button Grid.Column="1" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Deactivate_Mod" >
+                        <DockPanel>
+                            <materialDesign:PackIcon
+                            Kind="ThumbsDown"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                            <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="De-Activate"/></TextBlock>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Margin="5" Grid.Column="0">
+                    <ComboBox x:Name="FilterCombo"
+                            materialDesign:HintAssist.Hint="Status Filter"
+                              materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:ComboBoxAssist.ShowSelectedItem="true"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            Margin="0,8,0,5"
+                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{StaticResource PrimaryHueLightForegroundBrush}">
+                        <ComboBoxItem>
+                            Active
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Inactive
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBox 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    x:Name="FilterTextBox" 
+                    Margin="10,0,0,0" 
+                    MinWidth="350" VerticalAlignment="Center" MinHeight="30" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" TextChanged="FilterTextBox_TextChanged">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel
+                          Orientation="Horizontal"
+                          Margin="-2 0 0 0">
+                                <materialDesign:PackIcon
+                                Kind="Search" />
+                                <TextBlock>
+                                Type here to search mods...
+                                </TextBlock>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,203 @@
+﻿<mde:MaterialWindow x:Name="MainWindow1" x:Class="Anno1800ModLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+        xmlns:local="clr-namespace:Anno1800ModLauncher"
+        mc:Ignorable="d"
+        Title="AML" Height="723.428" Width="1323.928" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:Views="clr-namespace:Anno1800ModLauncher.Views"
+                    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"  MouseDown="Window_MouseDown"
+        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" MinWidth="1266.428" MinHeight="736.428" Loaded="Window_Loaded" Closing="MainWindow1_Closing">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/anno_1800_goes_treasure_hunting-21051.jpg"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="row1"/>
+            <RowDefinition x:Name="row2" Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="col1"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel>
+            <materialDesign:Card
+                Margin="5"
+                Padding="3"
+                UniformCornerRadius="5" Background="#B22F3334" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.10*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Vertical"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+                        <Image 
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Source="Images/ANNO1800_LOGO_white_Shaded3.png" 
+                        MaxWidth="250" HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" Stretch="Fill"/>
+                        <Button Opacity="1" Margin="3,10,3,5" HorizontalContentAlignment="Left" Click="LaunchGame_Clicked">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                            Kind="ControllerClassic"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0">Play</TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Separator Style="{StaticResource MaterialDesignDarkSeparator}" Margin="3 7 3 7"></Separator>
+                        <Button Opacity="1" Margin="3" HorizontalContentAlignment="Left" Click="News_Clicked">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                            Kind="Newspaper"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0">News</TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button Opacity="1" Margin="3" HorizontalContentAlignment="Left" Click="Home_Clicked">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                            Kind="Home"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0">Home</TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button Margin="3" HorizontalContentAlignment="Left" Click="Mods_Clicked">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                            Kind="Toolbox"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="12 0 0 0">Mods</TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button Margin="3" HorizontalContentAlignment="Left" Click="Settings_Clicked">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                            Kind="Gear"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="12 0 0 0">Settings</TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button Margin="3" HorizontalContentAlignment="Left" Click="About_Clicked">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                            Kind="About"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="12 0 0 0">About</TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </StackPanel>
+                    <!--<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon
+                            Kind="WeatherSunny"
+                            Height="24"
+                            Width="24" VerticalAlignment="Center" Margin="0,0,0,3"/>
+                        <TextBlock VerticalAlignment="Center">Light</TextBlock>
+                        <ToggleButton Margin="16 0 16 0" Command="{Binding ToggleBaseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" />
+                        <TextBlock Foreground="{DynamicResource PrimaryHueDarkBrush}"  VerticalAlignment="Center">Dark</TextBlock>
+                        <materialDesign:PackIcon
+                            Kind="MoonAndStars"
+                            Height="24"
+                            Width="24" VerticalAlignment="Center" Margin="0,0,0,5" Foreground="#DD4D4D4D"/>
+                    </StackPanel>-->
+                </Grid>
+            </materialDesign:Card>
+            <DockPanel DockPanel.Dock="Right" LastChildFill="True">
+                <materialDesign:Card
+                    Margin="3"
+                    Padding="5"
+                    Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                    UniformCornerRadius="5" Background="#B22F3334" DockPanel.Dock="Bottom" Height="100">
+
+                    <!--Console Output-->
+                    <ScrollViewer x:Name="LogScollViewer" Grid.Column="0" Grid.Row="6" Grid.RowSpan="4" Grid.ColumnSpan="3">
+                        <TextBox x:Name="LogRTB" 
+                                 Background="#002F3334" 
+                                 Padding="3" 
+                                 AcceptsReturn="True" 
+                                 AcceptsTab="True" 
+                                 IsReadOnly="True" 
+                                 TextWrapping="WrapWithOverflow" 
+                                 Foreground="#DDFFFFFF" 
+                                 FontSize="12" 
+                                 FontFamily="Consolas" TextChanged="LogRTB_TextChanged" BorderBrush="Transparent" />
+                    </ScrollViewer>
+                    <!--Console Output-->
+                </materialDesign:Card>
+                <materialDesign:Card
+                    Margin="5"
+                    Padding="10"
+                    Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                    UniformCornerRadius="5" Background="#B22F3334" DockPanel.Dock="Top" MinHeight="545">
+
+                    <TabControl x:Name="MainTabControl" Style="{StaticResource MaterialDesignTabControl}" SelectionChanged="TabControl_SelectionChanged" BorderBrush="#00ACACAC">
+                        <TabControl.ItemContainerStyle>
+                            <Style TargetType="TabItem">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Setter Property="BorderThickness" Value="0"/>
+                            </Style>
+                        </TabControl.ItemContainerStyle>
+
+                        <TabItem Name="News" Header="NEWS">
+                            <Views:NewsView x:Name="NewsView"/>
+                        </TabItem>
+                        <TabItem Name="Home" Header="HOME">
+                            <Views:HomeView x:Name="HomeView1" 
+                                            GamePathSelectedEvent="ProcessNewGamePath"
+                                            ModDirectoryCreatedEvent="ProcessModDirectoryCreation" ModLoaderInstalledEvent="ProcessModLoaderInstalled"
+                                            />
+                        </TabItem>
+                        <TabItem Name="Mods" Header="MODS">
+                            <Views:ModListView x:Name="ModListView"/>
+                        </TabItem>
+                        <TabItem Name="Settings" Header="SETTINGS"></TabItem>
+                        <TabItem Name="About" Header="ABOUT">
+                            <Views:AboutView />
+                        </TabItem>
+                    </TabControl>
+                </materialDesign:Card>
+            </DockPanel>
+        </DockPanel>
+        <materialDesign:ColorZone Mode="PrimaryDark" Height="25" VerticalAlignment="Stretch" Margin="0,5,0,0" Grid.Row="1"></materialDesign:ColorZone>
+    </Grid>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="5" />
+    </WindowChrome.WindowChrome>
+</mde:MaterialWindow>

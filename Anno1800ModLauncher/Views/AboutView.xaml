@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Anno1800ModLauncher.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Anno1800ModLauncher.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <GroupBox Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+        <GroupBox.HeaderTemplate>
+            <DataTemplate>
+                <StackPanel
+                    Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                      Kind="QuestionMark"
+                      Height="24"
+                      Width="24"
+                        Margin="4,5,0,5"
+                      VerticalAlignment="Center" />
+                    <TextBlock
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                      Text="About" />
+                </StackPanel>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+        <Grid Background="#3F000000">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="r0" Height="0.25*"/>
+                <RowDefinition x:Name="r1"/>
+                <RowDefinition x:Name="r2" Height="0.25*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="PMingLiU-ExtB" FontSize="24" Foreground="White" Background="#59000000">About Anno 1800 Mod Launcher and The Dev</TextBlock>
+            <TextBlock Grid.Row="1" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" TextWrapping="Wrap" Padding="5" Margin="5" FontFamily="Segoe UI Semibold" FontSize="14">
+            This mod launcher is a passion project that I felt the Anno Community deserved. I myself prefer mod launchers that are focused on one 
+            specific game as they usually are able to address concerns regarding that game more quickly and efficiently. I noticed that the mod community around this game 
+            has created some pretty awesome mods, and xforce was extremely kind enough to create an awesome mod loader that works extremely well. The only piece of the puzzle left 
+            was a Mod Loader that brought all of it together in an easy to use tool.
+            <LineBreak />
+            <LineBreak />
+            I'm a gamer myself and have been playing Anno games for years. On top of that, I'm a married father with a full time job, so my time is precious to me and those around me.
+            I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even make the 
+            occasional gripe over on the official discord for 
+            this app: <LineBreak /><Hyperlink NavigateUri="https://discord.gg/QuHNrCc" RequestNavigate="Hyperlink_RequestNavigate">Anno 1800 Mod Launcher Discord Server</Hyperlink><LineBreak />
+            <LineBreak />Special thanks to Xforce for creating the Anno 1800 Mod Loader <Hyperlink NavigateUri="https://github.com/xforce/anno1800-mod-loader" RequestNavigate="Hyperlink_RequestNavigate">[Link]</Hyperlink><LineBreak />
+            </TextBlock>
+
+            <StackPanel Grid.Row="3">
+                <TextBlock Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Margin="5" TextAlignment="Center" VerticalAlignment="Center" Padding="2">If you like the app or are feeling extra generous I work best when hopped up on caffeine</TextBlock>
+                <Button Margin="200,0" Click="Button_PreviewTouchDown">
+                    <DockPanel>
+                        <materialDesign:PackIcon
+                            Kind="Coffee"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left"/>
+                        <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0">Buy Me A Coffee</TextBlock>
+                    </DockPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</UserControl>

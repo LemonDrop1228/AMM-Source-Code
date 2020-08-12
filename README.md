@@ -17,5 +17,5 @@ The mod launcher is a passion project that I felt the Anno Community deserves. I
 I'm a gamer myself and have been playing Anno Games for years. On top of that, I'm a married father with a full-time job, so my time is precious to me and those around me. I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even take occasional grope over on the official discord server for the app: [Anno 1800 Mod Manager Official Discord Server](https://discord.com/invite/QuHNrCc)
 Special thanks to Xforce for creating the [Anno 1800 Mod Loader](https://github.com/xforce/anno1800-mod-loader)
 
-#Wiki
+# Wiki
 If you have any issues with the AMM or want a visual of the roadmap needs please take a look at the [Wiki](https://www.notion.so/Anno-1800-Mod-Manager-Wiki-60bbcd8ad9634c2faa225be3f1bd46d6)!

@@ -36,6 +36,7 @@ namespace Anno1800ModLauncher
     /// </summary>
     public partial class MainWindow : MaterialWindow
     {
+        //Test
         private const string WindowTitle = "AMM";
         private const string NewsUrlString = "anno-union.com";
         //private GeckoWebBrowser FoxWebView;

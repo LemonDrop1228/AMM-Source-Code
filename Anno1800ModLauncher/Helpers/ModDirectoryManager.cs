@@ -163,11 +163,11 @@ namespace Anno1800ModLauncher.Helpers
 
         internal void DownloadInstallNewMod(string v)
         {
-            currentProgDiag = new Ookii.Dialogs.Wpf.ProgressDialog();
+            currentProgDiag = new ProgressDialog();
             currentProgDiag.Description = v.Split('/').Last().Split('?').First().Replace("%20", " ");
             currentProgDiag.Text = "Downloading and Installing...";
             currentProgDiag.WindowTitle = "Anno 1800 Mod Manager - Mod Downloader";
-            currentProgDiag.ProgressBarStyle = Ookii.Dialogs.Wpf.ProgressBarStyle.MarqueeProgressBar;
+            currentProgDiag.ProgressBarStyle = ProgressBarStyle.MarqueeProgressBar;
             currentProgDiag.Show();
             this.GetNewMod(new Uri(v));            
         }

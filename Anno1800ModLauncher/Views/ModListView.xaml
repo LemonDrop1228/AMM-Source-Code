@@ -11,7 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition x:Name="r0"/>
-            <RowDefinition x:Name="r1" Height="0.35*"/>
+            <RowDefinition x:Name="r1" Height="0.55*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="c0"/>
@@ -89,9 +89,9 @@
                        Margin="0" 
                        Source="/Anno1800ModLauncher;component/Images/ModImg_PlaceHolder.png" 
                        Grid.Row="0" Stretch="Fill"/>
-            <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
+                <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
                     <TextBox Foreground="{StaticResource PrimaryHueLightForegroundBrush}" x:Name="ReadMeTextBox" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" />
-            </ScrollViewer>
+                </ScrollViewer>
             </Grid>
         </GroupBox>
 
@@ -120,71 +120,165 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Activate_Mod">
-                        <DockPanel>
-                            <materialDesign:PackIcon
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Activate_Mod">
+                            <DockPanel>
+                                <materialDesign:PackIcon
                             Kind="ThumbsUp"
                             Height="24"
                             Width="24" 
-                            DockPanel.Dock="Left"/>
-                            <TextBlock 
+                            DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
                                 DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="Activate"/></TextBlock>
-                        </DockPanel>
-                    </Button>
-                    <Button Grid.Column="1" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Deactivate_Mod" >
-                        <DockPanel>
-                            <materialDesign:PackIcon
+                            </DockPanel>
+                        </Button>
+                        <Button Grid.Column="1" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Deactivate_Mod" >
+                            <DockPanel>
+                                <materialDesign:PackIcon
                             Kind="ThumbsDown"
                             Height="24"
                             Width="24" 
-                            DockPanel.Dock="Left"/>
-                            <TextBlock 
+                            DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
                                 DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="De-Activate"/></TextBlock>
-                        </DockPanel>
-                    </Button>
+                            </DockPanel>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="SaveProfile" Grid.Column="0" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Save_Profile" Padding="8,4" IsEnabled="False">
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                                    Kind="ContentSave"
+                                    Height="15"
+                                    Width="15" 
+                                    DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="Save Profile"/></TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button x:Name="LoadProfile" Grid.Column="1" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Load_Profile" Padding="8,4" IsEnabled="False" >
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                                    Kind="Download"
+                                    Height="15"
+                                    Width="15" 
+                                    DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="Load Profile"/></TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button x:Name="DeleteProfile" Grid.Column="2" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Delete_Profile" Padding="8,4" IsEnabled="False" >
+                            <DockPanel>
+                                <materialDesign:PackIcon
+                                    Kind="Delete"
+                                    Height="15"
+                                    Width="15" 
+                                    DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="Delete Profile"/></TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </Grid>
                 </Grid>
-                <StackPanel Orientation="Horizontal" Margin="5" Grid.Column="0">
-                    <ComboBox x:Name="FilterCombo"
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" Margin="5, 0">
+                        <ComboBox x:Name="FilterCombo"
                             materialDesign:HintAssist.Hint="Status Filter"
                               materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             materialDesign:ComboBoxAssist.ShowSelectedItem="true"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
-                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{StaticResource PrimaryHueLightForegroundBrush}">
-                        <ComboBoxItem>
-                            Active
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Inactive
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <TextBox 
+                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Width="120">
+                            <ComboBoxItem>
+                                Active
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Inactive
+                            </ComboBoxItem>
+                        </ComboBox>
+                        <TextBox 
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     x:Name="FilterTextBox" 
                     Margin="10,0,0,0" 
                     MinWidth="350" VerticalAlignment="Center" MinHeight="30" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" TextChanged="FilterTextBox_TextChanged">
-                        <materialDesign:HintAssist.Hint>
-                            <StackPanel
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
                           Orientation="Horizontal"
                           Margin="-2 0 0 0">
-                                <materialDesign:PackIcon
+                                    <materialDesign:PackIcon
                                 Kind="Search" />
-                                <TextBlock>
+                                    <TextBlock>
                                 Type here to search mods...
-                                </TextBlock>
-                            </StackPanel>
-                        </materialDesign:HintAssist.Hint>
-                    </TextBox>
+                                    </TextBlock>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5, 0">
+                        <ComboBox x:Name="ProfileCombo"
+                            materialDesign:HintAssist.Hint="Profile"
+                            materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:ComboBoxAssist.ShowSelectedItem="true"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            Margin="0,8,0,5"
+                            HorizontalAlignment="Left"
+                            Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            Width="120"
+                            SelectionChanged="ProfileCOmbo_SelectionChanged"
+                        >
+                            <ComboBoxItem x:Name="newProfileItem">
+                                Create new profile
+                            </ComboBoxItem>
+                        </ComboBox>
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            x:Name="ProfileTextBox" 
+                            Margin="10,0,0,0" 
+                            MinWidth="350"
+                            VerticalAlignment="Center"
+                            MinHeight="30"
+                            Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            TextChanged="NewProfile_TextChanged">
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
+                          Orientation="Horizontal"
+                          Margin="-2 0 0 0">
+                                    <materialDesign:PackIcon
+                                Kind="Account" />
+                                    <TextBlock>
+                                        New profile name
+                                    </TextBlock>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </GroupBox>

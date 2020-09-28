@@ -26,10 +26,15 @@ namespace Anno1800ModLauncher.Views
     public partial class ModListView : UserControl, INotifyPropertyChanged
     {
         private ModDirectoryManager _modDirectoryManager;
-        public ModDirectoryManager modDirectoryManager { get { return _modDirectoryManager; } set {
+        public ModDirectoryManager modDirectoryManager
+        {
+            get { return _modDirectoryManager; }
+            set
+            {
                 _modDirectoryManager = value;
                 OnPropertyChanged("modDirectoryManager");
-            } }
+            }
+        }
 
 
         /// <summary>
@@ -66,21 +71,22 @@ namespace Anno1800ModLauncher.Views
             if (modDirectoryManager.modList != null && modDirectoryManager.modList.Count > 0 && ModListBox.SelectedItems.Count > 0)
             {
                 var list = ModListBox.SelectedItems.Cast<ModModel>().ToList();
-                list.ForEach(m => {
+                list.ForEach(m =>
+                {
                     if (!m.IsActive)
                     {
                         if (modDirectoryManager.ActivateMod(m))
                         {
                             m.IsActive = true;
                             m.Icon = "CheckBold";
-                            m.Color = "DarkGreen";                            
+                            m.Color = "DarkGreen";
                         }
                     }
                 });
                 modDirectoryManager.LoadMods();
                 FilterMods();
             }
-            
+
         }
 
         private void Deactivate_Mod(object sender, RoutedEventArgs e)
@@ -112,6 +118,58 @@ namespace Anno1800ModLauncher.Views
                 var i = ModListBox.SelectedItems.Count > 0 ? ModListBox.SelectedItems[ModListBox.SelectedItems.Count - 1] as ModModel : ModListBox.SelectedItem as ModModel;
                 ReadMeTextBox.Text = modDirectoryManager.GetReadMeText(i);
                 ModBannerImg.Source = modDirectoryManager.GetModBanner(i);
+            }
+        }
+
+        private void Save_Profile(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Load_Profile(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Profile(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewProfile_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ProfileTextBox.Text != "")
+            {
+                ProfileCombo.SelectedItem = newProfileItem;
+                SaveProfile.IsEnabled = true;
+                LoadProfile.IsEnabled = false;
+                DeleteProfile.IsEnabled = false;
+            }
+            else
+            {
+                ProfileCombo.SelectedIndex = -1;
+            }
+        }
+
+        private void ProfileCOmbo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProfileCombo.SelectedIndex == -1)// no selection
+            {
+                SaveProfile.IsEnabled = false;
+                LoadProfile.IsEnabled = false;
+                DeleteProfile.IsEnabled = false;
+            }
+            else if (ProfileCombo.SelectedItem == newProfileItem && ProfileTextBox.Text != "")// named new profile
+            {
+                SaveProfile.IsEnabled = true;
+                LoadProfile.IsEnabled = false;
+                DeleteProfile.IsEnabled = false;
+            }
+            else// existing profile
+            {
+                SaveProfile.IsEnabled = true;
+                LoadProfile.IsEnabled = true;
+                DeleteProfile.IsEnabled = true;
             }
         }
 

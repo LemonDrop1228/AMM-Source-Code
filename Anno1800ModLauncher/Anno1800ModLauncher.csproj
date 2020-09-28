@@ -134,6 +134,7 @@
     <Compile Include="Helpers\ModDirectoryManager.cs" />
     <Compile Include="Helpers\ModInstaller\ModInstallationManager.cs" />
     <Compile Include="Helpers\ModLoader\ModLoaderInstaller.cs" />
+    <Compile Include="Helpers\ProfilesManager.cs" />
     <Compile Include="Helpers\SelfUpdater\SelfUpdateManager.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>

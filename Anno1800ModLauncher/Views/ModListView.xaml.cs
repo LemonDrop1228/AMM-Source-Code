@@ -17,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace Anno1800ModLauncher.Views
 {
@@ -198,6 +200,34 @@ namespace Anno1800ModLauncher.Views
             //        }
             //    } 
             //}
+        }
+
+        public string GetModExportFile()
+        {
+            var modData = JsonConvert.SerializeObject(modDirectoryManager.modList);
+            return modData.Base64Encode();
+        }
+
+        internal void UpdateByImport(ObservableCollection<ModModel> modListObj)
+        {
+            modDirectoryManager.modList.ForEach( mod =>
+                {
+                    var impMod = modListObj.FirstOrDefault(m => m.Name == mod.Name);
+                    if (impMod != null)
+                    {
+                        if (impMod.IsActive && !mod.IsActive){
+                            modDirectoryManager.ActivateMod(mod);
+                            modDirectoryManager.LoadMods();
+                            FilterMods();
+                        }
+                        else if (!impMod.IsActive && mod.IsActive) { 
+                            modDirectoryManager.DeactivateMod(mod);
+                            modDirectoryManager.LoadMods();
+                            FilterMods();
+                        }
+                    }
+                }
+            );
         }
     }
 }

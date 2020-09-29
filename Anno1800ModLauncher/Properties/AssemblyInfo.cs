@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Anno1800 Mod Launcher")]
 [assembly: AssemblyDescription("A C# application for installing and managing mods, mod loader, and staying updated on the latest Anno 1800 news.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("J2Games")]
+[assembly: AssemblyCompany("BG")]
 [assembly: AssemblyProduct("Anno1800ModLauncher")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

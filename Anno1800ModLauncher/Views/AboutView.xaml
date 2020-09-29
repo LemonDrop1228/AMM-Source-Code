@@ -44,7 +44,9 @@
             I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even make the 
             occasional gripe over on the official discord for 
             this app: <LineBreak /><Hyperlink NavigateUri="https://discord.gg/QuHNrCc" RequestNavigate="Hyperlink_RequestNavigate">Anno 1800 Mod Launcher Discord Server</Hyperlink><LineBreak />
-            <LineBreak />Special thanks to Xforce for creating the Anno 1800 Mod Loader <Hyperlink NavigateUri="https://github.com/xforce/anno1800-mod-loader" RequestNavigate="Hyperlink_RequestNavigate">[Link]</Hyperlink><LineBreak />
+            <LineBreak />Special thanks to Xforce for creating the <Hyperlink NavigateUri="https://github.com/xforce/anno1800-mod-loader" RequestNavigate="Hyperlink_RequestNavigate">Anno 1800 Mod Loader</Hyperlink><LineBreak />
+            <LineBreak />Special thanks to the beta team for helping me improve the AMM!<LineBreak />
+            <LineBreak />Special thanks to RebuiltStatue21 for creating the <Hyperlink NavigateUri="https://www.notion.so/Anno-1800-Mod-Manager-Wiki-60bbcd8ad9634c2faa225be3f1bd46d6" RequestNavigate="Hyperlink_RequestNavigate">Wiki!</Hyperlink><LineBreak />
             </TextBlock>
 
             <StackPanel Grid.Row="3">

@@ -3,6 +3,7 @@ using Anno1800ModLauncher.Helpers.Enums;
 using Anno1800ModLauncher.Helpers.ModLoader;
 using Anno1800ModLauncher.Extensions;
 using MaterialDesignExtensions.Controls;
+using Ookii.Dialogs.Wpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -28,6 +30,8 @@ using System.Runtime.InteropServices;
 using static Anno1800ModLauncher.Helpers.Enums.HelperEnums;
 using Anno1800ModLauncher.Helpers.SelfUpdater;
 using Octokit;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace Anno1800ModLauncher
 {
@@ -170,7 +174,7 @@ namespace Anno1800ModLauncher
 
         private bool AskUserToUpdate(string message, string title)
         {
-            return MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+            return System.Windows.MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
         }
 
         private void CheckSettings()
@@ -216,7 +220,7 @@ namespace Anno1800ModLauncher
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabControl tabControl = sender as TabControl;
+            System.Windows.Controls.TabControl tabControl = sender as System.Windows.Controls.TabControl;
             TabItem item = tabControl.SelectedValue as TabItem;
             this.Title = $"{WindowTitle} - {item.Name}";
         }
@@ -237,7 +241,7 @@ namespace Anno1800ModLauncher
             if (!string.IsNullOrEmpty(GameRootPath) && File.Exists(GamePath))
                 MainTabControl.SelectedIndex = 2;
             else
-                MessageBox.Show("Please set the game path");
+                System.Windows.MessageBox.Show("Please set the game path");
         }
 
         private void Settings_Clicked(object sender, RoutedEventArgs e)
@@ -285,6 +289,92 @@ namespace Anno1800ModLauncher
         private void MainWindow1_Closing(object sender, CancelEventArgs e)
         {
             //HomeView1.DisposeBrowser();
+        }
+
+        private void Export_Clicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var modExportData = ModListView.GetModExportFile();
+
+                string fileNameDynamic = $"{DateTime.Now.ToShortDateString().Replace('/', '.')}_{System.Windows.Forms.Application.ProductVersion}";
+                var sf = new Microsoft.Win32.SaveFileDialog
+                {
+                    FileName = fileNameDynamic,
+                    DefaultExt = ".ammxl",
+                    Filter = "AMM Mod List (.ammxl)|*.ammxl"
+                };
+
+                Nullable<bool> result = sf.ShowDialog();
+
+
+                if (result == true)
+                {
+                    string filePath = sf.FileName;
+                    ExportModList(filePath, modExportData);
+                    Console.WriteLine("Successfully exported your current mod list!");
+                    Console.WriteLine($"Mod list can be found here: {filePath}");
+                }
+
+                sf = null;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred while trying to export the mod list:");
+                Console.WriteLine($"{ex.Message}");
+            }
+        }
+
+        private void ExportModList(string fileName, string modExportData)
+        {
+            File.WriteAllText(fileName, modExportData);
+            Process.Start("explorer.exe", $@"{fileName}");
+
+        }
+
+        private void Import_Clicked(object sender, RoutedEventArgs e)
+        {
+            var modList = string.Empty;
+            using (var dialog = new System.Windows.Forms.OpenFileDialog()
+            {
+                Filter = "AMM Mod List (.ammxl)|*.ammxl",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "Select a mod list to load",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Multiselect = false
+            })
+            {
+                dialog.FileOk += (s, e) => {
+                    var d = (s as System.Windows.Forms.OpenFileDialog);
+                    if (d != null)
+                        modList = d.FileName;
+                };
+                dialog.ShowDialog();
+            }
+
+            if (!string.IsNullOrEmpty(modList))
+                ProcessModListImport(modList);
+        }
+
+        private void ProcessModListImport(string modList)
+        {
+            var modData = File.ReadAllText(modList);
+            if (!string.IsNullOrEmpty(modData)) {
+                try
+                {
+                    var modJson = modData.Base64Decode();
+                    var modListObj = JsonConvert.DeserializeObject<ObservableCollection<ModModel>>(modJson);
+                    ModListView.UpdateByImport(modListObj);
+                    Console.WriteLine($"Successfully imported mod list: {modList}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error occurred while trying to import the mod list: {modList}");
+                    Console.WriteLine($"{ex.Message}");
+                }
+            }
         }
     }
 }

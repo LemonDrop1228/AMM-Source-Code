@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
+using CefSharp.Wpf.Internals;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +44,15 @@ namespace Anno1800ModLauncher.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            NewsBrowser.WebBrowser = new ChromiumWebBrowser();
+            if (NewsBrowser.WebBrowser == null)
+            {
+                NewsBrowser.WebBrowser = new ChromiumWebBrowser();
+                NewsBrowser.WebBrowser.MenuHandler = new MenuHandler();
+            }
+            else
+            {
+                NewsBrowser.WebBrowser.MenuHandler = new MenuHandler();
+            }
         }
 
         internal void LoadNews()
@@ -52,5 +61,29 @@ namespace Anno1800ModLauncher.Views
         }
     }
 
-    
+
+
+    public class MenuHandler : IContextMenuHandler
+    {
+        public void OnBeforeContextMenu(IWebBrowser browserControl, IBrowser browser, IFrame frame, IContextMenuParams parameters, IMenuModel model)
+        {
+            model.Clear();
+        }
+
+        public bool OnContextMenuCommand(IWebBrowser browserControl, IBrowser browser, IFrame frame, IContextMenuParams parameters, CefMenuCommand commandId, CefEventFlags eventFlags)
+        {
+
+            return false;
+        }
+
+        public void OnContextMenuDismissed(IWebBrowser browserControl, IBrowser browser, IFrame frame)
+        {
+
+        }
+
+        public bool RunContextMenu(IWebBrowser browserControl, IBrowser browser, IFrame frame, IContextMenuParams parameters, IMenuModel model, IRunContextMenuCallback callback)
+        {
+            return false;
+        }
+    }
 }

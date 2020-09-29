@@ -10,6 +10,7 @@ namespace Anno1800ModLauncher
 {
     public class ControlWriter : TextWriter
     {
+        //Test2
         private TextBox rtb;
         private MainWindow Parent;
         public ControlWriter(TextBox richTextBox, MainWindow parent)

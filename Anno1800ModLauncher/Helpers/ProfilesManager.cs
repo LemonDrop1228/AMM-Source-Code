@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Anno1800ModLauncher.Helpers
 {
-    public class ProfilesManager : INotifyPropertyChanged
+    public class ProfilesManager : INotifyPropertyChanged, IEnumerable<string>
     {
         private ObservableCollection<Profile> profiles;
         public ObservableCollection<Profile> Profiles
@@ -21,7 +22,18 @@ namespace Anno1800ModLauncher.Helpers
                 OnPropertyChanged("Profiles");
             }
         }
-        private string profilePath { get => Path.Combine(Properties.Settings.Default.GameRootPath, Properties.Settings.Default.ProfilesDirectory); }
+        private string profilesPath
+        {
+            get
+            {
+                string ret = Path.Combine(Properties.Settings.Default.GameRootPath, Properties.Settings.Default.ProfilesDirectory);
+                if(!Directory.Exists(ret))
+                {
+                    Directory.CreateDirectory(ret);
+                }
+                return ret;
+            }
+        }
 
         #region INotifyPropertyChanged Members
 
@@ -52,8 +64,60 @@ namespace Anno1800ModLauncher.Helpers
 
         public ProfilesManager()
         {
-            Profiles = new ObservableCollection<Profile>(Directory.EnumerateFiles(profilePath).Select(
+            Profiles = new ObservableCollection<Profile>(Directory.EnumerateFiles(profilesPath).Select(
                 e => new Profile(e)));
+        }
+
+        public IEnumerator<string> GetEnumerator()
+        {
+            return Profiles.Select(e => e.Name).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Profiles.Select(e => e.Name).GetEnumerator();
+        }
+
+        internal void Persist(string name, ModDirectoryManager modDirectoryManager)
+        {
+            Profile p;
+            if (profiles.Any(pr => pr.Name == name))
+            {
+                p = profiles.First(profiles => profiles.Name == name);
+            }
+            else
+            {
+                p = new Profile(name, modDirectoryManager);
+                profiles.Add(p);
+            }
+            p.Persist(profilesPath);
+        }
+
+        internal void Load(string name, ModDirectoryManager modDirectoryManager)
+        {
+            if (profiles.Any(pr => pr.Name == name))
+            {
+                Profile p = profiles.First(profiles => profiles.Name == name);
+                p.Load(modDirectoryManager);
+            }
+            else
+            {
+                System.Console.WriteLine(@"/!\ This profile doesn't exist!");
+            }
+        }
+
+        internal void Delete(string name)
+        {
+            if (profiles.Any(pr => pr.Name == name))
+            {
+                Profile p = profiles.First(profiles => profiles.Name == name);
+                p.Delete(profilesPath);
+                Profiles.Remove(p);
+            }
+            else
+            {
+                System.Console.WriteLine(@"/!\ This profile doesn't exist!");
+            }
         }
     }
 
@@ -78,11 +142,54 @@ namespace Anno1800ModLauncher.Helpers
             Name = Path.GetFileName(path);
             mods = new ObservableCollection<string>(File.ReadAllLines(path));
         }
+        public Profile(string name, ModDirectoryManager manager)
+        {
+            Name = name;
+            mods = new ObservableCollection<string>(manager.modList.Where(m => m.IsActive).Select(m => m.Name));
+        }
 
         internal void Persist(string directory)
         {
             string path = Path.Combine(directory, Name);
             File.WriteAllLines(path, mods.ToArray());
+        }
+
+        internal void Load(ModDirectoryManager modDirectoryManager)
+        {
+            foreach (ModModel m in modDirectoryManager.modList)
+            {
+                if(Mods.Contains(m.Name))
+                {
+                    if (!m.IsActive)
+                    {
+                        if (modDirectoryManager.ActivateMod(m))
+                        {
+                            m.IsActive = true;
+                            m.Icon = "CheckBold";
+                            m.Color = "DarkGreen";
+                        }
+                    }
+                }
+                else
+                {
+                    if (m.IsActive)
+                    {
+                        if (modDirectoryManager.DeactivateMod(m))
+                        {
+                            m.IsActive = false;
+                            m.Icon = "NoEntry";
+                            m.Color = "Red";
+                        }
+                    }
+                }
+            }
+            modDirectoryManager.LoadMods();
+        }
+
+        internal void Delete(string directory)
+        {
+            string path = Path.Combine(directory, Name);
+            File.Delete(path);
         }
 
         protected void SetPropertyField<T>(string propertyName, ref T field, T newValue)

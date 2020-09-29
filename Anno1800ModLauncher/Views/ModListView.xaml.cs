@@ -36,6 +36,17 @@ namespace Anno1800ModLauncher.Views
             }
         }
 
+        private ProfilesManager _profileManager;
+        public ProfilesManager profilesManager
+        {
+            get { return _profileManager; }
+            set
+            {
+                _profileManager = value;
+                OnPropertyChanged("profileManager");
+            }
+        }
+
 
         /// <summary>
         /// Raises the PropertyChanged notification in a thread safe manner
@@ -64,6 +75,21 @@ namespace Anno1800ModLauncher.Views
             if (ModListBox.HasItems)
                 ModListBox.SelectedIndex = 0;
             ModListBox.AllowDrop = true;
+            profilesManager = new ProfilesManager();
+            SetProfilesOptions();
+        }
+
+        private void SetProfilesOptions()
+        {
+            while (ProfileCombo.Items.Count > 1)
+            {
+                ProfileCombo.Items.RemoveAt(1);
+            }
+
+            foreach (string profile in profilesManager)
+            {
+                ProfileCombo.Items.Add(new ComboBoxItem() { Content = profile });
+            }
         }
 
         private void Activate_Mod(object sender, RoutedEventArgs e)
@@ -123,17 +149,40 @@ namespace Anno1800ModLauncher.Views
 
         private void Save_Profile(object sender, RoutedEventArgs e)
         {
+            string name;
+            if(ProfileCombo.SelectedItem == newProfileItem)
+            {
+                name = ProfileTextBox.Text;
+                ProfileTextBox.Text = "";
+            }
+            else
+            {
+                name = (string)((ComboBoxItem)ProfileCombo.SelectedItem).Content;
+            }
+            profilesManager.Persist(name, modDirectoryManager);
+            SetProfilesOptions();
+            foreach (ComboBoxItem item in ProfileCombo.Items)
+            {
+                if(name == (string)item.Content)
+                {
+                    ProfileCombo.SelectedItem = item;
+                    break;
+                }
+            }
 
         }
 
         private void Load_Profile(object sender, RoutedEventArgs e)
         {
-
+            profilesManager.Load(ProfileCombo.Text, modDirectoryManager);
+            FilterMods();
         }
 
         private void Delete_Profile(object sender, RoutedEventArgs e)
         {
-
+            profilesManager.Delete(ProfileCombo.Text);
+            ProfileCombo.SelectedIndex = -1;
+            SetProfilesOptions();
         }
 
         private void NewProfile_TextChanged(object sender, TextChangedEventArgs e)

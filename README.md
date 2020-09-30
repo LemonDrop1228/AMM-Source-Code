@@ -15,12 +15,13 @@ If you would like to work out other features or integrations, or have ideas feel
 # About Anno 1800 Mod Manager and The Dev
 The mod launcher is a passion project that I felt the Anno Community deserves. I myself prefer mod launchers that are focused on one specific game as they are usually able to address concerns regarding the game more quickly and efficiently. I noticed that the mod community around this game has created some pretty awesome mods, and xforce was extremely kind enough to create an awesome mod loader that works extremely well. the only piece of the puzzle left was a Mod loader that brought that all together in an easy to use tool.
 I'm a gamer myself and have been playing Anno Games for years. On top of that, I'm a married father with a full-time job, so my time is precious to me and those around me. I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even take occasional grope over on the official discord server for the app: [Anno 1800 Mod Manager Official Discord Server](https://discord.com/invite/QuHNrCc)
-Special thanks to Xforce for creating the [Anno 1800 Mod Loader](https://github.com/xforce/anno1800-mod-loader)
 
 # Credits
+Specal thanks to:
+- Xforce for making the [Xforce Mod Loader](https://github.com/xforce/anno1800-mod-loader)
 - Dev - Lemon Drop
 - Dev - Etienne
 - Wiki Manager - RebuiltStatue21
     - [Wiki Link](https://www.notion.so/Anno-1800-Mod-Manager-Wiki-60bbcd8ad9634c2faa225be3f1bd46d6)
-    - If you have any surgestions or feedback message me in [#wiki-discussion](https://discord.gg/eZsxQXS) channel of the AMM community in discord.
-
+    - If you have any surgestions or feedback message me in [#wiki-discussion] channel of the AMM community in discord.
+- The contributers to the open source project is located [GitHub Repro!](https://github.com/LemonDrop1228/AMM-Source-Code)

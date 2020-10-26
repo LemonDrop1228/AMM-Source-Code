@@ -21,7 +21,7 @@
       <Value Profile="(Default)">Version 0.7.8</Value>
     </Setting>
     <Setting Name="NewsUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://www.anno-union.com/en/</Value>
+      <Value Profile="(Default)">https://www.anno-union.com/</Value>
     </Setting>
     <Setting Name="ProfilesDirectory" Type="System.String" Scope="Application">
       <Value Profile="(Default)">profiles</Value>

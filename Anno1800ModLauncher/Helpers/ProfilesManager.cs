@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Anno1800ModLauncher.CustomDialogs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,6 +36,8 @@ namespace Anno1800ModLauncher.Helpers
             }
         }
 
+        public static ProfilesManager Instance { get; private set; }
+
         #region INotifyPropertyChanged Members
 
         /// <summary>
@@ -64,8 +67,9 @@ namespace Anno1800ModLauncher.Helpers
 
         public ProfilesManager()
         {
-            Profiles = new ObservableCollection<Profile>(Directory.EnumerateFiles(profilesPath).Select(
+            Profiles = new ObservableCollection<Profile>(Directory.EnumerateFiles(profilesPath, "*.ammp").Select(
                 e => new Profile(e)));
+            Instance = this;
         }
 
         public IEnumerator<string> GetEnumerator()
@@ -84,6 +88,7 @@ namespace Anno1800ModLauncher.Helpers
             if (profiles.Any(pr => pr.Name == name))
             {
                 p = profiles.First(profiles => profiles.Name == name);
+                p.UpdateMods(modDirectoryManager);
             }
             else
             {
@@ -99,6 +104,7 @@ namespace Anno1800ModLauncher.Helpers
             {
                 Profile p = profiles.First(profiles => profiles.Name == name);
                 p.Load(modDirectoryManager);
+                Console.WriteLine("Successfully loaded profile " + name);
             }
             else
             {
@@ -113,11 +119,40 @@ namespace Anno1800ModLauncher.Helpers
                 Profile p = profiles.First(profiles => profiles.Name == name);
                 p.Delete(profilesPath);
                 Profiles.Remove(p);
+                Console.WriteLine("Successfully deleted profile " + name);
             }
             else
             {
-                System.Console.WriteLine(@"/!\ This profile doesn't exist!");
+                Console.WriteLine(@"/!\ This profile doesn't exist!");
             }
+        }
+
+        internal void ImportProfile(string file)
+        {
+            string targetPath = Path.Combine(profilesPath, Path.GetFileName(file));
+            if(File.Exists(targetPath))
+            {
+                ProfileImportDuplicateDialog dialog = new ProfileImportDuplicateDialog(() => ImportProfile(file, targetPath));
+                dialog.Show();
+            }
+            else
+            {
+                ImportProfile(file, targetPath);
+            }
+        }
+
+        private void ImportProfile(string file, string target)
+        {
+            File.Copy(file, target, true);
+            if (profiles.Any(pr => pr.Name == Path.GetFileNameWithoutExtension(target)))
+            {
+                profiles.First(pr => pr.Name == Path.GetFileNameWithoutExtension(target)).Refresh(target);
+            }
+            else
+            {
+                profiles.Add(new Profile(target));
+            }
+            Console.WriteLine("Successfully imported the profile " + Path.GetFileNameWithoutExtension(file));
         }
     }
 
@@ -139,7 +174,7 @@ namespace Anno1800ModLauncher.Helpers
 
         public Profile(string path)
         {
-            Name = Path.GetFileName(path);
+            Name = Path.GetFileNameWithoutExtension(path);
             mods = new ObservableCollection<string>(File.ReadAllLines(path));
         }
         public Profile(string name, ModDirectoryManager manager)
@@ -150,8 +185,9 @@ namespace Anno1800ModLauncher.Helpers
 
         internal void Persist(string directory)
         {
-            string path = Path.Combine(directory, Name);
+            string path = Path.Combine(directory, Name + ".ammp");
             File.WriteAllLines(path, mods.ToArray());
+            Console.WriteLine("Successfully saved profile at " + path);
         }
 
         internal void Load(ModDirectoryManager modDirectoryManager)
@@ -232,6 +268,16 @@ namespace Anno1800ModLauncher.Helpers
         public override string ToString()
         {
             return Name;
+        }
+
+        internal void UpdateMods(ModDirectoryManager manager)
+        {
+            mods = new ObservableCollection<string>(manager.modList.Where(m => m.IsActive).Select(m => m.Name));
+        }
+
+        internal void Refresh(string path)
+        {
+            mods = new ObservableCollection<string>(File.ReadAllLines(path));
         }
     }
 }

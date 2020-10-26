@@ -128,6 +128,9 @@
     <Compile Include="CustomDialogs\ModInstallationDialog.xaml.cs">
       <DependentUpon>ModInstallationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomDialogs\ProfileImportDuplicateDialog.xaml.cs">
+      <DependentUpon>ProfileImportDuplicateDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Helpers\Enums\HelperEnums.cs" />
     <Compile Include="Helpers\GameDirectoryWatcher.cs" />
@@ -149,6 +152,10 @@
       <DependentUpon>NewsView.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomDialogs\ModInstallationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomDialogs\ProfileImportDuplicateDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

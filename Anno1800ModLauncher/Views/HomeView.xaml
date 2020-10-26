@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Anno1800ModLauncher.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1000" 
+             d:DesignHeight="550" d:DesignWidth="1000" 
              
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
@@ -35,16 +35,18 @@
             </GroupBox.HeaderTemplate>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition x:Name="r0"/>
-                    <RowDefinition x:Name="r1"/>
-                    <RowDefinition x:Name="r2"/>
-                    <RowDefinition x:Name="r3"/>
-                    <RowDefinition x:Name="r4"/>
-                    <RowDefinition x:Name="r5"/>
-                    <RowDefinition x:Name="r6"/>
-                    <RowDefinition x:Name="r7"/>
-                    <RowDefinition x:Name="r8"/>
-                    <RowDefinition x:Name="r9"/>
+                    <RowDefinition x:Name="r0" Height="33*"/>
+                    <RowDefinition x:Name="r1" Height="34*"/>
+                    <RowDefinition x:Name="r2" Height="34*"/>
+                    <RowDefinition x:Name="r3" Height="34*"/>
+                    <RowDefinition x:Name="r4" Height="34*"/>
+                    <RowDefinition x:Name="r5" Height="34*"/>
+                    <RowDefinition x:Name="r6" Height="34*"/>
+                    <RowDefinition x:Name="r7" Height="34*"/>
+                    <RowDefinition x:Name="r8" Height="34*"/>
+                    <RowDefinition x:Name="r9" Height="34*"/>
+                    <RowDefinition x:Name="r10" Height="34*"/>
+                    <RowDefinition x:Name="r11" Height="34*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="c0"/>
@@ -205,7 +207,7 @@
                                       materialDesign:HintAssist.HelperText="The path of the archive you want to install."
                                       VerticalAlignment="Center"
                                       materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
-                                        </TextBox>
+                                    </TextBox>
                                 </DockPanel>
                             </StackPanel>
                         </Expander>
@@ -294,6 +296,57 @@
                                             Spice-it-Up repo
                                         </ComboBoxItem>
                                     </ComboBox>
+                                </DockPanel>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </materialDesign:Card>
+                <Label Content="Optionnal:" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="8" Grid.Column="4"/>
+                <materialDesign:Card Grid.Column="4" Grid.Row="9"
+								 Grid.ColumnSpan="3" Grid.RowSpan="3"
+								 Margin="0,3,0,0" Background="Transparent">
+                    <StackPanel>
+                        <Expander IsExpanded="True" Padding="3"
+				            HorizontalAlignment="Stretch"
+				            Header="Import profile:" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Background="#7F303030">
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,15">
+                                <DockPanel VerticalAlignment="Center" LastChildFill="True">
+                                    <Button x:Name="ImportProfileButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center">
+                                        <DockPanel>
+                                            <materialDesign:PackIcon
+                                                Kind="Import"
+                                                Height="24"
+                                                Width="24" 
+                                                DockPanel.Dock="Left"/>
+                                            <TextBlock 
+                                                VerticalAlignment="Center" 
+                                                HorizontalAlignment="Right"
+                                                DockPanel.Dock="Right" Margin="5,0,0,0">Import</TextBlock>
+                                        </DockPanel>
+                                    </Button>
+                                    <Button x:Name="SearchProfileButton" 
+                                            Margin="5,0,0,0" 
+                                            MinWidth="35" 
+                                            DockPanel.Dock="Left" 
+                                            ToolTip="Search and select from local drives."
+                                            Opacity="1"  
+                                            HorizontalContentAlignment="Center" 
+                                            Click="SearchProfile_Click" Padding="0">
+                                        <DockPanel>
+                                            <materialDesign:PackIcon
+                                                Kind="Search"
+                                                Height="24"
+                                                Width="24" 
+                                                DockPanel.Dock="Left"/>
+                                        </DockPanel>
+                                    </Button>
+                                    <TextBox Padding="0" Margin="5,5,5,0"
+                                      materialDesign:HintAssist.Hint="Type Here"
+                                      materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                                      materialDesign:HintAssist.HelperText="The path of the profile file you want to install."
+                                      VerticalAlignment="Center"
+                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
+                                    </TextBox>
                                 </DockPanel>
                             </StackPanel>
                         </Expander>

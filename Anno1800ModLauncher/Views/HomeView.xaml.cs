@@ -25,6 +25,7 @@ using CefSharp.Wpf;
 using CefSharp;
 using Anno1800ModLauncher.CustomDialogs;
 using Anno1800ModLauncher.Helpers.ModInstaller;
+using Anno1800ModLauncher.Helpers;
 
 namespace Anno1800ModLauncher.Views
 {
@@ -300,6 +301,43 @@ namespace Anno1800ModLauncher.Views
                     Console.WriteLine("There was an issue installing your mods!");
                 }
                 
+            }
+        }
+
+        private void SearchProfile_Click(object sender, RoutedEventArgs e)
+        {
+            string[] fileList = null;
+
+            using (var dialog = new OpenFileDialog()
+            {
+                Filter = "Profile Files|*.ammp",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "Select a profile file to install",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Multiselect = true
+            })
+            {
+                dialog.FileOk += (s, e) => {
+                    var d = (s as OpenFileDialog);
+                    if (d != null)
+                        fileList = d.FileNames;
+                };
+                dialog.ShowDialog();
+            }
+
+            if (fileList != null)
+                ProcessProfileInstallationRequest(fileList);
+        }
+
+        private void ProcessProfileInstallationRequest(string[] fileNames)
+        {
+            if (fileNames.Count() > 0)
+            {
+                foreach (var file in fileNames)
+                {
+                    ProfilesManager.Instance.ImportProfile(file);
+                }
             }
         }
 

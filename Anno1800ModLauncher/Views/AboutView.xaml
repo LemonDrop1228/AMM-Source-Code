@@ -44,10 +44,11 @@
             I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even make the 
             occasional gripe over on the official discord for 
             this app: <LineBreak /><Hyperlink NavigateUri="https://discord.gg/QuHNrCc" RequestNavigate="Hyperlink_RequestNavigate">Anno 1800 Mod Launcher Discord Server</Hyperlink><LineBreak />
-            <LineBreak />Special thanks to Xforce for creating the <Hyperlink NavigateUri="https://github.com/xforce/anno1800-mod-loader" RequestNavigate="Hyperlink_RequestNavigate">Anno 1800 Mod Loader</Hyperlink>
-            <LineBreak />Special thanks to the community for helping us improve AMM!
-            <LineBreak />Special thanks to RebuiltStatue21 for creating the <Hyperlink NavigateUri="https://www.notion.so/Anno-1800-Mod-Manager-Wiki-60bbcd8ad9634c2faa225be3f1bd46d6" RequestNavigate="Hyperlink_RequestNavigate">Wiki!</Hyperlink>
-            <LineBreak />Special thanks to Lemondrop and <Hyperlink NavigateUri="https://github.com/EtienneDx" RequestNavigate="Hyperlink_RequestNavigate">EtienneDx</Hyperlink> for the developpment of AMM!
+            <LineBreak />Special thanks to:
+            <LineBreak />- Xforce for creating the <Hyperlink NavigateUri="https://github.com/xforce/anno1800-mod-loader" RequestNavigate="Hyperlink_RequestNavigate">Anno 1800 Mod Loader</Hyperlink>
+            <LineBreak />- the community for helping us improve AMM!
+            <LineBreak />- RebuiltStatue21 for creating the <Hyperlink NavigateUri="https://www.notion.so/Anno-1800-Mod-Manager-Wiki-60bbcd8ad9634c2faa225be3f1bd46d6" RequestNavigate="Hyperlink_RequestNavigate">Wiki!</Hyperlink>
+            <LineBreak />- The contributors to the open source project over at the <Hyperlink NavigateUri="https://github.com/LemonDrop1228/anno1800-mod-manager" RequestNavigate="Hyperlink_RequestNavigate">Github Repo</Hyperlink>
             </TextBlock>
 
             <StackPanel Grid.Row="3">

@@ -104,7 +104,7 @@ namespace Anno1800ModLauncher.Helpers
             {
                 Profile p = profiles.First(profiles => profiles.Name == name);
                 p.Load(modDirectoryManager);
-                Console.WriteLine("Successfully loaded profile " + name);
+                Console.WriteLine("Successfully loaded profile: " + name);
             }
             else
             {

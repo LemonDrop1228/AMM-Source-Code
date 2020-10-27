@@ -43,6 +43,8 @@ namespace Anno1800ModLauncher.Helpers
             }
         }
 
+        public static ModDirectoryManager Instance { get; private set; } = null;
+
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,6 +53,7 @@ namespace Anno1800ModLauncher.Helpers
 
         public ModDirectoryManager()
         {
+            Instance = Instance ?? this;
             LoadMods();
         }
 

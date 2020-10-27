@@ -301,7 +301,7 @@
                         </Expander>
                     </StackPanel>
                 </materialDesign:Card>
-                <Label Content="Optionnal:" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="8" Grid.Column="4"/>
+                <Label Content="Optional:" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="8" Grid.Column="4"/>
                 <materialDesign:Card Grid.Column="4" Grid.Row="9"
 								 Grid.ColumnSpan="3" Grid.RowSpan="3"
 								 Margin="0,3,0,0" Background="Transparent">

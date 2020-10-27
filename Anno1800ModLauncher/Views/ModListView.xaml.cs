@@ -38,7 +38,9 @@ namespace Anno1800ModLauncher.Views
             }
         }
 
+        private ImageSource OriginalBannerSource;
         private ProfilesManager _profileManager;
+
         public ProfilesManager profilesManager
         {
             get { return _profileManager; }
@@ -79,6 +81,7 @@ namespace Anno1800ModLauncher.Views
             ModListBox.AllowDrop = true;
             profilesManager = new ProfilesManager();
             SetProfilesOptions();
+            OriginalBannerSource = ModBannerImg.Source;
         }
 
         private void SetProfilesOptions()
@@ -145,7 +148,7 @@ namespace Anno1800ModLauncher.Views
             {
                 var i = ModListBox.SelectedItems.Count > 0 ? ModListBox.SelectedItems[ModListBox.SelectedItems.Count - 1] as ModModel : ModListBox.SelectedItem as ModModel;
                 ReadMeTextBox.Text = modDirectoryManager.GetReadMeText(i);
-                ModBannerImg.Source = modDirectoryManager.GetModBanner(i);
+                ModBannerImg.Source = modDirectoryManager.GetModBanner(i) ?? OriginalBannerSource;
             }
         }
 

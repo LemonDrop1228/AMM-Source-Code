@@ -15,6 +15,7 @@ using Ookii.Dialogs.Wpf;
 using System.Net;
 using Ionic.Zip;
 using Ionic.Zlib;
+using System.Windows;
 
 namespace Anno1800ModLauncher.Helpers
 {

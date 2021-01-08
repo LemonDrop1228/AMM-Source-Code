@@ -230,7 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf">
-      <Version>79.1.360</Version>
+      <Version>86.0.241</Version>
     </PackageReference>
     <PackageReference Include="DotNetZip">
       <Version>1.13.7</Version>

@@ -85,7 +85,7 @@ namespace Anno1800ModLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://www.anno-union.com/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.anno-union.com")]
         public string NewsUrl {
             get {
                 return ((string)(this["NewsUrl"]));

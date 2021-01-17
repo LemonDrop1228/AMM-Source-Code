@@ -13,20 +13,40 @@
                     <ResourceDictionary Source="pack://application:,,,/MaterialDesignExtensions;component/Themes/MaterialDesignDarkTheme.xaml" />
                     <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignExtensions;component/Themes/MaterialDesignDarkTheme.xaml" />-->
 
-                     <!--primary colors--> 
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.BlueGrey.xaml" />
-                        </ResourceDictionary.MergedDictionaries>
-                        <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary300}" />
-                        <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="White" />
-                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Primary800}" />
-                        <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource Primary800Foreground}" />
-                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary600}" />
-                        <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary800Foreground}" />
-                    </ResourceDictionary>
+                     <!--primary colors-->
+                <ResourceDictionary>
+                    <Color x:Key="CheakMarkColor">#FFFFFF</Color>
+                    <Color x:Key="TextColor">#FFFFFF</Color>
+                    <Color x:Key="Button-HeaderColor">#37474F</Color>
+                    <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+                    <Color x:Key="WindowBorderColor">#546E7A</Color>
+                    <Color x:Key="WindowButtonsColor">#C3CCD1</Color>
 
-                     <!--accent color--> 
+                    <!--
+                    Defalt colors
+                    
+                    TextColor #FFFFFF
+                    CheakMarkColor #FFFFFF
+                    Button-HeaderColor #37474F
+                    ButtonTextColor #FFFFFF
+                    WindowBorderColor #546E7A
+                    WindowButtonsColor #C3CCD1
+                    -->
+                    
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.BlueGrey.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource CheakMarkColor}" />
+                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource TextColor}" />
+                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Button-HeaderColor}" />
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource ButtonTextColor}" />
+                    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource WindowBorderColor}" />
+                    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource WindowButtonsColor}" />
+                </ResourceDictionary>
+
+                <!--accent color--> 
                     <!--<ResourceDictionary>
                         <ResourceDictionary.MergedDictionaries>
                             <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.BlueGrey.xaml" />

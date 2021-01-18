@@ -13,7 +13,7 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal" 
              TextOptions.TextRenderingMode="Auto" FontSize="24" FontWeight="Bold" >
-    <Border Background="#26000000">
+    <Border Background ="{DynamicResource PrimaryHueBackgroundBrush}">
         <GroupBox Margin="0" Padding="6,0,6,0" Style="{DynamicResource MaterialDesignGroupBox}" >
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
@@ -116,7 +116,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3">
                     <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" >Mod Folder Path:</Label>
                     <TextBox materialDesign:HintAssist.Hint="Path"
-            IsReadOnly="True" Height="23" TextWrapping="Wrap" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Left">
+            IsReadOnly="True" Height="23" TextWrapping="Wrap" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Left">
                         <TextBox.Text>
                             <MultiBinding StringFormat="{}{0}\{1}">
                                 <Binding Source="{x:Static p:Settings.Default}" Path="GameRootPath" Mode="OneWay"/>
@@ -159,7 +159,7 @@
                     TextWrapping="Wrap" 
                     VerticalAlignment="Center" 
                     FontSize="12" 
-                    HorizontalAlignment="Left" Foreground="{StaticResource PrimaryHueLightForegroundBrush}"/>
+                    HorizontalAlignment="Left" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"/>
                 </StackPanel>
                 <Label Grid.Column="4" Content="Step 4:" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.RowSpan="1"/>
 
@@ -169,7 +169,7 @@
                     <StackPanel>
                         <Expander IsExpanded="True" Padding="3"
 				HorizontalAlignment="Stretch"
-				Header="Install Mods From Local:" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Background="#7F303030">
+				Header="Install Mods From Local:" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="0,0,0,15">
                                 <DockPanel VerticalAlignment="Center" LastChildFill="True">
                                     <Button x:Name="InstallLocalButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center" Click="InstallZip_Click">
@@ -203,10 +203,10 @@
                                     </Button>
                                     <TextBox Padding="0" Margin="5,5,5,0"
                                       materialDesign:HintAssist.Hint="Type Here"
-                                      materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                                      materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                                       materialDesign:HintAssist.HelperText="The path of the archive you want to install."
                                       VerticalAlignment="Center"
-                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
+                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
                                     </TextBox>
                                 </DockPanel>
                             </StackPanel>
@@ -218,7 +218,7 @@
 				SnapsToDevicePixels="True" />
                         <Expander IsExpanded="True"
 				HorizontalAlignment="Stretch"
-				Header="Install Mods From Nexus:"  Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Background="#7F303030">
+				Header="Install Mods From Nexus:"  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="5,5,5,15">
                                 <DockPanel VerticalAlignment="Center" LastChildFill="True">
                                     <Button x:Name="InstalNexusButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center" Click="InstallNexus_Click">
@@ -254,9 +254,9 @@
                                     <TextBox Padding="0" Margin="5,0,5,0"
                                       materialDesign:HintAssist.Hint="Type Here"
                                       materialDesign:HintAssist.HelperText="The url of the mod you wish to install."
-                                      materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                                      materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                                       VerticalAlignment="Center"
-                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
+                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
                                     </TextBox>
                                 </DockPanel>
                             </StackPanel>
@@ -268,7 +268,7 @@
 				SnapsToDevicePixels="True" />
                         <Expander IsExpanded="True"
 				HorizontalAlignment="Stretch"
-				Header="Install Mods From Github:" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Background="#7F303030">
+				Header="Install Mods From Github:" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="5">
                                 <DockPanel VerticalAlignment="Center" LastChildFill="True">
                                     <Button x:Name="InstalGithubButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center" Click="InstallRepo_Click">
@@ -287,8 +287,8 @@
                                     <ComboBox Margin="0,0,5,0" 
                                           materialDesign:HintAssist.Hint="Choose a Repo"
                                           materialDesign:TextFieldAssist.HasClearButton="True" 
-                                          materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
-                                          FontSize="12" Foreground="{StaticResource PrimaryHueLightForegroundBrush}">
+                                          materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                                          FontSize="12" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}">
                                         <ComboBoxItem>
                                             4ʞʞz0ɔʞ7 repo
                                         </ComboBoxItem>
@@ -308,7 +308,7 @@
                     <StackPanel>
                         <Expander IsExpanded="True" Padding="3"
 				            HorizontalAlignment="Stretch"
-				            Header="Import profile:" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Background="#7F303030">
+				            Header="Import profile:" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="0,0,0,15">
                                 <DockPanel VerticalAlignment="Center" LastChildFill="True">
                                     <Button x:Name="ImportProfileButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center">
@@ -342,10 +342,10 @@
                                     </Button>
                                     <TextBox Padding="0" Margin="5,5,5,0"
                                       materialDesign:HintAssist.Hint="Type Here"
-                                      materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                                      materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                                       materialDesign:HintAssist.HelperText="The path of the profile file you want to install."
                                       VerticalAlignment="Center"
-                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
+                                      materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
                                     </TextBox>
                                 </DockPanel>
                             </StackPanel>

@@ -139,6 +139,12 @@
     <Compile Include="Helpers\ModLoader\ModLoaderInstaller.cs" />
     <Compile Include="Helpers\ProfilesManager.cs" />
     <Compile Include="Helpers\SelfUpdater\SelfUpdateManager.cs" />
+    <Compile Include="Helpers\Serializable\Collectioninfo.cs" />
+    <Compile Include="Helpers\Serializable\DLC.cs" />
+    <Compile Include="Helpers\Serializable\Localized.cs" />
+    <Compile Include="Helpers\Serializable\ModIdActiveTouple.cs" />
+    <Compile Include="Helpers\Serializable\Modinfo.cs" />
+    <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Bakery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Themes\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,10 +239,13 @@
     <Resource Include="Images\ANNO1800_LOGO_white_Shaded2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\anno_1800_goes_treasure_hunting-21051.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\ANNO1800_LOGO_white_Shaded3.png" />
+    <Resource Include="Images\sunken_treasures.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\baker.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Libs\python35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

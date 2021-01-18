@@ -16,6 +16,8 @@ using System.Net;
 using Ionic.Zip;
 using Ionic.Zlib;
 using System.Windows;
+using SerializableModinfo;
+using Newtonsoft.Json;
 
 namespace Anno1800ModLauncher.Helpers
 {
@@ -60,17 +62,18 @@ namespace Anno1800ModLauncher.Helpers
 
         public void LoadMods()
         {
+
             if (Directory.Exists(modPath))
             {
                 _baseData = modList = new ObservableCollection<ModModel>(Directory.EnumerateDirectories(modPath).
                         Select(d => new ModModel
                         {
                             Path = d,
-                            Name = Path.GetFileName(d).TrimDash(),
+                            Name = "[" + JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(d + "\\modinfo.json")).Category.English + "] " + JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(d + "\\modinfo.json")).ModName.English,
                             IsActive = Path.GetFileName(d).IsActive(),
                             Icon = (Path.GetFileName(d).IsActive()) ? "CheckBold" : "NoEntry",
                             Color = (Path.GetFileName(d).IsActive()) ? "DarkGreen" : "Red"
-                        }).Where(w => w.Name != ".cache").ToList().OrderByDescending(s => s.IsActive));
+                        }).Where(w => w.Name != ".cache").ToList().OrderByDescending(s => s.IsActive));;
                 if (modList.Count > 0)
                     Console.WriteLine($"Found {modList.Count} mods! Active: {modList.Count(i => i.IsActive)} / Inactive: {modList.Count(i => !i.IsActive)}");
                 else
@@ -82,6 +85,7 @@ namespace Anno1800ModLauncher.Helpers
 
         internal bool ActivateMod(ModModel i)
         {
+
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
@@ -235,6 +239,7 @@ namespace Anno1800ModLauncher.Helpers
         private string icon;
         private string color;
         private bool isSelected;
+        private Modinfo modInformation; 
 
         public string Name { get => name; set => SetPropertyField("Name",ref name,value); }
         public string Path { get => path; set => SetPropertyField("Path", ref path, value); }
@@ -242,6 +247,7 @@ namespace Anno1800ModLauncher.Helpers
         public string Icon { get => icon; set => SetPropertyField("Icon", ref icon, value); }
         public string Color { get => color; set => SetPropertyField("Color", ref color, value); }
         public bool IsSelected { get => isSelected; set => SetPropertyField("IsSelected", ref isSelected, value); }
+        public Modinfo Modinfo { get => modInformation; set => SetPropertyField("Modinfo", ref modInformation, value); }
 
         protected void SetPropertyField<T>(string propertyName, ref T field, T newValue)
         {

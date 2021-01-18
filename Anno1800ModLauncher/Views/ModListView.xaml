@@ -90,7 +90,7 @@
                        Source="/Images/ModImg_PlaceHolder.png" 
                        Grid.Row="0" Stretch="Fill"/>
                 <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
-                    <TextBox Foreground="{StaticResource PrimaryHueLightForegroundBrush}" x:Name="ReadMeTextBox" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" />
+                    <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" x:Name="ReadMeTextBox" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
                 </ScrollViewer>
             </Grid>
         </GroupBox>
@@ -207,12 +207,12 @@
                     <StackPanel Orientation="Horizontal" Margin="5, 0">
                         <ComboBox x:Name="FilterCombo"
                             materialDesign:HintAssist.Hint="Status Filter"
-                              materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                              materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             materialDesign:ComboBoxAssist.ShowSelectedItem="true"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
-                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Width="120">
+                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="120">
                             <ComboBoxItem>
                                 Active
                             </ComboBoxItem>
@@ -225,7 +225,7 @@
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     x:Name="FilterTextBox" 
                     Margin="10,0,0,0" 
-                    MinWidth="350" VerticalAlignment="Center" MinHeight="30" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" TextChanged="FilterTextBox_TextChanged">
+                    MinWidth="350" VerticalAlignment="Center" MinHeight="30" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" TextChanged="FilterTextBox_TextChanged">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel
                           Orientation="Horizontal"
@@ -242,13 +242,13 @@
                     <StackPanel Orientation="Horizontal" Margin="5, 0">
                         <ComboBox x:Name="ProfileCombo"
                             materialDesign:HintAssist.Hint="Profile"
-                            materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             materialDesign:ComboBoxAssist.ShowSelectedItem="true"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
                             HorizontalAlignment="Left"
-                            Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             Width="120"
                             SelectionChanged="ProfileCOmbo_SelectionChanged"
                         >
@@ -264,7 +264,7 @@
                             MinWidth="350"
                             VerticalAlignment="Center"
                             MinHeight="30"
-                            Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             TextChanged="NewProfile_TextChanged">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel

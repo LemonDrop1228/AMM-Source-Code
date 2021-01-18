@@ -14,6 +14,5 @@ namespace Anno1800ModLauncher
     /// </summary>
     public partial class App : Application
     {
-       
     }
 }

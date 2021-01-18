@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Anno1800ModLauncher.Themes">
+
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#4e4f37" />
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#4a473b" />
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#bdc2b0" />
+    <SolidColorBrush x:Key="PrimaryHueBackgroundBrush" Color="#B2b5aa79" />
+    <SolidColorBrush x:Key="PrimaryHueMenuBackgroundBrush" Color="#E28c8562" />
+
+    <ImageSource x:Key="BackgroundImageBrush">pack://application:,,,/Images/baker.jpg</ImageSource>
+</ResourceDictionary>

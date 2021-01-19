@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,113 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutButtonText" xml:space="preserve">
+    <value>About</value>
+    <comment>Left Menu Button: Settings</comment>
+  </data>
+  <data name="AnnoUnionText" xml:space="preserve">
+    <value>Anno Union</value>
+    <comment>News View: Header</comment>
+  </data>
+  <data name="HomeButtonText" xml:space="preserve">
+    <value>Home</value>
+    <comment>Left Menu Button: Home</comment>
+  </data>
+  <data name="HomeViewGamePathText" xml:space="preserve">
+    <value>Game Path: </value>
+    <comment>Home View: Label Game Path</comment>
+  </data>
+  <data name="HomeViewHintAssistGithub" xml:space="preserve">
+    <value>Choose a Repository from Github</value>
+    <comment>Home View Hint: Github</comment>
+  </data>
+  <data name="HomeViewHintAssistLocalFile" xml:space="preserve">
+    <value>The path of the profile file you want to install.</value>
+    <comment>Home View Hint: Local File</comment>
+  </data>
+  <data name="HomeViewHintAssistNexus" xml:space="preserve">
+    <value>the URL of the mod you wish to install</value>
+    <comment>Home View Hint: Nexusmods</comment>
+  </data>
+  <data name="HomeViewImportButtonText" xml:space="preserve">
+    <value>Import</value>
+    <comment>Home View: Import Button</comment>
+  </data>
+  <data name="HomeViewInstallFromGithubText" xml:space="preserve">
+    <value>Install from Github</value>
+    <comment>Home View: Install from Github Button</comment>
+  </data>
+  <data name="HomeViewInstallFromNexusText" xml:space="preserve">
+    <value>Install from Nexusmods</value>
+    <comment>Home View: Install from Nexusmods Button</comment>
+  </data>
+  <data name="HomeViewInstallFromZipText" xml:space="preserve">
+    <value>Install from ZIP</value>
+    <comment>Home View: Install from Zip Header</comment>
+  </data>
+  <data name="HomeViewInstallModloaderText" xml:space="preserve">
+    <value>Install Modloader</value>
+    <comment>Home View: Install Modloader Button</comment>
+  </data>
+  <data name="HomeViewModdingSetupText" xml:space="preserve">
+    <value>Modding Setup</value>
+    <comment>Home View: Modding Setup Header</comment>
+  </data>
+  <data name="HomeViewModfolderCreateText" xml:space="preserve">
+    <value>Create Mod Folder</value>
+    <comment>Home View: Button Create Modloader</comment>
+  </data>
+  <data name="HomeViewModfolderPathText" xml:space="preserve">
+    <value>Mod Folder Path</value>
+    <comment>Home View: Mod Folder Path Label</comment>
+  </data>
+  <data name="HomeViewRepoComboBoxAkkRepoText" xml:space="preserve">
+    <value>4ʞʞz0ɔʞ7 repo</value>
+    <comment>Home View: Combo Box for Github akkzockt</comment>
+  </data>
+  <data name="HomeViewRepoComboBoxSIURepoText" xml:space="preserve">
+    <value>Spice it Up repo</value>
+    <comment>Home View. Combo Box for Github Spice it up</comment>
+  </data>
+  <data name="HomeViewSearchTooltipText" xml:space="preserve">
+    <value>Search and select from local drives.</value>
+    <comment>Home View Tooltip: Search Local Button</comment>
+  </data>
+  <data name="HomeViewSetGamePathText" xml:space="preserve">
+    <value>Set Game Path</value>
+    <comment>Home View: Button Set Game Path</comment>
+  </data>
+  <data name="HomeViewTooltipInstallFromLocal" xml:space="preserve">
+    <value>Search and select from local drives</value>
+    <comment>Home View Tooltip: Install Local Drive</comment>
+  </data>
+  <data name="HomeViewTooltipInstallText" xml:space="preserve">
+    <value>Install using the built-in mod browser.</value>
+    <comment>Home View Tooltip: Install Mods via built-in browser</comment>
+  </data>
+  <data name="ModsButtonText" xml:space="preserve">
+    <value>Mods</value>
+    <comment>Left Menu Button: Mods</comment>
+  </data>
+  <data name="ModViewModListText" xml:space="preserve">
+    <value>Mod List</value>
+    <comment>Mods View: Mod List </comment>
+  </data>
+  <data name="NewsButtonText" xml:space="preserve">
+    <value>News</value>
+    <comment>Left Menu Button: News</comment>
+  </data>
+  <data name="PlayButtonText" xml:space="preserve">
+    <value>Play</value>
+    <comment>Left Menu Button: Play</comment>
+  </data>
+  <data name="SettingsButtonText" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Left Menu Button: Settings</comment>
+  </data>
 </root>

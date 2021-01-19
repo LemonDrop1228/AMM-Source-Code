@@ -63,6 +63,8 @@ namespace Anno1800ModLauncher
         public MainWindow()
         {
             InitializeComponent();
+            //set the language to what is saved in GlobalVar.
+            LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
         }
 
         private void CheckSelfVersion()
@@ -103,6 +105,8 @@ namespace Anno1800ModLauncher
             waveOutSetVolume(IntPtr.Zero, 0);
             Init();
             Console.WriteLine("Checking status..");
+
+            Console.WriteLine(LanguageManager.GetLanguage());
             CheckSelfVersion();
             if (!IsUpdating)
             {
@@ -232,6 +236,7 @@ namespace Anno1800ModLauncher
         {
             MainTabControl.SelectedIndex = 0;
             //NewsView.LoadNews();
+
         }
 
         private void Mods_Clicked(object sender, RoutedEventArgs e)
@@ -239,7 +244,7 @@ namespace Anno1800ModLauncher
             if (!string.IsNullOrEmpty(GameRootPath) && File.Exists(GamePath))
                 MainTabControl.SelectedIndex = 2;
             else
-                System.Windows.MessageBox.Show("Please set the game path");            
+                System.Windows.MessageBox.Show("Please set the game path");
         }
 
         private void Settings_Clicked(object sender, RoutedEventArgs e)

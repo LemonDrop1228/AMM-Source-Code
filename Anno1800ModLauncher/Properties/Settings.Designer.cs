@@ -73,7 +73,7 @@ namespace Anno1800ModLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Version 0.7.8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Version 0.7.12")]
         public string CurrentModLoaderVersion {
             get {
                 return ((string)(this["CurrentModLoaderVersion"]));
@@ -113,6 +113,18 @@ namespace Anno1800ModLauncher.Properties {
             }
             set {
                 this["ThemePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Language {
+            get {
+                return ((int)(this["Language"]));
+            }
+            set {
+                this["Language"] = value;
             }
         }
     }

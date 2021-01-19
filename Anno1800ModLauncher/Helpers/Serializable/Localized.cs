@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Anno1800ModLauncher.Helpers;
+using Anno1800ModLauncher.Helpers.Enums;
 
 namespace SerializableModinfo
 {
@@ -18,5 +20,13 @@ namespace SerializableModinfo
         public String Russian { get; set; }
         public String Spanish { get; set; }
         public String Taiwanese { get; set; }
+
+        public String getText() {
+            switch (LanguageManager.GetLanguage()) {
+                case HelperEnums.Language.English: return English;
+                case HelperEnums.Language.German: return German;
+                default: return English; 
+            }
+        }
     }
 }

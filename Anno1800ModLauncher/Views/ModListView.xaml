@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Anno1800ModLauncher.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Helpers="clr-namespace:Anno1800ModLauncher.Helpers" x:Class="Anno1800ModLauncher.Views.ModListView"
+             xmlns:p="clr-namespace:Anno1800ModLauncher.Properties"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="800">
     <Grid>
@@ -33,7 +34,7 @@
                       Margin="4,0,0,0"
                       VerticalAlignment="Center"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                      Text="Mod List" />
+                      Text="{x:Static p:Resources.ModViewModListText}"/>
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
@@ -90,7 +91,7 @@
                        Source="/Images/ModImg_PlaceHolder.png" 
                        Grid.Row="0" Stretch="Fill"/>
                 <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
-                    <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" x:Name="ReadMeTextBox" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
+                    <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Text ="{Binding Path=modDescriptionText, UpdateSourceTrigger=PropertyChanged}" x:Name="ReadMeTextBox"  Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
                 </ScrollViewer>
             </Grid>
         </GroupBox>

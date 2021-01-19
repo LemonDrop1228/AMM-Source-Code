@@ -135,6 +135,7 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Helpers\Enums\HelperEnums.cs" />
     <Compile Include="Helpers\GameDirectoryWatcher.cs" />
+    <Compile Include="Helpers\LanguageManager.cs" />
     <Compile Include="Helpers\ModDirectoryManager.cs" />
     <Compile Include="Helpers\ModInstaller\ModInstallationManager.cs" />
     <Compile Include="Helpers\ModLoader\ModLoaderInstaller.cs" />
@@ -178,6 +179,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Elephant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Themes\Bakery.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -220,7 +226,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="anno1800modlaunchercert.pfx" />
@@ -242,11 +248,12 @@
   <ItemGroup>
     <Resource Include="Images\ANNO1800_LOGO_white_Shaded3.png" />
     <Resource Include="Images\sunken_treasures.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\baker.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\elephant.jpg" />
     <Content Include="Libs\python35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

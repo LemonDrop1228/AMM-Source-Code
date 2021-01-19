@@ -156,12 +156,12 @@
                     Margin="3"
                     Padding="5"
                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                    UniformCornerRadius="5" Background ="{StaticResource PrimaryHueMenuBackgroundBrush}" DockPanel.Dock="Bottom" Height="100">
+                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" DockPanel.Dock="Bottom" Height="100">
 
                     <!--Console Output-->
                     <ScrollViewer x:Name="LogScollViewer" Grid.Column="0" Grid.Row="6" Grid.RowSpan="4" Grid.ColumnSpan="3">
                         <TextBox x:Name="LogRTB" 
-                                 Background ="{StaticResource PrimaryHueMenuBackgroundBrush}" 
+                                 Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" 
                                  Padding="3" 
                                  AcceptsReturn="True" 
                                  AcceptsTab="True" 

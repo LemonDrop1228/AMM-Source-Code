@@ -62,18 +62,31 @@ namespace Anno1800ModLauncher.Helpers
 
         public void LoadMods()
         {
-
             if (Directory.Exists(modPath))
             {
-                _baseData = modList = new ObservableCollection<ModModel>(Directory.EnumerateDirectories(modPath).
-                        Select(d => new ModModel
+                //I was unable to do this via object initializer, since I can't construct a modinfo right here due to exception handling. Whatever.
+                //If possible, revert back to the old code. 
+                    _baseData = modList = new ObservableCollection<ModModel>(Directory.EnumerateDirectories(modPath).
+                        Select(
+                        
+                        //old code
+                        /*d => new ModModel
                         {
                             Path = d,
-                            Name = "[" + JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(d + "\\modinfo.json")).Category.English + "] " + JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(d + "\\modinfo.json")).ModName.English,
+                            Name = Path.GetFileName(d).TrimDash(),
                             IsActive = Path.GetFileName(d).IsActive(),
                             Icon = (Path.GetFileName(d).IsActive()) ? "CheckBold" : "NoEntry",
-                            Color = (Path.GetFileName(d).IsActive()) ? "DarkGreen" : "Red"
-                        }).Where(w => w.Name != ".cache").ToList().OrderByDescending(s => s.IsActive));;
+                            Color = (Path.GetFileName(d).IsActive()) ? "DarkGreen" : "Red",
+                        }*/
+
+                        //Path, Name, IsActive, Icon, Color. The constructor of ModModel tries to create a modinfo automatically. 
+                        d => new ModModel(Path.GetFileName(d).TrimDash(), 
+                            d, 
+                            Path.GetFileName(d).IsActive(), 
+                            (Path.GetFileName(d).IsActive()) ? "CheckBold" : "NoEntry", 
+                            (Path.GetFileName(d).IsActive()) ? "DarkGreen" : "Red")
+                        
+                        ).Where(w => w.Name != ".cache").ToList().OrderByDescending(s => s.IsActive));; ; ;
                 if (modList.Count > 0)
                     Console.WriteLine($"Found {modList.Count} mods! Active: {modList.Count(i => i.IsActive)} / Inactive: {modList.Count(i => !i.IsActive)}");
                 else
@@ -130,6 +143,23 @@ namespace Anno1800ModLauncher.Helpers
                 res = File.ReadAllText(contentPath);
             if (File.Exists(readmePath))
                 res += Environment.NewLine + File.ReadAllText(readmePath);
+            //prefer Modinfo over the old way 
+            
+            if (i.Metadata != null) {
+                res = i.Metadata.Description.English + "\n";
+                if (i.Metadata.KnownIssues != null) {
+                    res += "\n"+"KNOWN ISSUES:";
+                    foreach (Localized KnownIssue in i.Metadata.KnownIssues)
+                    {
+                        res += "\n" + "> " + KnownIssue.English;
+                    }
+                    res += "\n";
+                }
+                if (i.Metadata.CreatorName != null) {
+                    res += "\n" + "CREATOR: " + i.Metadata.CreatorName;
+                }
+            }
+            
             return res;
         }
 
@@ -147,6 +177,19 @@ namespace Anno1800ModLauncher.Helpers
                 res = bitmap;
                 bitmap.StreamSource.Dispose();
                 bitmap = null;
+            }
+            //prefer modinfo base64 image over the old one
+            if (i.Metadata != null) 
+            { 
+                if (i.Metadata.Image != null)
+                {
+                    var bytes = Convert.FromBase64String(i.Metadata.Image);
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = new MemoryStream(bytes);
+                    bitmap.EndInit();
+                    res = bitmap; 
+                }
             }
             return res;
         }
@@ -239,7 +282,7 @@ namespace Anno1800ModLauncher.Helpers
         private string icon;
         private string color;
         private bool isSelected;
-        private Modinfo modInformation; 
+        private Modinfo metadata; 
 
         public string Name { get => name; set => SetPropertyField("Name",ref name,value); }
         public string Path { get => path; set => SetPropertyField("Path", ref path, value); }
@@ -247,7 +290,26 @@ namespace Anno1800ModLauncher.Helpers
         public string Icon { get => icon; set => SetPropertyField("Icon", ref icon, value); }
         public string Color { get => color; set => SetPropertyField("Color", ref color, value); }
         public bool IsSelected { get => isSelected; set => SetPropertyField("IsSelected", ref isSelected, value); }
-        public Modinfo Modinfo { get => modInformation; set => SetPropertyField("Modinfo", ref modInformation, value); }
+        public Modinfo Metadata { get => metadata; set => SetPropertyField("metadata", ref metadata, value); }
+
+        public ModModel(string pName, string pPath, bool pIsActive, string pIcon, string pColor)
+        {
+            Name = pName;
+            Path = pPath;
+            IsActive = pIsActive;
+            Icon = pIcon;
+            Color = pColor;
+
+            try
+            {
+                Metadata = JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(Path + "\\modinfo.json"));
+                if (Metadata != null)
+                {
+                    name = "[" + Metadata.Category.English + "] " + Metadata.ModName.English;
+                }
+            }
+            catch { }
+        }
 
         protected void SetPropertyField<T>(string propertyName, ref T field, T newValue)
         {

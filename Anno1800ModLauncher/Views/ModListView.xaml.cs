@@ -339,5 +339,10 @@ namespace Anno1800ModLauncher.Views
                 }
             );
         }
+
+        private void ReadMeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

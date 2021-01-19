@@ -60,8 +60,6 @@ namespace Anno1800ModLauncher
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr h, uint dwVolume);
 
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -241,7 +239,7 @@ namespace Anno1800ModLauncher
             if (!string.IsNullOrEmpty(GameRootPath) && File.Exists(GamePath))
                 MainTabControl.SelectedIndex = 2;
             else
-                System.Windows.MessageBox.Show("Please set the game path");
+                System.Windows.MessageBox.Show("Please set the game path");            
         }
 
         private void Settings_Clicked(object sender, RoutedEventArgs e)

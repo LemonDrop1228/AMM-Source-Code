@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#37474F" />
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#546E7A" />
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#C3CCD1" />
+    <SolidColorBrush x:Key="PrimaryHueBackgroundBrush" Color="#B22F3334" />
+    <SolidColorBrush x:Key="PrimaryHueMenuBackgroundBrush" Color="#B22F3334" />
+
+    <ImageSource x:Key="BackgroundImageBrush">pack://application:,,,/Images/sunken_treasures.jpg</ImageSource>
+</ResourceDictionary>

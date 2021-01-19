@@ -26,14 +26,14 @@
                 </StackPanel>
             </DataTemplate>
         </GroupBox.HeaderTemplate>
-        <Grid Background="#3F000000">
+        <Grid Background ="{DynamicResource PrimaryHueBackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="r0" Height="0.25*"/>
                 <RowDefinition x:Name="r1"/>
                 <RowDefinition x:Name="r2" Height="0.25*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="PMingLiU-ExtB" FontSize="24" Foreground="White" Background="#59000000">About Anno 1800 Mod Launcher and The Dev</TextBlock>
-            <TextBlock Grid.Row="1" Foreground="{StaticResource PrimaryHueLightForegroundBrush}" TextWrapping="Wrap" Padding="5" Margin="5" FontFamily="Segoe UI Semibold" FontSize="14">
+            <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontFamily="PMingLiU-ExtB" FontSize="24" Foreground="White" Background ="{StaticResource PrimaryHueBackgroundBrush}">About Anno 1800 Mod Launcher and The Dev</TextBlock>
+            <TextBlock Grid.Row="1" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" TextWrapping="Wrap" Padding="5" Margin="5" FontFamily="Segoe UI Semibold" FontSize="14">
             This mod launcher is a passion project that I felt the Anno Community deserved. I myself prefer mod launchers that are focused on one 
             specific game as they usually are able to address concerns regarding that game more quickly and efficiently. I noticed that the mod community around this game 
             has created some pretty awesome mods, and xforce was extremely kind enough to create an awesome mod loader that works extremely well. The only piece of the puzzle left 
@@ -52,7 +52,7 @@
             </TextBlock>
 
             <StackPanel Grid.Row="3">
-                <TextBlock Foreground="{StaticResource PrimaryHueLightForegroundBrush}" Margin="5" TextAlignment="Center" VerticalAlignment="Center" Padding="2">If you like the app or are feeling extra generous I work best when hopped up on caffeine</TextBlock>
+                <TextBlock Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Margin="5" TextAlignment="Center" VerticalAlignment="Center" Padding="2">If you like the app or are feeling extra generous I work best when hopped up on caffeine</TextBlock>
                 <Button Margin="200,0" Click="Button_PreviewTouchDown">
                     <DockPanel>
                         <materialDesign:PackIcon

@@ -16,7 +16,7 @@
         TextOptions.TextRenderingMode="Auto"  MouseDown="Window_MouseDown"
         FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" MinWidth="1266.428" MinHeight="736.428" Loaded="Window_Loaded" Closing="MainWindow1_Closing">
     <Window.Background>
-        <ImageBrush ImageSource="Images/anno_1800_goes_treasure_hunting-21051.jpg"/>
+        <ImageBrush ImageSource="{DynamicResource BackgroundImageBrush}"/>
     </Window.Background>
 
     <Grid>
@@ -31,7 +31,7 @@
             <materialDesign:Card
                 Margin="5"
                 Padding="3"
-                UniformCornerRadius="5" Background="#B22F3334" >
+                UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -156,12 +156,12 @@
                     Margin="3"
                     Padding="5"
                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                    UniformCornerRadius="5" Background="#B22F3334" DockPanel.Dock="Bottom" Height="100">
+                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" DockPanel.Dock="Bottom" Height="100">
 
                     <!--Console Output-->
                     <ScrollViewer x:Name="LogScollViewer" Grid.Column="0" Grid.Row="6" Grid.RowSpan="4" Grid.ColumnSpan="3">
                         <TextBox x:Name="LogRTB" 
-                                 Background="#002F3334" 
+                                 Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" 
                                  Padding="3" 
                                  AcceptsReturn="True" 
                                  AcceptsTab="True" 
@@ -177,7 +177,7 @@
                     Margin="5"
                     Padding="10"
                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                    UniformCornerRadius="5" Background="#B22F3334" DockPanel.Dock="Top" MinHeight="545">
+                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueBackgroundBrush}" DockPanel.Dock="Top" MinHeight="545">
 
                     <TabControl x:Name="MainTabControl" Style="{StaticResource MaterialDesignTabControl}" SelectionChanged="TabControl_SelectionChanged" BorderBrush="#00ACACAC">
                         <TabControl.ItemContainerStyle>

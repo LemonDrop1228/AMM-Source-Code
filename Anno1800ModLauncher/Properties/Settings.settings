@@ -32,5 +32,8 @@
     <Setting Name="Language" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="NewsUrlDE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://anno-union.com/de/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

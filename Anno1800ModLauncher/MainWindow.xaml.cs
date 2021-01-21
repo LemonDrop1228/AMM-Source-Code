@@ -249,6 +249,11 @@ namespace Anno1800ModLauncher
         private void Settings_Clicked(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 3;
+
+            if (LanguageManager.GetLanguage() == HelperEnums.Language.German)
+                LanguageManager.SetLanguage(HelperEnums.Language.English);
+            else if (LanguageManager.GetLanguage() == HelperEnums.Language.English)
+                LanguageManager.SetLanguage(HelperEnums.Language.German);
         }
 
         private void About_Clicked(object sender, RoutedEventArgs e)

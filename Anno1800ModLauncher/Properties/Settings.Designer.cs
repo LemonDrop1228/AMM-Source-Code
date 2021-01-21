@@ -127,5 +127,17 @@ namespace Anno1800ModLauncher.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://anno-union.com/de/")]
+        public string NewsUrlDE {
+            get {
+                return ((string)(this["NewsUrlDE"]));
+            }
+            set {
+                this["NewsUrlDE"] = value;
+            }
+        }
     }
 }

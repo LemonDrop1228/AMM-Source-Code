@@ -63,7 +63,7 @@ namespace Anno1800ModLauncher
         public MainWindow()
         {
             InitializeComponent();
-            //set the language to what is saved in GlobalVar.
+            //set language to the one that is saved as default in the application properties
             LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
         }
 
@@ -106,7 +106,6 @@ namespace Anno1800ModLauncher
             Init();
             Console.WriteLine("Checking status..");
 
-            Console.WriteLine(LanguageManager.GetLanguage());
             CheckSelfVersion();
             if (!IsUpdating)
             {

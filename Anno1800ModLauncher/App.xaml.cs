@@ -16,7 +16,6 @@ namespace Anno1800ModLauncher
     public partial class App : Application
     {
         App() {
-            LanguageManager.SetLanguage(HelperEnums.Language.German);
         }
     }
 }

@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Anno1800ModLauncher.Texts"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Left Menu Buttons -->
+    <system:String x:Key="AnnoUnionText">Anno Union</system:String>
+    <system:String x:Key="PlayButtonText">Play</system:String>
+    <system:String x:Key="HomeButtonText">Home</system:String>
+    <system:String x:Key="ModsButtonText">Mods</system:String>
+    <system:String x:Key="NewsButtonText">News</system:String>
+    <system:String x:Key="SettingsButtonText">Settings</system:String>
+    
+    <!-- Home View-->
+    <system:String x:Key="HomeViewReinstallModloaderText">Reinstall mod loader</system:String>
+    <system:String x:Key="HomeViewCreateModfolderText">Create mod folder</system:String>
+    <system:String x:Key="HomeViewOpenModDirectory">Open mod directory</system:String>
+    <system:String x:Key="HomeViewGamePathText">Game Path:</system:String>
+    <system:String x:Key="HomeViewHintAssistGithub">Choose a Repository from Github</system:String>
+    <system:String x:Key="HomeViewHintAssistLocalFile">The path of the ZIP-archive you want to install.</system:String>
+    <system:String x:Key="HomeViewHintAssistNexus">the URL of the mod you wish to install</system:String>
+    <system:String x:Key="HomeViewImportButtonText">Import</system:String>
+    <system:String x:Key="HomeViewInstallFromGithubText">Install from Github</system:String>
+    <system:String x:Key="HomeViewInstallFromNexusText">Install from Nexusmods</system:String>
+    <system:String x:Key="HomeViewInstallFromZipText">Install from ZIP</system:String>
+    <system:String x:Key="HomeViewInstallModloaderText">Install Modloader</system:String>
+    <system:String x:Key="HomeViewModdingSetupText">Modding Setup</system:String>
+    <system:String x:Key="HomeViewModfolderCreateText">Create Mod Folder</system:String>
+    <system:String x:Key="HomeViewModfolderPathText">Mod Folder Path</system:String>
+    <system:String x:Key="HomeViewRepoComboBoxAkkRepoText">4ʞʞz0ɔʞ7 repo</system:String>
+    <system:String x:Key="HomeViewRepoComboBoxSIURepoText">Spice it Up repo</system:String>
+    <system:String x:Key="HomeViewSearchTooltipText">Search and select from local drives.</system:String>
+    <system:String x:Key="HomeViewSetGamePathText">Set Game Path</system:String>
+    <system:String x:Key="HomeViewTooltipInstallFromLocal">Search and select from local drives</system:String>
+    <system:String x:Key="HomeViewTooltipInstallText">Install using the built-in mod browser.</system:String>
+
+    <!-- About View -->
+    <system:String x:Key="AboutButtonText">About</system:String>
+    <system:String x:Key="AboutMessageCommunity">The community for helping us improve AMM!</system:String>
+    <system:String x:Key="AboutMessageContributors">The contributors to the open source project over at the</system:String>
+    <system:String x:Key="AboutMessageDiscordServerText">Anno 1800 Mod Launcher Discord Server</system:String>
+    <system:String x:Key="AboutMessageGithub">Github Repo</system:String>
+    <system:String x:Key="AboutMessageHeader">About Anno 1800 Mod Launcher and The Dev</system:String>
+    <system:String x:Key="AboutMessageModloaderText">Anno 1800 Mod Loader</system:String>
+    <system:String x:Key="AboutMessagePart1">This mod launcher is a passion project that I felt the Anno Community deserved. I myself prefer mod launchers that are focused on one specific game as they usually are able to address concerns regarding that game more quickly and efficiently. I noticed that the mod community around this game has created some pretty awesome mods, and xforce was extremely kind enough to create an awesome mod loader that works extremely well. The only piece of the puzzle left was a Mod launcher that brought all of it together in an easy to use tool.</system:String>
+    <system:String x:Key="AboutMessagePart2">I'm a gamer myself and have been playing Anno games for years. On top of that, I'm a married father with a full time job, so my time is precious to me and those around me. I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even make the occasional gripe over on the official discord for this app:</system:String>
+    <system:String x:Key="AboutMessagePart3">Special thanks to:</system:String>
+    <system:String x:Key="AboutMessagePaypalButtonText">Buy Me A Coffee</system:String>
+    <system:String x:Key="AboutMessagePaypalLabelText">If you like the app or are feeling extra generous I work best when hopped up on caffeine</system:String>
+    <system:String x:Key="AboutMessageRebuilt">RebuiltStatue21 for creating the </system:String>
+    <system:String x:Key="AboutMessageWikiText">Wiki</system:String>
+    <system:String x:Key="AboutMessageXForce">Xforce for creating the </system:String>
+
+    <!-- Mods View -->
+    <system:String x:Key="ModsViewActivateText">Activate</system:String>
+    <system:String x:Key="ModsViewCreateProfileButtonText">Create new profile</system:String>
+    <system:String x:Key="ModsViewDeactivateText">Deactivate</system:String>
+    <system:String x:Key="ModsViewDeleteProfileText">Delete Profile</system:String>
+    <system:String x:Key="ModsViewLoadProfileText">Load Profile</system:String>
+    <system:String x:Key="ModsViewManageText">Manage</system:String>
+    <system:String x:Key="ModsViewModDetailsText">Mod Details:</system:String>
+    <system:String x:Key="ModsViewModListText">Mod List</system:String>
+    <system:String x:Key="ModsViewModSearchHint">Type here to search mods...</system:String>
+    <system:String x:Key="ModsViewNewProfileNameLabelText">New profile name</system:String>
+    <system:String x:Key="ModsViewProfileFilterComboActiveText">Active</system:String>
+    <system:String x:Key="ModsViewProfileFilterComboInactiveText">Inactive</system:String>
+    <system:String x:Key="ModsViewSaveProfileText">Save Profile</system:String>
+    <system:String x:Key="ModsViewStatusFilterHint">Status filter</system:String>
+    <system:String x:Key="ModsViewProfileHint">Profile</system:String>
+    <system:String x:Key="ModsViewLocalTitleText">Install from local file</system:String>
+    <system:String x:Key="ModsViewNexusTitleText">Install from Nexusmods</system:String>
+    <system:String x:Key="ModsViewGithubTitleText">Install from Github</system:String>
+    <system:String x:Key="ModsViewImportProfileTitleText">Import profiles</system:String>
+    <system:String x:Key="ModsViewTypeHereHintText">Type Here</system:String>
+    <system:String x:Key="ModsViewStepOneText">Step 1</system:String>
+    <system:String x:Key="ModsViewStepTwoText">Step 2</system:String>
+    <system:String x:Key="ModsViewStepThreeText">Step 3</system:String>
+    <system:String x:Key="ModsViewStepFourText">Step 4</system:String>
+    <!-- Dialogs-->
+    <system:String x:Key="DialogSearchProfileHeaderText">Select a profile file to install</system:String>
+    <system:String x:Key="DialogSearchArchiveHeaderText">Select a mod archive to install</system:String>
+</ResourceDictionary>

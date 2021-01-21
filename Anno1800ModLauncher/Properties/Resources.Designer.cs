@@ -70,6 +70,132 @@ namespace Anno1800ModLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The community for helping us improve AMM! ähnelt.
+        /// </summary>
+        public static string AboutMessageCommunity {
+            get {
+                return ResourceManager.GetString("AboutMessageCommunity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The contributors to the open source project over at the ähnelt.
+        /// </summary>
+        public static string AboutMessageContributors {
+            get {
+                return ResourceManager.GetString("AboutMessageContributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Anno 1800 Mod Launcher Discord Server ähnelt.
+        /// </summary>
+        public static string AboutMessageDiscordServerText {
+            get {
+                return ResourceManager.GetString("AboutMessageDiscordServerText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Github Repo ähnelt.
+        /// </summary>
+        public static string AboutMessageGithub {
+            get {
+                return ResourceManager.GetString("AboutMessageGithub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die About Anno 1800 Mod Launcher and The Dev ähnelt.
+        /// </summary>
+        public static string AboutMessageHeader {
+            get {
+                return ResourceManager.GetString("AboutMessageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Anno 1800 Mod Loader ähnelt.
+        /// </summary>
+        public static string AboutMessageModloaderText {
+            get {
+                return ResourceManager.GetString("AboutMessageModloaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die This mod launcher is a passion project that I felt the Anno Community deserved. I myself prefer mod launchers that are focused on one specific game as they usually are able to address concerns regarding that game more quickly and efficiently. I noticed that the mod community around this game has created some pretty awesome mods, and xforce was extremely kind enough to create an awesome mod loader that works extremely well. The only piece of the puzzle left was a Mod launcher that brought all of it together  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        public static string AboutMessagePart1 {
+            get {
+                return ResourceManager.GetString("AboutMessagePart1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die I&apos;m a gamer myself and have been playing Anno games for years. On top of that, I&apos;m a married father with a full time job, so my time is precious to me and those around me. I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even make the occasional gripe over on the official discord for this app: ähnelt.
+        /// </summary>
+        public static string AboutMessagePart2 {
+            get {
+                return ResourceManager.GetString("AboutMessagePart2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Special thanks to: ähnelt.
+        /// </summary>
+        public static string AboutMessagePart3 {
+            get {
+                return ResourceManager.GetString("AboutMessagePart3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Buy Me A Coffee ähnelt.
+        /// </summary>
+        public static string AboutMessagePaypalButtonText {
+            get {
+                return ResourceManager.GetString("AboutMessagePaypalButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die If you like the app or are feeling extra generous I work best when hopped up on caffeine ähnelt.
+        /// </summary>
+        public static string AboutMessagePaypalLabelText {
+            get {
+                return ResourceManager.GetString("AboutMessagePaypalLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die RebuiltStatue21 for creating the  ähnelt.
+        /// </summary>
+        public static string AboutMessageRebuilt {
+            get {
+                return ResourceManager.GetString("AboutMessageRebuilt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wiki ähnelt.
+        /// </summary>
+        public static string AboutMessageWikiText {
+            get {
+                return ResourceManager.GetString("AboutMessageWikiText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Xforce for creating the  ähnelt.
+        /// </summary>
+        public static string AboutMessageXForce {
+            get {
+                return ResourceManager.GetString("AboutMessageXForce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Anno Union ähnelt.
         /// </summary>
         public static string AnnoUnionText {
@@ -106,7 +232,7 @@ namespace Anno1800ModLauncher.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The path of the profile file you want to install. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The path of the ZIP-archive you want to install. ähnelt.
         /// </summary>
         public static string HomeViewHintAssistLocalFile {
             get {
@@ -250,6 +376,42 @@ namespace Anno1800ModLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die https://discord.com/invite/eZsxQXS ähnelt.
+        /// </summary>
+        public static string LinkDiscordModmanager {
+            get {
+                return ResourceManager.GetString("LinkDiscordModmanager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die https://github.com/LemonDrop1228/anno1800-mod-manager ähnelt.
+        /// </summary>
+        public static string LinkGithubRepo {
+            get {
+                return ResourceManager.GetString("LinkGithubRepo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die https://github.com/xforce/anno1800-mod-loader ähnelt.
+        /// </summary>
+        public static string LinkModloaderRepo {
+            get {
+                return ResourceManager.GetString("LinkModloaderRepo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die https://www.notion.so/Anno-1800-Mod-Manager-Wiki-60bbcd8ad9634c2faa225be3f1bd46d6 ähnelt.
+        /// </summary>
+        public static string LinkNotion {
+            get {
+                return ResourceManager.GetString("LinkNotion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mods ähnelt.
         /// </summary>
         public static string ModsButtonText {
@@ -259,11 +421,137 @@ namespace Anno1800ModLauncher.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Activate ähnelt.
+        /// </summary>
+        public static string ModsViewActivateText {
+            get {
+                return ResourceManager.GetString("ModsViewActivateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create mod folder ähnelt.
+        /// </summary>
+        public static string ModsViewCreateModfolderText {
+            get {
+                return ResourceManager.GetString("ModsViewCreateModfolderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create new profile ähnelt.
+        /// </summary>
+        public static string ModsViewCreateProfileButtonText {
+            get {
+                return ResourceManager.GetString("ModsViewCreateProfileButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Deactivate ähnelt.
+        /// </summary>
+        public static string ModsViewDeactivateText {
+            get {
+                return ResourceManager.GetString("ModsViewDeactivateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete Profile ähnelt.
+        /// </summary>
+        public static string ModsViewDeleteProfileText {
+            get {
+                return ResourceManager.GetString("ModsViewDeleteProfileText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Load Profile ähnelt.
+        /// </summary>
+        public static string ModsViewLoadProfileText {
+            get {
+                return ResourceManager.GetString("ModsViewLoadProfileText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Manage ähnelt.
+        /// </summary>
+        public static string ModsViewManageText {
+            get {
+                return ResourceManager.GetString("ModsViewManageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mod Details: ähnelt.
+        /// </summary>
+        public static string ModsViewModDetailsText {
+            get {
+                return ResourceManager.GetString("ModsViewModDetailsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mod List ähnelt.
         /// </summary>
-        public static string ModViewModListText {
+        public static string ModsViewModListText {
             get {
-                return ResourceManager.GetString("ModViewModListText", resourceCulture);
+                return ResourceManager.GetString("ModsViewModListText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Type here to search mods... ähnelt.
+        /// </summary>
+        public static string ModsViewModSearchHint {
+            get {
+                return ResourceManager.GetString("ModsViewModSearchHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New profile name ähnelt.
+        /// </summary>
+        public static string ModsViewNewProfileNameLabelText {
+            get {
+                return ResourceManager.GetString("ModsViewNewProfileNameLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active ähnelt.
+        /// </summary>
+        public static string ModsViewProfileFilterComboActiveText {
+            get {
+                return ResourceManager.GetString("ModsViewProfileFilterComboActiveText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Inactive ähnelt.
+        /// </summary>
+        public static string ModsViewProfileFilterComboInactiveText {
+            get {
+                return ResourceManager.GetString("ModsViewProfileFilterComboInactiveText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reinstall mod loader ähnelt.
+        /// </summary>
+        public static string ModsViewReinstallModloaderText {
+            get {
+                return ResourceManager.GetString("ModsViewReinstallModloaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save Profile ähnelt.
+        /// </summary>
+        public static string ModsViewSaveProfileText {
+            get {
+                return ResourceManager.GetString("ModsViewSaveProfileText", resourceCulture);
             }
         }
         

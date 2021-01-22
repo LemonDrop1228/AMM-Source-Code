@@ -1,0 +1,72 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "ThemeName": {
+    "English": "Elephant",
+    "German": "Elefant",
+    "Chinese": null,
+    "French": null,
+    "Italian": null,
+    "Japanese": null,
+    "Korean": null,
+    "Polish": null,
+    "Russian": null,
+    "Spanish": null,
+    "Taiwanese": null
+  },
+  "GradientColorLight": "#c2b593",
+  "GradientColorDark": "#E273614c",
+  "Keys": [
+    {
+      "Key": "PrimaryHueLightBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueLightForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidBrush",
+      "Value": "#3e4563",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkBrush",
+      "Value": "#50576e",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkForegroundBrush",
+      "Value": "#c2b593",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueBackgroundBrush",
+      "Value": "#A2968269",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMenuBackgroundBrush",
+      "Value": "#E273614c",
+      "ReadAs": 0
+    },
+    {
+      "Key": "BackgroundImageBrush",
+      "Value": "pack://application:,,,/Images/elephant.jpg",
+      "ReadAs": 1
+    }
+  ]
+}

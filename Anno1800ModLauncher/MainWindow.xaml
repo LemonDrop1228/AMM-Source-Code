@@ -200,7 +200,9 @@
                         <TabItem Name="Mods" Header="MODS">
                             <Views:ModListView x:Name="ModListView"/>
                         </TabItem>
-                        <TabItem Name="Settings" Header="SETTINGS"></TabItem>
+                        <TabItem Name="Settings" Header="SETTINGS">
+                            <Views:SettingsView x:Name="SettingsView"/>
+                        </TabItem>
                         <TabItem Name="About" Header="ABOUT">
                             <Views:AboutView />
                         </TabItem>

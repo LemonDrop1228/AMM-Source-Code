@@ -26,8 +26,8 @@
     <Setting Name="ProfilesDirectory" Type="System.String" Scope="Application">
       <Value Profile="(Default)">profiles</Value>
     </Setting>
-    <Setting Name="ThemePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Default.xaml</Value>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default</Value>
     </Setting>
     <Setting Name="Language" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>

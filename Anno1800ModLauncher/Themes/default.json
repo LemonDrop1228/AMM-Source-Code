@@ -1,0 +1,72 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "ThemeName": {
+    "English": "Trelawney",
+    "German": "Das Kap",
+    "Chinese": null,
+    "French": null,
+    "Italian": null,
+    "Japanese": null,
+    "Korean": null,
+    "Polish": null,
+    "Russian": null,
+    "Spanish": null,
+    "Taiwanese": null
+  },
+  "GradientColorLight": "#C3CCD1",
+  "GradientColorDark": "#B22F3334",
+  "Keys": [
+    {
+      "Key": "PrimaryHueLightBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueLightForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidBrush",
+      "Value": "#37474F",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkBrush",
+      "Value": "#546E7A",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkForegroundBrush",
+      "Value": "#C3CCD1",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueBackgroundBrush",
+      "Value": "#B22F3334",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMenuBackgroundBrush",
+      "Value": "#B22F3334",
+      "ReadAs": 0
+    },
+    {
+      "Key": "BackgroundImageBrush",
+      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "ReadAs": 1
+    }
+  ]
+}

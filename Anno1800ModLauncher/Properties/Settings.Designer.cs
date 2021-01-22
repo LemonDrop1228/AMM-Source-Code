@@ -106,13 +106,13 @@ namespace Anno1800ModLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Default.xaml")]
-        public string ThemePath {
+        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        public string Theme {
             get {
-                return ((string)(this["ThemePath"]));
+                return ((string)(this["Theme"]));
             }
             set {
-                this["ThemePath"] = value;
+                this["Theme"] = value;
             }
         }
         

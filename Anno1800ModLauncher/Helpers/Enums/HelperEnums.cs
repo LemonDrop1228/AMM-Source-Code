@@ -28,11 +28,11 @@ namespace Anno1800ModLauncher.Helpers.Enums
         }
 
         public enum Language
-        { 
-            Chinese,
+        {
             English,
-            French,
             German,
+            Chinese,
+            French,
             Italian,
             Japanese,
             Korean,

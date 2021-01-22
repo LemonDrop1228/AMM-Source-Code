@@ -14,7 +14,7 @@
     <!-- Home View-->
     <system:String x:Key="HomeViewReinstallModloaderText">Modloader reinstallieren</system:String>
     <system:String x:Key="HomeViewCreateModfolderText">Modordner erstellen</system:String>
-    <system:String x:Key="HomeViewOpenModDirectory">Modordner öffnen</system:String>
+    <system:String x:Key="HomeViewOpenModDirectoryText">Modordner öffnen</system:String>
     <system:String x:Key="HomeViewGamePathText">Spielpfad:</system:String>
     <system:String x:Key="HomeViewHintAssistGithub">Wähle ein Repository auf Github aus</system:String>
     <system:String x:Key="HomeViewHintAssistLocalFile">Pfad des Archivs, aus dem installiert wird</system:String>
@@ -80,4 +80,8 @@
     <!-- Dialogs-->
     <system:String x:Key="DialogSearchProfileHeaderText">Ein Profil zum installieren auswählen</system:String>
     <system:String x:Key="DialogSearchArchiveHeaderText">Ein zip-Archiv zum installieren auswählen</system:String>
+    
+    <!-- Settings view -->
+    <system:String x:Key="SettingsViewThemeListText">Erscheinungsbild</system:String>
+    <system:String x:Key="SettingsViewGeneralSettingsText">Einstellungen</system:String>
 </ResourceDictionary>

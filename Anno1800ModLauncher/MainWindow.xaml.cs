@@ -63,8 +63,10 @@ namespace Anno1800ModLauncher
         public MainWindow()
         {
             InitializeComponent();
+
             //set language to the one that is saved as default in the application properties
             LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
+            ThemeManager.SetTheme(Properties.Settings.Default.Theme);
         }
 
         private void CheckSelfVersion()
@@ -112,6 +114,7 @@ namespace Anno1800ModLauncher
                 CheckSettings();
                 CheckModLoaderVersion();
             }
+
         }
 
         private void ProcessNewGamePath(string path)
@@ -249,11 +252,6 @@ namespace Anno1800ModLauncher
         private void Settings_Clicked(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 3;
-
-            if (LanguageManager.GetLanguage() == HelperEnums.Language.German)
-                LanguageManager.SetLanguage(HelperEnums.Language.English);
-            else if (LanguageManager.GetLanguage() == HelperEnums.Language.English)
-                LanguageManager.SetLanguage(HelperEnums.Language.German);
         }
 
         private void About_Clicked(object sender, RoutedEventArgs e)

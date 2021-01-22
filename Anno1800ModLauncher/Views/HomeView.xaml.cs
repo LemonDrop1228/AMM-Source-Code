@@ -73,6 +73,7 @@ namespace Anno1800ModLauncher.Views
             if (!string.IsNullOrEmpty(message))
                 Console.WriteLine(message);
 
+            //TODO (taubenangriff) buttons might not have correct bindings. see through this pretty pls 
             switch (state)
             {
                 case HelperEnums.DetectionState.None:
@@ -81,7 +82,7 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Salmon);
-                    MidDirText.Text = "Create Mod Folder";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Salmon);
@@ -94,7 +95,7 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Salmon);
-                    MidDirText.Text = "Create Mod Folder";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Salmon);
@@ -124,7 +125,7 @@ namespace Anno1800ModLauncher.Views
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Green);
-                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
+                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
                     #endregion
                     break;
@@ -151,7 +152,7 @@ namespace Anno1800ModLauncher.Views
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Green);
-                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
+                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
                     #endregion
                     break;
@@ -165,7 +166,7 @@ namespace Anno1800ModLauncher.Views
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Yellow);
-                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
+                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Exclamation, Width = 24, Height = 24 };
                     #endregion
                     break;

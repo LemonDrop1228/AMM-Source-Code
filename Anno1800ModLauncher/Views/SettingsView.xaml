@@ -71,8 +71,8 @@
                                                 </Border.Effect>
                                                 <Border.Background>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                        <GradientStop Color="{Binding Path=GradientColorLight}" Offset ="0.0"/>
-                                                        <GradientStop Color="{Binding Path=GradientColorDark}" Offset ="0.6"/>
+                                                        <GradientStop Color="{Binding Path=GradientColorLight}" Offset ="0.175"/>
+                                                        <GradientStop Color="{Binding Path=GradientColorDark}" Offset ="0.7"/>
                                                     </LinearGradientBrush>
                                                 </Border.Background>
                                             </Border>
@@ -91,7 +91,7 @@
                 </StackPanel>
             </ScrollViewer>
         </GroupBox>
-        <GroupBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan ="3" Grid.RowSpan="12" Margin="0,0,0,3" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+        <GroupBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan ="3" Grid.RowSpan="12" Margin="2,0,0,0" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
                     <StackPanel
@@ -117,8 +117,8 @@
                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="True">
                     <ComboBox x:Name ="LanguageComboBox" Margin="0,0,20,20" IsReadOnly="true" IsEditable="false"
                             materialDesign:TextFieldAssist.HasClearButton="True" 
-                            materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                            FontSize="12" MinWidth="250" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightBrush}"
+                            FontSize="12" MinWidth="250" Foreground="{DynamicResource PrimaryHueLightBrush}"
                               SelectionChanged ="LanguageSelection_LanguageChanged">
                         <ComboBoxItem x:Name="LanguageComboBoxItemEnglish">English</ComboBoxItem>
                         <ComboBoxItem x:Name="LanguageComboBoxItemGerman">Deutsch</ComboBoxItem>

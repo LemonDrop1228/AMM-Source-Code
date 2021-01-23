@@ -8,8 +8,8 @@
     "**/platforms"
   ],
   "ThemeName": {
-    "English": "Trelawney",
-    "German": "Das Kap",
+    "English": "Botanica",
+    "German": "Pflanzlich",
     "Chinese": null,
     "French": null,
     "Italian": null,
@@ -20,8 +20,8 @@
     "Spanish": null,
     "Taiwanese": null
   },
-  "GradientColorLight": "#37474F",
-  "GradientColorDark": "#B22F3334",
+  "GradientColorLight": "#92458a66",
+  "GradientColorDark": "#2b5227",
   "Keys": [
     {
       "Key": "PrimaryHueLightBrush",
@@ -35,7 +35,7 @@
     },
     {
       "Key": "PrimaryHueMidBrush",
-      "Value": "#37474F",
+      "Value": "#162e1b",
       "ReadAs": 0
     },
     {
@@ -45,27 +45,27 @@
     },
     {
       "Key": "PrimaryHueDarkBrush",
-      "Value": "#546E7A",
+      "Value": "#162e1b",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueDarkForegroundBrush",
-      "Value": "#C3CCD1",
+      "Value": "#658068",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#A2526b4f",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueMenuBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#92458a66",
       "ReadAs": 0
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "Value": "pack://application:,,,/Images/botanica.jpg",
       "ReadAs": 1
     }
   ]

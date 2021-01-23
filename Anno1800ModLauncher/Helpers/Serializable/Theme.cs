@@ -43,7 +43,6 @@ namespace Anno1800ModLauncher.Helpers.Serializable
         public ResourceDictionary toResourceDictionary() {
             var res = new ResourceDictionary();
             foreach (KeyValue Key in Keys) {
-                Console.WriteLine("Key {0} marked as {1}", Key.Key, Key.ReadAs);
                 switch ((ResourceType)Key.ReadAs) {
                     case ResourceType.ColorBrush:
                         SolidColorBrush brush = new SolidColorBrush();
@@ -52,7 +51,6 @@ namespace Anno1800ModLauncher.Helpers.Serializable
                             Color c = (Color)ColorConverter.ConvertFromString(Key.Value);
                             brush.Color = c; 
                             res.Add(Key.Key, brush);
-                            Console.WriteLine("Theme -> adding Color: " + Key.Key);
                         }
                         catch { }
                         break;
@@ -61,7 +59,6 @@ namespace Anno1800ModLauncher.Helpers.Serializable
                         {
                             ImageSource image = new BitmapImage(new Uri(Key.Value));
                             res.Add(Key.Key, image);
-                            Console.WriteLine("Theme -> adding Image: " + Key.Key);
                         }
                         catch { }                        
                         break;

@@ -8,8 +8,8 @@
     "**/platforms"
   ],
   "ThemeName": {
-    "English": "Trelawney",
-    "German": "Das Kap",
+    "English": "World's Fair",
+    "German": "Weltausstellung",
     "Chinese": null,
     "French": null,
     "Italian": null,
@@ -20,8 +20,8 @@
     "Spanish": null,
     "Taiwanese": null
   },
-  "GradientColorLight": "#37474F",
-  "GradientColorDark": "#B22F3334",
+  "GradientColorLight": "#5c5a54",
+  "GradientColorDark": "#590202",
   "Keys": [
     {
       "Key": "PrimaryHueLightBrush",
@@ -35,7 +35,7 @@
     },
     {
       "Key": "PrimaryHueMidBrush",
-      "Value": "#37474F",
+      "Value": "#590202",
       "ReadAs": 0
     },
     {
@@ -45,27 +45,27 @@
     },
     {
       "Key": "PrimaryHueDarkBrush",
-      "Value": "#546E7A",
+      "Value": "#5c1414",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueDarkForegroundBrush",
-      "Value": "#C3CCD1",
+      "Value": "#bab5ad",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#B25c5a54",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueMenuBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#D25c5a54",
       "ReadAs": 0
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "Value": "pack://application:,,,/Images/worldsfair.jpg",
       "ReadAs": 1
     }
   ]

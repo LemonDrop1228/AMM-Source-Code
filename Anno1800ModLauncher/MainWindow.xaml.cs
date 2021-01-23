@@ -32,6 +32,7 @@ using Anno1800ModLauncher.Helpers.SelfUpdater;
 using Octokit;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Anno1800ModLauncher
 {
@@ -65,7 +66,25 @@ namespace Anno1800ModLauncher
             InitializeComponent();
 
             //set language to the one that is saved as default in the application properties
-            LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
+
+            //at first start, set the language to the system language
+            //by default, the apps language is -1
+            if (Properties.Settings.Default.Language < 0)
+            {
+                var lang = CultureInfo.InstalledUICulture.Name;
+                if (Name.StartsWith("en"))
+                {
+                    LanguageManager.SetLanguage(HelperEnums.Language.English);
+                }
+                else if (Name.StartsWith("de"))
+                {
+                    LanguageManager.SetLanguage(HelperEnums.Language.German);
+                }
+            }
+            else {
+                LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
+            }
+                
             ThemeManager.SetTheme(Properties.Settings.Default.Theme);
         }
 

@@ -8,8 +8,8 @@
     "**/platforms"
   ],
   "ThemeName": {
-    "English": "Trelawney",
-    "German": "Das Kap",
+    "English": "High Contrast",
+    "German": "Hoher Kontrast",
     "Chinese": null,
     "French": null,
     "Italian": null,
@@ -20,8 +20,8 @@
     "Spanish": null,
     "Taiwanese": null
   },
-  "GradientColorLight": "#37474F",
-  "GradientColorDark": "#B22F3334",
+  "GradientColorLight": "#FFFFFF",
+  "GradientColorDark": "#000000",
   "Keys": [
     {
       "Key": "PrimaryHueLightBrush",
@@ -35,7 +35,7 @@
     },
     {
       "Key": "PrimaryHueMidBrush",
-      "Value": "#37474F",
+      "Value": "#000000",
       "ReadAs": 0
     },
     {
@@ -45,27 +45,27 @@
     },
     {
       "Key": "PrimaryHueDarkBrush",
-      "Value": "#546E7A",
+      "Value": "#2e2e2e",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueDarkForegroundBrush",
-      "Value": "#C3CCD1",
+      "Value": "#c9c9c9",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#5A363535",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueMenuBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#5A363535",
       "ReadAs": 0
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "Value": "pack://application:,,,/Images/colorblind.jpg",
       "ReadAs": 1
     }
   ]

@@ -58,7 +58,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--Mod Loader-->
-                <Label Content="{DynamicResource ModsViewStepThreeText}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="6"/>
+                <Label Content="{DynamicResource ModsViewStepThreeText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="6"/>
                 <Button x:Name="ModLoaderButton" Opacity="1"  HorizontalContentAlignment="Center" Grid.Row="7" Click="DownloadInstallModLoader" VerticalAlignment="Center" >
                     <DockPanel>
                         <materialDesign:PackIcon
@@ -83,15 +83,15 @@
                     </Grid>
                 </materialDesign:ColorZone>
                 <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.ColumnSpan="3">
-                    <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" >Source:</Label>
+                    <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Content="{DynamicResource HomeViewSourceText}" />
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12">
-            <Hyperlink Click="Hyperlink_Click">https://github.com/xforce/anno1800-mod-loader/</Hyperlink>
+                        <Hyperlink Click="Hyperlink_Click">https://github.com/xforce/anno1800-mod-loader/</Hyperlink>
                     </TextBlock>
                 </StackPanel>
                 <!--Mod Loader-->
 
                 <!--Mod Directory-->
-                <Label Content="{DynamicResource ModsViewStepTwoText}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="3"/>
+                <Label Content="{DynamicResource ModsViewStepTwoText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="3"/>
                 <Button x:Name="ModDirButton" Opacity="1"  HorizontalContentAlignment="Center" Click="CreateModDirectory" Grid.ColumnSpan="1" Grid.Row="4">
                     <DockPanel>
                         <materialDesign:PackIcon
@@ -114,7 +114,7 @@
             Width="24" />
                 </materialDesign:ColorZone>
                 <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3">
-                    <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Content ="{DynamicResource HomeViewModfolderPathText}"/>
+                    <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Content ="{DynamicResource HomeViewModfolderPathText}"/>
                     <TextBox materialDesign:HintAssist.Hint="Path"
             IsReadOnly="True" Height="23" TextWrapping="Wrap" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Left">
                         <TextBox.Text>
@@ -128,7 +128,7 @@
                 <!--Mod Directory-->
 
                 <!--Game Directory-->
-                <Label Grid.Column="0" Content="{DynamicResource ModsViewStepOneText}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left"/>
+                <Label Grid.Column="0" Content="{DynamicResource ModsViewStepOneText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left"/>
                 <Button x:Name="GameButton" Opacity="1"  HorizontalContentAlignment="Center" Click="GameButton_Click" Grid.Row="1" >
                     <DockPanel>
                         <materialDesign:PackIcon
@@ -151,7 +151,7 @@
                     Width="24" Panel.ZIndex="2"/>
                 </materialDesign:ColorZone>
                 <StackPanel Orientation="Horizontal"  Grid.Row="2" Grid.ColumnSpan="3">
-                    <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Content="{DynamicResource HomeViewGamePathText}"/>
+                    <Label Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Content="{DynamicResource HomeViewGamePathText}"/>
                     <TextBox Text="{Binding Source={x:Static p:Settings.Default}, 
                     Path=GameRootPath, Mode=OneWay}"
                     materialDesign:HintAssist.Hint="Path"
@@ -161,7 +161,7 @@
                     FontSize="12" 
                     HorizontalAlignment="Left" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"/>
                 </StackPanel>
-                <Label Grid.Column="4" Content="{DynamicResource ModsViewStepFourText}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.RowSpan="1"/>
+                <Label Grid.Column="4" Content="{DynamicResource ModsViewStepFourText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.RowSpan="1"/>
                 <materialDesign:Card Grid.Column="4" Grid.Row="1"
 								 Grid.ColumnSpan="3" Grid.RowSpan="8"
 								 Margin="0,3,0,0" Background="Transparent">
@@ -286,8 +286,8 @@
                                     <ComboBox Margin="0,0,5,0" 
                                           materialDesign:HintAssist.Hint="{DynamicResource HomeViewHintAssistGithub}"
                                           materialDesign:TextFieldAssist.HasClearButton="True" 
-                                          materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                                          FontSize="12" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}">
+                                          materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightBrush}"
+                                          FontSize="12" Foreground="{DynamicResource PrimaryHueLightBrush}">
                                         <ComboBoxItem Content="{DynamicResource HomeViewRepoComboBoxAkkRepoText}"/>
                                         <ComboBoxItem Content="{DynamicResource HomeViewRepoComboBoxSIURepoText}"/>
                                     </ComboBox>
@@ -296,7 +296,7 @@
                         </Expander>
                     </StackPanel>
                 </materialDesign:Card>
-                <Label Content="Optional:" VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="8" Grid.Column="4"/>
+                <Label Content="Optional:"  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  VerticalAlignment="Bottom" FontSize="16" HorizontalAlignment="Left" Grid.Row="8" Grid.Column="4"/>
                 <materialDesign:Card Grid.Column="4" Grid.Row="9"
 								 Grid.ColumnSpan="3" Grid.RowSpan="3"
 								 Margin="0,3,0,0" Background="Transparent">

@@ -148,7 +148,7 @@ namespace Anno1800ModLauncher.Helpers
             if (i.Metadata != null) {
                 res = i.Metadata.Description.getText() + "\n";
                 if (i.Metadata.KnownIssues != null) {
-                    res += "\n"+"KNOWN ISSUES:";
+                    res += "\n"+ Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
                     foreach (Localized KnownIssue in i.Metadata.KnownIssues)
                     {
                         res += "\n" + "> " + KnownIssue.getText();
@@ -156,7 +156,7 @@ namespace Anno1800ModLauncher.Helpers
                     res += "\n";
                 }
                 if (i.Metadata.CreatorName != null) {
-                    res += "\n" + "CREATOR: " + i.Metadata.CreatorName;
+                    res += "\n" + Application.Current.TryFindResource("ReadMeTextCreator") + " " + i.Metadata.CreatorName;
                 }
             }
             

@@ -8,8 +8,8 @@
     "**/platforms"
   ],
   "ThemeName": {
-    "English": "Trelawney",
-    "German": "Das Kap",
+    "English": "Wasteland",
+    "German": "Eisbedeckt",
     "Chinese": null,
     "French": null,
     "Italian": null,
@@ -20,8 +20,8 @@
     "Spanish": null,
     "Taiwanese": null
   },
-  "GradientColorLight": "#37474F",
-  "GradientColorDark": "#B22F3334",
+  "GradientColorLight": "#c0c4d1",
+  "GradientColorDark": "#222945",
   "Keys": [
     {
       "Key": "PrimaryHueLightBrush",
@@ -30,12 +30,12 @@
     },
     {
       "Key": "PrimaryHueLightForegroundBrush",
-      "Value": "#FFFFFF",
+      "Value": "#333333",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueMidBrush",
-      "Value": "#37474F",
+      "Value": "#222945",
       "ReadAs": 0
     },
     {
@@ -45,27 +45,27 @@
     },
     {
       "Key": "PrimaryHueDarkBrush",
-      "Value": "#546E7A",
+      "Value": "#3a4054",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueDarkForegroundBrush",
-      "Value": "#C3CCD1",
+      "Value": "#adc7c5",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#A2c0c4d1",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueMenuBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#E2878b99",
       "ReadAs": 0
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "Value": "pack://application:,,,/Images/passage.jpg",
       "ReadAs": 1
     }
   ]

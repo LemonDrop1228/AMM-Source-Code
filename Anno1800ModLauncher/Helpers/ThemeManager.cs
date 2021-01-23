@@ -17,20 +17,23 @@ namespace Anno1800ModLauncher.Helpers
         private static void ChangeTheme(ThemeWrap wrap)
         {
             //save path of the theme
-            Properties.Settings.Default.Theme = wrap.Path;
-            Console.WriteLine(wrap.Path);
-            Properties.Settings.Default.Save();
+            SaveTheme(wrap.Path);
 
             //change the theme to json file format to provide meta info about the themes
             var dict = wrap.Theme.toResourceDictionary(); 
             foreach (var key in dict.Keys) 
             {
                 Application.Current.Resources[key] = dict[key];
-                Console.WriteLine("Replacing key {0} with {1}", key, dict[key]);
             }
         }
         public static void SetTheme(ThemeWrap theme) {
             ChangeTheme(theme);
+        }
+
+        private static void SaveTheme(String path)
+        {
+            Properties.Settings.Default.Theme = path;
+            Properties.Settings.Default.Save();
         }
         public static void SetTheme(String theme)
         {
@@ -41,8 +44,9 @@ namespace Anno1800ModLauncher.Helpers
                         { 
                             Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText("Themes/" + theme)), Path = "Themes/" + theme 
                         });
-                    
+                    SaveTheme(theme);
                 }
+
             }
             catch {
                 Console.WriteLine("Theme {0}.json couldn't be loaded", theme);

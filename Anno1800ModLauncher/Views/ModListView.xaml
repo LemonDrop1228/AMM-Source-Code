@@ -47,7 +47,7 @@
                                           IsChecked="{Binding IsSelected}">
                             </CheckBox>
                             <materialDesign:PackIcon Margin="0,0,10,0" Kind="{Binding Icon}" Foreground="{Binding Color}"/>
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" />
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -215,7 +215,7 @@
                             materialDesign:ComboBoxAssist.ShowSelectedItem="true"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
-                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="120">
+                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightBrush}" Width="120">
                             <ComboBoxItem>
                                 <Run Text="{DynamicResource ModsViewProfileFilterComboActiveText}"/>
                             </ComboBoxItem>
@@ -251,7 +251,7 @@
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
                             HorizontalAlignment="Left"
-                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            Foreground="{DynamicResource PrimaryHueLightBrush}"
                             Width="120"
                             SelectionChanged="ProfileCOmbo_SelectionChanged"
                         >

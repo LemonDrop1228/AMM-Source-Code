@@ -8,8 +8,8 @@
     "**/platforms"
   ],
   "ThemeName": {
-    "English": "Trelawney",
-    "German": "Das Kap",
+    "English": "Workshop",
+    "German": "Handarbeit",
     "Chinese": null,
     "French": null,
     "Italian": null,
@@ -20,8 +20,8 @@
     "Spanish": null,
     "Taiwanese": null
   },
-  "GradientColorLight": "#37474F",
-  "GradientColorDark": "#B22F3334",
+  "GradientColorLight": "#6a997d",
+  "GradientColorDark": "#E252382a",
   "Keys": [
     {
       "Key": "PrimaryHueLightBrush",
@@ -35,7 +35,7 @@
     },
     {
       "Key": "PrimaryHueMidBrush",
-      "Value": "#37474F",
+      "Value": "#52382a",
       "ReadAs": 0
     },
     {
@@ -45,27 +45,27 @@
     },
     {
       "Key": "PrimaryHueDarkBrush",
-      "Value": "#546E7A",
+      "Value": "#523c30",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueDarkForegroundBrush",
-      "Value": "#C3CCD1",
+      "Value": "#bab5ad",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#827d9989",
       "ReadAs": 0
     },
     {
       "Key": "PrimaryHueMenuBackgroundBrush",
-      "Value": "#B22F3334",
+      "Value": "#A26a997d",
       "ReadAs": 0
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "Value": "pack://application:,,,/Images/workshop.jpg",
       "ReadAs": 1
     }
   ]

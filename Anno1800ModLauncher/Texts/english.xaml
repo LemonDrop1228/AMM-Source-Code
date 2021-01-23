@@ -33,6 +33,8 @@
     <system:String x:Key="HomeViewSetGamePathText">Set Game Path</system:String>
     <system:String x:Key="HomeViewTooltipInstallFromLocal">Search and select from local drives</system:String>
     <system:String x:Key="HomeViewTooltipInstallText">Install using the built-in mod browser.</system:String>
+    <system:String x:Key="HomeViewSourceText">Source:</system:String>
+    <system:String x:Key="HomeViewOptionalText">Optional:</system:String>
 
     <!-- About View -->
     <system:String x:Key="AboutButtonText">About</system:String>
@@ -83,4 +85,7 @@
     <!-- Settings view -->
     <system:String x:Key="SettingsViewThemeListText">Theme</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Preferences</system:String>
+
+    <system:String x:Key="ReadMeTextCreator">Creator: </system:String>
+    <system:String x:Key="ReadMeTextKnownIssues">Known Issues: </system:String>
 </ResourceDictionary>

@@ -33,6 +33,8 @@
     <system:String x:Key="HomeViewSetGamePathText">Spielpfad festlegen</system:String>
     <system:String x:Key="HomeViewTooltipInstallFromLocal">Durchsuchen</system:String>
     <system:String x:Key="HomeViewTooltipInstallText">Mit dem eingebauten Modbrowser installieren</system:String>
+    <system:String x:Key="HomeViewSourceText">Quelle:</system:String>
+    <system:String x:Key="HomeViewOptionalText">Optional:</system:String>
 
     <!-- About View -->
     <system:String x:Key="AboutButtonText">Über AMM</system:String>
@@ -84,4 +86,7 @@
     <!-- Settings view -->
     <system:String x:Key="SettingsViewThemeListText">Erscheinungsbild</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Einstellungen</system:String>
+
+    <system:String x:Key="ReadMeTextCreator">Ersteller: </system:String>
+    <system:String x:Key="ReadMeTextKnownIssues">Bekannte Probleme: </system:String>
 </ResourceDictionary>

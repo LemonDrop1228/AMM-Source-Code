@@ -63,7 +63,7 @@ namespace Anno1800ModLauncher.Views
             ThemeManager.SetTheme(theme);
         }
 
-        private void LanguageSelection_LanguageChanged(object sender, RoutedEventArgs e) {
+        public void LanguageSelection_LanguageChanged(object sender, RoutedEventArgs e) {
             if (LanguageComboBox.SelectedValue != null)
             {
                 if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemEnglish))
@@ -75,9 +75,8 @@ namespace Anno1800ModLauncher.Views
                     LanguageManager.SetLanguage(HelperEnums.Language.German);
                 }
             }
-            //pretty pls how can we disallow the user from clearing the combo box ^^
+            //disallow user to clear the combo box ^^
             else {
-                //lets do it vice-versa here
                 if (LanguageManager.GetLanguage() == HelperEnums.Language.English)
                 {
                     LanguageComboBox.SelectedValue =(LanguageComboBoxItemEnglish);

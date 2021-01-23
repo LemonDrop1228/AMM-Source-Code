@@ -224,7 +224,7 @@ namespace Anno1800ModLauncher.Helpers
 
         internal void Delete(string directory)
         {
-            string path = Path.Combine(directory, Name);
+            string path = Path.Combine(directory, Name + ".ammp");
             File.Delete(path);
         }
 

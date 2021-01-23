@@ -33,6 +33,7 @@ namespace Anno1800ModLauncher.Helpers
                     langCode = "english"; break;
             }
             Properties.Settings.Default.Language = (int)lang;
+            Properties.Settings.Default.Save(); 
 
             //replace the current language resource dictionary. 
             var dict = new ResourceDictionary() { Source = new Uri($"Texts/{langCode}.xaml", UriKind.Relative) };

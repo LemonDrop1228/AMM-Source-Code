@@ -59,18 +59,35 @@ namespace Anno1800ModLauncher.Views
         private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e) 
         {
             Console.WriteLine("Changed Theme");
-            Theme theme = (Theme)ListViewThemes.SelectedItems[0];
+            ThemeWrap theme = (ThemeWrap)ListViewThemes.SelectedItems[0];
             ThemeManager.SetTheme(theme);
         }
 
         private void LanguageSelection_LanguageChanged(object sender, RoutedEventArgs e) {
-            if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemEnglish)) {
-                LanguageManager.SetLanguage(HelperEnums.Language.English);
-            }
-            else if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemGerman))
+            if (LanguageComboBox.SelectedValue != null)
             {
-                LanguageManager.SetLanguage(HelperEnums.Language.German);
+                if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemEnglish))
+                {
+                    LanguageManager.SetLanguage(HelperEnums.Language.English);
+                }
+                else if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemGerman))
+                {
+                    LanguageManager.SetLanguage(HelperEnums.Language.German);
+                }
             }
+            //pretty pls how can we disallow the user from clearing the combo box ^^
+            else {
+                //lets do it vice-versa here
+                if (LanguageManager.GetLanguage() == HelperEnums.Language.English)
+                {
+                    LanguageComboBox.SelectedValue =(LanguageComboBoxItemEnglish);
+                }
+                else if (LanguageManager.GetLanguage() == HelperEnums.Language.German)
+                {
+                    LanguageComboBox.SelectedValue = (LanguageComboBoxItemGerman);
+                }
+            }
+                
         }
     }
 }

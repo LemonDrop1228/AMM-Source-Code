@@ -14,17 +14,22 @@ namespace Anno1800ModLauncher.Helpers
 {
     public static class ThemeManager
     {
-        private static void ChangeTheme(Theme theme)
+        private static void ChangeTheme(ThemeWrap wrap)
         {
+            //save path of the theme
+            Properties.Settings.Default.Theme = wrap.Path;
+            Console.WriteLine(wrap.Path);
+            Properties.Settings.Default.Save();
+
             //change the theme to json file format to provide meta info about the themes
-            var dict = theme.toResourceDictionary(); 
+            var dict = wrap.Theme.toResourceDictionary(); 
             foreach (var key in dict.Keys) 
             {
                 Application.Current.Resources[key] = dict[key];
                 Console.WriteLine("Replacing key {0} with {1}", key, dict[key]);
             }
         }
-        public static void SetTheme(Theme theme) {
+        public static void SetTheme(ThemeWrap theme) {
             ChangeTheme(theme);
         }
         public static void SetTheme(String theme)
@@ -32,13 +37,26 @@ namespace Anno1800ModLauncher.Helpers
             try
             {
                 if (!string.IsNullOrEmpty(theme)) {
-                    ChangeTheme(JsonConvert.DeserializeObject<Theme>(File.ReadAllText("Themes/" + theme + ".json")));
-                    Properties.Settings.Default.Theme = theme;
+                    ChangeTheme(new ThemeWrap 
+                        { 
+                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText("Themes/" + theme)), Path = "Themes/" + theme 
+                        });
+                    
                 }
             }
             catch {
                 Console.WriteLine("Theme {0}.json couldn't be loaded", theme);
             }
+        }
+    }
+
+    public class ThemeWrap 
+    {
+        public String Path { get; set; }
+        public Theme Theme { get; set; } 
+
+        public ThemeWrap() { 
+        
         }
     }
 
@@ -51,22 +69,22 @@ namespace Anno1800ModLauncher.Helpers
 
         public void LoadThemes() {
             if (Directory.Exists(themePath)) {
-                string path = themePath + "/*.json";
-                themeList = new ObservableCollection<Theme>(Directory.EnumerateFiles(themePath, "*.json").
+                themeList = new ObservableCollection<ThemeWrap>(Directory.EnumerateFiles(themePath, "*.json").
                     Select(
-                        //in case json convert get's an error in we are pretty fucked right n
-                        
-
-                        d => JsonConvert.DeserializeObject<Theme>(File.ReadAllText(d, Encoding.UTF8))
-
-                    ).Where(w => w != null).ToList());;
+                        d => new ThemeWrap
+                        {
+                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText(d, Encoding.UTF8)),
+                            //need to delete the themepath here so we just get the filename. maybe there is a better way to do this. 
+                            Path = d.Replace(themePath + "\\", "")
+                        }
+                    ).Where(w => w != null).ToList()) ;;
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Theme> _themeList; 
-        public ObservableCollection<Theme> themeList
+        private ObservableCollection<ThemeWrap> _themeList; 
+        public ObservableCollection<ThemeWrap> themeList
         {
             get { return _themeList; }
             set

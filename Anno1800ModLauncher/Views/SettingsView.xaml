@@ -64,7 +64,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Margin="10" Width="110" Height="130">
-                                        <StackPanel>
+                                        <StackPanel DataContext="{Binding Path=Theme}">
                                             <Border Width="100" Height="100" CornerRadius="5" Margin="5">
                                                 <Border.Effect>
                                                     <DropShadowEffect ShadowDepth="1"/>
@@ -76,7 +76,7 @@
                                                     </LinearGradientBrush>
                                                 </Border.Background>
                                             </Border>
-                                            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" HorizontalAlignment="Center" Margin="0,0,0,0" Text="{Binding ShowName}" FontSize="14"/>
+                                            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" HorizontalAlignment="Center" Margin="0,0,0,0" Text="{Binding Path=ShowName}" FontSize="14"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
@@ -115,8 +115,7 @@
 				Margin="0,0,0,0" Background="Transparent">
             <StackPanel>
                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="True">
-                    <ComboBox x:Name ="LanguageComboBox" Margin="0,0,20,20" 
-                            materialDesign:HintAssist.Hint="{DynamicResource HomeViewHintAssistGithub}"
+                    <ComboBox x:Name ="LanguageComboBox" Margin="0,0,20,20" IsReadOnly="true" IsEditable="false"
                             materialDesign:TextFieldAssist.HasClearButton="True" 
                             materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             FontSize="12" MinWidth="250" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"

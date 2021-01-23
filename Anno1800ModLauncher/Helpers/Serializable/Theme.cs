@@ -23,7 +23,7 @@ namespace Anno1800ModLauncher.Helpers.Serializable
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
+        
         public Theme() {
             LanguageManager.LanguageChanged += UpdateLanguage;
         }
@@ -31,6 +31,7 @@ namespace Anno1800ModLauncher.Helpers.Serializable
         public void UpdateLanguage(object sender, EventArgs e) {
             ShowName = ThemeName.getText(); 
         }
+        
         public Localized ThemeName { get; set; }
         public String GradientColorLight { get; set; }
         public String GradientColorDark { get; set; }

@@ -37,18 +37,18 @@
     <!-- About View -->
     <system:String x:Key="AboutButtonText">Über AMM</system:String>
     <system:String x:Key="AboutMessageCommunity">Die Community, die dazu beiträgt, AMM zu verbessern!</system:String>
-    <system:String x:Key="AboutMessageContributors">Alle, die zum Opensource-Projekt beitragen über das</system:String>
+    <system:String x:Key="AboutMessageContributors">Alle, die zum Opensource-Projekt beitragen über das </system:String>
     <system:String x:Key="AboutMessageDiscordServerText">Anno 1800 Mod Launcher Discord Server</system:String>
     <system:String x:Key="AboutMessageGithub">Github Repo</system:String>
     <system:String x:Key="AboutMessageHeader">Über AMM und den Entwickler</system:String>
-    <system:String x:Key="AboutMessageModloaderText">Anno 1800 Modloader</system:String>
+    <system:String x:Key="AboutMessageModloaderText"> Anno 1800 Modloader</system:String>
     <system:String x:Key="AboutMessagePart1">Dieser Modlauncher ist ein Projekt, von dem ich glaube, dass die Anno-Community es verdiene. Ich mag Modmanager, die für ein einziges Spiel ausgelegt sind, da so viel schneller und effizienter auf die Gegebenheiten des Spiels eingegangen werden kann. Die Modding-Community dieses Spiels hatte bereits ein paar wirklich coole Mods erstellt, und mit dem Modloader von xforce haben wir sehr gutes Tool bekommen. Das einzige Puzzleteil, das noch fehlte, war ein Modmanager, der all das in einer benutzerfreundlichen Anwendung vereint.</system:String>
     <system:String x:Key="AboutMessagePart2">Ich bin selbst Gamer und spiele Anno bereits seit Jahren. Darüber hinaus bin ich verheirateter Familienvater mit Vollzeitjob, und meine Zeit mit der Familie und Freunden ist mir sehr wichtig. Dieses Tool wurde aus Liebe und Leidenschaft fürs Programmieren erstellt, und freue mich, dass Du Dir die Zeit genommen hast, es auszuprobieren. Wenn Du Vorschläge, Kommentare, oder die ein oder andere Beschwerde hast, besuch uns auf Discord:</system:String>
     <system:String x:Key="AboutMessagePart3">Vielen Dank an:</system:String>
     <system:String x:Key="AboutMessagePaypalButtonText">Einen Kaffee spendieren</system:String>
     <system:String x:Key="AboutMessagePaypalLabelText">Wenn Dir die App gefällt, oder du einfach spenden möchtest, Ich arbeite am besten auf Koffein-Basis.</system:String>
     <system:String x:Key="AboutMessageRebuilt">RebuiltStatue21 fürs Erstellen des </system:String>
-    <system:String x:Key="AboutMessageWikiText">Wiki</system:String>
+    <system:String x:Key="AboutMessageWikiText"> Wiki</system:String>
     <system:String x:Key="AboutMessageXForce">Xforce für das Erstellen des </system:String>
 
     <!-- Mods View -->

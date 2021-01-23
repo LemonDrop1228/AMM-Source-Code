@@ -313,6 +313,7 @@ namespace Anno1800ModLauncher.Helpers
 
             //buttons should have a listener to change their displayed names etc. 
             //NOTE: LanguageManager.LanguageChanged is a static event.
+            //reloading mods with new modModels can result in a memory leak. 
             LanguageManager.LanguageChanged += LanguageManager_LanguageChanged;
         }
 

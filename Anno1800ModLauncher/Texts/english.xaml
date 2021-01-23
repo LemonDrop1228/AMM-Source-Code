@@ -37,18 +37,18 @@
     <!-- About View -->
     <system:String x:Key="AboutButtonText">About</system:String>
     <system:String x:Key="AboutMessageCommunity">The community for helping us improve AMM!</system:String>
-    <system:String x:Key="AboutMessageContributors">The contributors to the open source project over at the</system:String>
+    <system:String x:Key="AboutMessageContributors">The contributors to the open source project over at the </system:String>
     <system:String x:Key="AboutMessageDiscordServerText">Anno 1800 Mod Launcher Discord Server</system:String>
-    <system:String x:Key="AboutMessageGithub">Github Repo</system:String>
+    <system:String x:Key="AboutMessageGithub"> Github Repo</system:String>
     <system:String x:Key="AboutMessageHeader">About Anno 1800 Mod Launcher and The Dev</system:String>
-    <system:String x:Key="AboutMessageModloaderText">Anno 1800 Mod Loader</system:String>
+    <system:String x:Key="AboutMessageModloaderText"> Anno 1800 Mod Loader</system:String>
     <system:String x:Key="AboutMessagePart1">This mod launcher is a passion project that I felt the Anno Community deserved. I myself prefer mod launchers that are focused on one specific game as they usually are able to address concerns regarding that game more quickly and efficiently. I noticed that the mod community around this game has created some pretty awesome mods, and xforce was extremely kind enough to create an awesome mod loader that works extremely well. The only piece of the puzzle left was a Mod launcher that brought all of it together in an easy to use tool.</system:String>
     <system:String x:Key="AboutMessagePart2">I'm a gamer myself and have been playing Anno games for years. On top of that, I'm a married father with a full time job, so my time is precious to me and those around me. I created this out of love and passion for programming so I appreciate that you took the time to check it out. Please feel free to make suggestions, comments, or even make the occasional gripe over on the official discord for this app:</system:String>
     <system:String x:Key="AboutMessagePart3">Special thanks to:</system:String>
     <system:String x:Key="AboutMessagePaypalButtonText">Buy Me A Coffee</system:String>
     <system:String x:Key="AboutMessagePaypalLabelText">If you like the app or are feeling extra generous I work best when hopped up on caffeine</system:String>
     <system:String x:Key="AboutMessageRebuilt">RebuiltStatue21 for creating the </system:String>
-    <system:String x:Key="AboutMessageWikiText">Wiki</system:String>
+    <system:String x:Key="AboutMessageWikiText"> Wiki</system:String>
     <system:String x:Key="AboutMessageXForce">Xforce for creating the </system:String>
 
     <!-- Mods View -->

@@ -106,7 +106,7 @@ namespace Anno1800ModLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        [global::System.Configuration.DefaultSettingValueAttribute("default.json")]
         public string Theme {
             get {
                 return ((string)(this["Theme"]));

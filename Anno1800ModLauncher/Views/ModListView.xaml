@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Anno1800ModLauncher.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Helpers="clr-namespace:Anno1800ModLauncher.Helpers" x:Class="Anno1800ModLauncher.Views.ModListView"
+             xmlns:p="clr-namespace:Anno1800ModLauncher.Properties"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="800">
     <Grid>
@@ -33,7 +34,7 @@
                       Margin="4,0,0,0"
                       VerticalAlignment="Center"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                      Text="Mod List" />
+                      Text="{DynamicResource ModsViewModListText}"/>
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
@@ -46,7 +47,7 @@
                                           IsChecked="{Binding IsSelected}">
                             </CheckBox>
                             <materialDesign:PackIcon Margin="0,0,10,0" Kind="{Binding Icon}" Foreground="{Binding Color}"/>
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" />
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -73,7 +74,7 @@
                       Margin="4,0,0,0"
                       VerticalAlignment="Center"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                      Text="Mod Details" />
+                      Text="{DynamicResource ModsViewModDetailsText}" />
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
@@ -90,7 +91,7 @@
                        Source="/Images/ModImg_PlaceHolder.png" 
                        Grid.Row="0" Stretch="Fill"/>
                 <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
-                    <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" x:Name="ReadMeTextBox" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
+                    <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Text ="{Binding Path=modDescriptionText, UpdateSourceTrigger=PropertyChanged}" x:Name="ReadMeTextBox"  Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
                 </ScrollViewer>
             </Grid>
         </GroupBox>
@@ -110,7 +111,7 @@
                       Margin="4,0,0,0"
                       VerticalAlignment="Center"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                      Text="Manage" />
+                      Text="{DynamicResource ModsViewManageText}" />
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
@@ -132,14 +133,16 @@
                         <Button Grid.Column="0" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Activate_Mod">
                             <DockPanel>
                                 <materialDesign:PackIcon
-                            Kind="ThumbsUp"
-                            Height="24"
-                            Width="24" 
-                            DockPanel.Dock="Left" VerticalAlignment="Center"/>
-                                <TextBlock 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="Activate"/></TextBlock>
+                                    Kind="ThumbsUp"
+                                    Height="24"
+                                    Width="24" 
+                                    DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                <TextBlock
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Right"
+                                        DockPanel.Dock="Right" Margin="10,0,0,0">
+                                    <Run Text="{DynamicResource ModsViewActivateText}"/>
+                                </TextBlock>
                             </DockPanel>
                         </Button>
                         <Button Grid.Column="1" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Deactivate_Mod" >
@@ -152,7 +155,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="De-Activate"/></TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="{DynamicResource ModsViewDeactivateText}"/></TextBlock>
                             </DockPanel>
                         </Button>
                     </Grid>
@@ -172,7 +175,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="Save Profile"/></TextBlock>
+                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="{DynamicResource ModsViewSaveProfileText}"/></TextBlock>
                             </DockPanel>
                         </Button>
                         <Button x:Name="LoadProfile" Grid.Column="1" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Load_Profile" Padding="8,4" IsEnabled="False" >
@@ -185,7 +188,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="Load Profile"/></TextBlock>
+                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="{DynamicResource ModsViewLoadProfileText}"/></TextBlock>
                             </DockPanel>
                         </Button>
                         <Button x:Name="DeleteProfile" Grid.Column="2" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Delete_Profile" Padding="8,4" IsEnabled="False" >
@@ -198,7 +201,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="Delete Profile"/></TextBlock>
+                                DockPanel.Dock="Right" Margin="5,0,0,0"><Run Text="{DynamicResource ModsViewDeleteProfileText}"/></TextBlock>
                             </DockPanel>
                         </Button>
                     </Grid>
@@ -206,18 +209,18 @@
                 <StackPanel Orientation="Vertical" Grid.Column="0">
                     <StackPanel Orientation="Horizontal" Margin="5, 0">
                         <ComboBox x:Name="FilterCombo"
-                            materialDesign:HintAssist.Hint="Status Filter"
+                            materialDesign:HintAssist.Hint="{DynamicResource ModsViewStatusFilterHint}"
                               materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             materialDesign:ComboBoxAssist.ShowSelectedItem="true"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
-                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Width="120">
+                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightBrush}" Width="120">
                             <ComboBoxItem>
-                                Active
+                                <Run Text="{DynamicResource ModsViewProfileFilterComboActiveText}"/>
                             </ComboBoxItem>
                             <ComboBoxItem>
-                                Inactive
+                                <Run Text="{DynamicResource ModsViewProfileFilterComboInactiveText}"/>
                             </ComboBoxItem>
                         </ComboBox>
                         <TextBox 
@@ -233,7 +236,7 @@
                                     <materialDesign:PackIcon
                                 Kind="Search" />
                                     <TextBlock>
-                                Type here to search mods...
+                                        <Run Text="{DynamicResource ModsViewModSearchHint}"/>
                                     </TextBlock>
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
@@ -241,19 +244,19 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5, 0">
                         <ComboBox x:Name="ProfileCombo"
-                            materialDesign:HintAssist.Hint="Profile"
+                            materialDesign:HintAssist.Hint="{DynamicResource ModsViewProfileHint}"
                             materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             materialDesign:ComboBoxAssist.ShowSelectedItem="true"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
                             HorizontalAlignment="Left"
-                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            Foreground="{DynamicResource PrimaryHueLightBrush}"
                             Width="120"
                             SelectionChanged="ProfileCOmbo_SelectionChanged"
                         >
                             <ComboBoxItem x:Name="newProfileItem">
-                                Create new profile
+                                <Run Text="{DynamicResource ModsViewCreateProfileButtonText}"/>
                             </ComboBoxItem>
                         </ComboBox>
                         <TextBox 
@@ -273,7 +276,7 @@
                                     <materialDesign:PackIcon
                                 Kind="Account" />
                                     <TextBlock>
-                                        New profile name
+                                        <Run Text="{DynamicResource ModsViewNewProfileNameLabelText}"/>
                                     </TextBlock>
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
@@ -282,6 +285,5 @@
                 </StackPanel>
             </Grid>
         </GroupBox>
-
     </Grid>
 </UserControl>

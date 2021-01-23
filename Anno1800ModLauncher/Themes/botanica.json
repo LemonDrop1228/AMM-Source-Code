@@ -1,0 +1,72 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "ThemeName": {
+    "English": "Botanica",
+    "German": "Pflanzlich",
+    "Chinese": null,
+    "French": null,
+    "Italian": null,
+    "Japanese": null,
+    "Korean": null,
+    "Polish": null,
+    "Russian": null,
+    "Spanish": null,
+    "Taiwanese": null
+  },
+  "GradientColorLight": "#92458a66",
+  "GradientColorDark": "#2b5227",
+  "Keys": [
+    {
+      "Key": "PrimaryHueLightBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueLightForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidBrush",
+      "Value": "#162e1b",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkBrush",
+      "Value": "#162e1b",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkForegroundBrush",
+      "Value": "#658068",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueBackgroundBrush",
+      "Value": "#A2526b4f",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMenuBackgroundBrush",
+      "Value": "#92458a66",
+      "ReadAs": 0
+    },
+    {
+      "Key": "BackgroundImageBrush",
+      "Value": "pack://application:,,,/Images/botanica.jpg",
+      "ReadAs": 1
+    }
+  ]
+}

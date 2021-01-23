@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Anno1800ModLauncher.Helpers.Enums;
+using Anno1800ModLauncher.Helpers;
 
 namespace Anno1800ModLauncher.Views
 {
@@ -34,12 +36,23 @@ namespace Anno1800ModLauncher.Views
 
         private void NewsBrowser_Loaded(object sender, RoutedEventArgs e)
         {
+            //make loading dependant on language
             ChromiumWebBrowser chromiumWebBrowser = (sender as ChromiumWebBrowser);
             if (!DesignerProperties.GetIsInDesignMode(this))
-                if(chromiumWebBrowser.Address == null || !chromiumWebBrowser.Address.Contains("https://www.anno-union.com/"))
+            {
+                //if app isn't set the german and the address doesn't equal english URL 
+                //or if app is set to german and the address doesn't equal german URL
+                //then set language
+                if (chromiumWebBrowser.Address == null ||
+                    (!LanguageManager.GetLanguage().Equals(HelperEnums.Language.German) && !chromiumWebBrowser.Address.Contains(Properties.Settings.Default.NewsUrl)) ||
+                     (LanguageManager.GetLanguage().Equals(HelperEnums.Language.German) && !chromiumWebBrowser.Address.Contains(Properties.Settings.Default.NewsUrlDE)))
                 {
-                    chromiumWebBrowser.Load(Properties.Settings.Default.NewsUrl);
+                    if (LanguageManager.GetLanguage().Equals(HelperEnums.Language.German))
+                        chromiumWebBrowser.Load(Properties.Settings.Default.NewsUrlDE);
+                    else
+                        chromiumWebBrowser.Load(Properties.Settings.Default.NewsUrl);
                 }
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

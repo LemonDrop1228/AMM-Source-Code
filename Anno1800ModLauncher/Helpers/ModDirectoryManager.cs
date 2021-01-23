@@ -146,17 +146,17 @@ namespace Anno1800ModLauncher.Helpers
             //prefer Modinfo over the old way 
             
             if (i.Metadata != null) {
-                res = i.Metadata.Description.English + "\n";
+                res = i.Metadata.Description.getText() + "\n";
                 if (i.Metadata.KnownIssues != null) {
-                    res += "\n"+"KNOWN ISSUES:";
+                    res += "\n"+ Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
                     foreach (Localized KnownIssue in i.Metadata.KnownIssues)
                     {
-                        res += "\n" + "> " + KnownIssue.English;
+                        res += "\n" + "> " + KnownIssue.getText();
                     }
                     res += "\n";
                 }
                 if (i.Metadata.CreatorName != null) {
-                    res += "\n" + "CREATOR: " + i.Metadata.CreatorName;
+                    res += "\n" + Application.Current.TryFindResource("ReadMeTextCreator") + " " + i.Metadata.CreatorName;
                 }
             }
             
@@ -305,10 +305,28 @@ namespace Anno1800ModLauncher.Helpers
                 Metadata = JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(Path + "\\modinfo.json"));
                 if (Metadata != null)
                 {
-                    name = "[" + Metadata.Category.English + "] " + Metadata.ModName.English;
+                    
+                    name = "[" + Metadata.Category.getText() + "] " + Metadata.ModName.getText();
                 }
             }
             catch { }
+
+            //buttons should have a listener to change their displayed names etc. 
+            //NOTE: LanguageManager.LanguageChanged is a static event.
+            //reloading mods with new modModels can result in a memory leak. 
+            LanguageManager.LanguageChanged += LanguageManager_LanguageChanged;
+        }
+
+        private void LanguageManager_LanguageChanged(object source, EventArgs args)
+        {
+            if (Metadata != null)
+            {
+                SetPropertyField("Name", ref name, "[" + Metadata.Category.getText() + "] " + Metadata.ModName.getText());
+            }
+        }
+
+        public bool hasMetadata() {
+            return Metadata != null; 
         }
 
         protected void SetPropertyField<T>(string propertyName, ref T field, T newValue)

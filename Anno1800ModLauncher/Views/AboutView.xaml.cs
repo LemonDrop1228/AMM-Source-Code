@@ -36,5 +36,7 @@ namespace Anno1800ModLauncher.Views
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+
     }
 }

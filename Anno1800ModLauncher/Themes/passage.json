@@ -1,0 +1,72 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "ThemeName": {
+    "English": "Wasteland",
+    "German": "Eisbedeckt",
+    "Chinese": null,
+    "French": null,
+    "Italian": null,
+    "Japanese": null,
+    "Korean": null,
+    "Polish": null,
+    "Russian": null,
+    "Spanish": null,
+    "Taiwanese": null
+  },
+  "GradientColorLight": "#c0c4d1",
+  "GradientColorDark": "#222945",
+  "Keys": [
+    {
+      "Key": "PrimaryHueLightBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueLightForegroundBrush",
+      "Value": "#333333",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidBrush",
+      "Value": "#222945",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkBrush",
+      "Value": "#3a4054",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkForegroundBrush",
+      "Value": "#adc7c5",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueBackgroundBrush",
+      "Value": "#A2c0c4d1",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMenuBackgroundBrush",
+      "Value": "#E2878b99",
+      "ReadAs": 0
+    },
+    {
+      "Key": "BackgroundImageBrush",
+      "Value": "pack://application:,,,/Images/passage.jpg",
+      "ReadAs": 1
+    }
+  ]
+}

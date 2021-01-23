@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
         xmlns:local="clr-namespace:Anno1800ModLauncher"
+        xmlns:p="clr-namespace:Anno1800ModLauncher.Properties"
         mc:Ignorable="d"
         Title="AML" Height="723.428" Width="1323.928" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -53,7 +54,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0">Play</TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource PlayButtonText}"/>
                             </DockPanel>
                         </Button>
                         <Separator Style="{StaticResource MaterialDesignDarkSeparator}" Margin="3 7 3 7"></Separator>
@@ -67,7 +68,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0">News</TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource NewsButtonText}"/>
                             </DockPanel>
                         </Button>
                         <Button Opacity="1" Margin="3" HorizontalContentAlignment="Left" Click="Home_Clicked">
@@ -80,7 +81,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0">Home</TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource HomeButtonText}" />
                             </DockPanel>
                         </Button>
                         <Button Margin="3" HorizontalContentAlignment="Left" Click="Mods_Clicked">
@@ -93,7 +94,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="12 0 0 0">Mods</TextBlock>
+                                DockPanel.Dock="Right" Margin="12 0 0 0" Text="{DynamicResource ModsButtonText}" />
                             </DockPanel>
                         </Button>
                         <Button Margin="3" HorizontalContentAlignment="Left" Click="Settings_Clicked">
@@ -106,7 +107,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="12 0 0 0">Settings</TextBlock>
+                                DockPanel.Dock="Right" Margin="12 0 0 0" Text="{DynamicResource SettingsButtonText}" />
                             </DockPanel>
                         </Button>
                         <!--<Button Margin="3" HorizontalContentAlignment="Left" Click="Export_Clicked">
@@ -145,7 +146,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="12 0 0 0">About</TextBlock>
+                                DockPanel.Dock="Right" Margin="12 0 0 0" Text="{DynamicResource AboutButtonText}" />
                             </DockPanel>
                         </Button>
                     </StackPanel>                    
@@ -199,7 +200,9 @@
                         <TabItem Name="Mods" Header="MODS">
                             <Views:ModListView x:Name="ModListView"/>
                         </TabItem>
-                        <TabItem Name="Settings" Header="SETTINGS"></TabItem>
+                        <TabItem Name="Settings" Header="SETTINGS">
+                            <Views:SettingsView x:Name="SettingsView"/>
+                        </TabItem>
                         <TabItem Name="About" Header="ABOUT">
                             <Views:AboutView />
                         </TabItem>

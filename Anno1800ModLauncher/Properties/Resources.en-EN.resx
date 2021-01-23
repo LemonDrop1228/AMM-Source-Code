@@ -281,10 +281,6 @@
     <value>Activate</value>
     <comment>Mods View: Button for activating Mod</comment>
   </data>
-  <data name="ModsViewCreateModfolderText" xml:space="preserve">
-    <value>Create mod folder</value>
-    <comment>Mods View: Button for Creating mod folder</comment>
-  </data>
   <data name="ModsViewCreateProfileButtonText" xml:space="preserve">
     <value>Create new profile</value>
     <comment>Mods View: Button for creating profiles</comment>
@@ -328,10 +324,6 @@
   <data name="ModsViewProfileFilterComboInactiveText" xml:space="preserve">
     <value>Inactive</value>
     <comment>Mods View: FilterCombo Inactive</comment>
-  </data>
-  <data name="ModsViewReinstallModloaderText" xml:space="preserve">
-    <value>Reinstall mod loader</value>
-    <comment>Mods View: Reinstall mod loader</comment>
   </data>
   <data name="ModsViewSaveProfileText" xml:space="preserve">
     <value>Save Profile</value>

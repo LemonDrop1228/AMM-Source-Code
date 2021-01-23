@@ -73,7 +73,7 @@ namespace Anno1800ModLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Version 0.7.8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Version 0.7.12")]
         public string CurrentModLoaderVersion {
             get {
                 return ((string)(this["CurrentModLoaderVersion"]));
@@ -106,13 +106,37 @@ namespace Anno1800ModLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Default.xaml")]
-        public string ThemePath {
+        [global::System.Configuration.DefaultSettingValueAttribute("default.json")]
+        public string Theme {
             get {
-                return ((string)(this["ThemePath"]));
+                return ((string)(this["Theme"]));
             }
             set {
-                this["ThemePath"] = value;
+                this["Theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int Language {
+            get {
+                return ((int)(this["Language"]));
+            }
+            set {
+                this["Language"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://anno-union.com/de/")]
+        public string NewsUrlDE {
+            get {
+                return ((string)(this["NewsUrlDE"]));
+            }
+            set {
+                this["NewsUrlDE"] = value;
             }
         }
     }

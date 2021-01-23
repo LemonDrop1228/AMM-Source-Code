@@ -6,7 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Anno1800ModLauncher.Helpers;
+using Anno1800ModLauncher.Helpers.Enums;
 namespace Anno1800ModLauncher
 {
     /// <summary>
@@ -14,5 +15,7 @@ namespace Anno1800ModLauncher
     /// </summary>
     public partial class App : Application
     {
+        App() {
+        }
     }
 }

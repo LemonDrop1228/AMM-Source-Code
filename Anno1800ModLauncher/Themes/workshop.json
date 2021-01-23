@@ -1,0 +1,72 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "ThemeName": {
+    "English": "Workshop",
+    "German": "Handarbeit",
+    "Chinese": null,
+    "French": null,
+    "Italian": null,
+    "Japanese": null,
+    "Korean": null,
+    "Polish": null,
+    "Russian": null,
+    "Spanish": null,
+    "Taiwanese": null
+  },
+  "GradientColorLight": "#6a997d",
+  "GradientColorDark": "#E252382a",
+  "Keys": [
+    {
+      "Key": "PrimaryHueLightBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueLightForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidBrush",
+      "Value": "#52382a",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMidForegroundBrush",
+      "Value": "#FFFFFF",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkBrush",
+      "Value": "#523c30",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueDarkForegroundBrush",
+      "Value": "#bab5ad",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueBackgroundBrush",
+      "Value": "#827d9989",
+      "ReadAs": 0
+    },
+    {
+      "Key": "PrimaryHueMenuBackgroundBrush",
+      "Value": "#A26a997d",
+      "ReadAs": 0
+    },
+    {
+      "Key": "BackgroundImageBrush",
+      "Value": "pack://application:,,,/Images/workshop.jpg",
+      "ReadAs": 1
+    }
+  ]
+}

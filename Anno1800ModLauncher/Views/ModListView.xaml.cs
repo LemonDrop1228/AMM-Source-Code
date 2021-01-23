@@ -41,6 +41,18 @@ namespace Anno1800ModLauncher.Views
         private ImageSource OriginalBannerSource;
         private ProfilesManager _profileManager;
 
+        //bindable Text for Mod Descriptions
+        public string _modDescriptionText;
+        public string modDescriptionText
+        {
+            get { return _modDescriptionText;  }
+            set 
+            {
+                _modDescriptionText = value;
+                OnPropertyChanged("modDescriptionText");
+            }
+        }
+
         public ProfilesManager profilesManager
         {
             get { return _profileManager; }
@@ -82,6 +94,9 @@ namespace Anno1800ModLauncher.Views
             profilesManager = new ProfilesManager();
             SetProfilesOptions();
             OriginalBannerSource = ModBannerImg.Source;
+
+            //
+            LanguageManager.LanguageChanged += LanguageChanged;
         }
 
         private void SetProfilesOptions()
@@ -142,12 +157,20 @@ namespace Anno1800ModLauncher.Views
             }
         }
 
+        private void LanguageChanged(object source, EventArgs args) {
+            ModListBox_SelectionChanged(source, null);
+        }
+
         private void ModListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ModListBox.Items.Count > 0 && ModListBox.SelectedIndex >= 0)
             {
                 var i = ModListBox.SelectedItems.Count > 0 ? ModListBox.SelectedItems[ModListBox.SelectedItems.Count - 1] as ModModel : ModListBox.SelectedItem as ModModel;
-                ReadMeTextBox.Text = modDirectoryManager.GetReadMeText(i);
+
+                //use bound variable modDescriptionText instead of text setting here for binding to ReadMeTextBox in ModListView.xaml
+                modDescriptionText = modDirectoryManager.GetReadMeText(i);
+                //ReadMeTextBox.Text = modDirectoryManager.GetReadMeText(i);
+
                 ModBannerImg.Source = modDirectoryManager.GetModBanner(i) ?? OriginalBannerSource;
             }
         }

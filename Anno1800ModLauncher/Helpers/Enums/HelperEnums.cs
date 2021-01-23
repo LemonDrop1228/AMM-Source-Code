@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows; 
 
 namespace Anno1800ModLauncher.Helpers.Enums
 {
@@ -24,6 +25,21 @@ namespace Anno1800ModLauncher.Helpers.Enums
         public enum ManagerStatus
         {
             good, bad
+        }
+
+        public enum Language
+        {
+            English,
+            German,
+            Chinese,
+            French,
+            Italian,
+            Japanese,
+            Korean,
+            Polish,
+            Russian,
+            Spanish,
+            Taiwanese
         }
     }
 }

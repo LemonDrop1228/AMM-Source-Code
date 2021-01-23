@@ -216,12 +216,8 @@
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="0,8,0,5"
                             HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightBrush}" Width="120">
-                            <ComboBoxItem>
-                                <Run Text="{DynamicResource ModsViewProfileFilterComboActiveText}"/>
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <Run Text="{DynamicResource ModsViewProfileFilterComboInactiveText}"/>
-                            </ComboBoxItem>
+                            <ComboBoxItem x:Name="FilterComboBoxActive" Content="{DynamicResource ModsViewProfileFilterComboActiveText}" />
+                            <ComboBoxItem x:Name="FilterComboBoxInactive" Content="{DynamicResource ModsViewProfileFilterComboInactiveText}"/>
                         </ComboBox>
                         <TextBox 
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -253,11 +249,8 @@
                             HorizontalAlignment="Left"
                             Foreground="{DynamicResource PrimaryHueLightBrush}"
                             Width="120"
-                            SelectionChanged="ProfileCOmbo_SelectionChanged"
-                        >
-                            <ComboBoxItem x:Name="newProfileItem">
-                                <Run Text="{DynamicResource ModsViewCreateProfileButtonText}"/>
-                            </ComboBoxItem>
+                            SelectionChanged="ProfileCOmbo_SelectionChanged">
+                            <ComboBoxItem x:Name="newProfileItem" Content="{DynamicResource ModsViewCreateProfileButtonText}" />
                         </ComboBox>
                         <TextBox 
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"

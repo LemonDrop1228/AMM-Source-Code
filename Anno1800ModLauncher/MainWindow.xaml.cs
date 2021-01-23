@@ -72,11 +72,11 @@ namespace Anno1800ModLauncher
             if (Properties.Settings.Default.Language < 0)
             {
                 var lang = CultureInfo.InstalledUICulture.Name;
-                if (Name.StartsWith("en"))
+                if (lang.StartsWith("en"))
                 {
                     LanguageManager.SetLanguage(HelperEnums.Language.English);
                 }
-                else if (Name.StartsWith("de"))
+                else if (lang.StartsWith("de"))
                 {
                     LanguageManager.SetLanguage(HelperEnums.Language.German);
                 }
@@ -84,7 +84,6 @@ namespace Anno1800ModLauncher
             else {
                 LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
             }
-                
             ThemeManager.SetTheme(Properties.Settings.Default.Theme);
         }
 

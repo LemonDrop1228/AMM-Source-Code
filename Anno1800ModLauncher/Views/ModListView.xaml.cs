@@ -283,15 +283,23 @@ namespace Anno1800ModLauncher.Views
 
         private bool? ConvertStatus(ComboBoxItem filterStatusRaw)
         {
-            switch (filterStatusRaw.Content)
+            /*switch (filterStatusRaw.ToString())
             {
-                case "Active":
+                case FilterComboBoxActive.ToString():
                     return true;
-                case "Inactive":
+                case FilterComboBoxInactive.ToString():
                     return false;
                 default:
                     return false;
+            }*/
+            if (filterStatusRaw.Equals(FilterComboBoxActive)) {
+                return true;
             }
+            else if (filterStatusRaw.Equals(FilterComboBoxInactive))
+            {
+                return false;
+            }
+            return false; 
         }
 
         private void FilterCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

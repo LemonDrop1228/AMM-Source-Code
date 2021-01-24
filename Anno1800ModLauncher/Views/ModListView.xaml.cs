@@ -28,10 +28,40 @@ namespace Anno1800ModLauncher.Views
     public partial class ModListView : UserControl, INotifyPropertyChanged
     {
         private ModDirectoryManager _modDirectoryManager;
-        public ModDirectoryManager modDirectoryManager { get { return _modDirectoryManager; } set {
+        public ModDirectoryManager modDirectoryManager
+        {
+            get { return _modDirectoryManager; }
+            set
+            {
                 _modDirectoryManager = value;
                 OnPropertyChanged("modDirectoryManager");
-            } }
+            }
+        }
+
+        private ImageSource OriginalBannerSource;
+        private ProfilesManager _profileManager;
+
+        //bindable Text for Mod Descriptions
+        public string _modDescriptionText;
+        public string modDescriptionText
+        {
+            get { return _modDescriptionText;  }
+            set 
+            {
+                _modDescriptionText = value;
+                OnPropertyChanged("modDescriptionText");
+            }
+        }
+
+        public ProfilesManager profilesManager
+        {
+            get { return _profileManager; }
+            set
+            {
+                _profileManager = value;
+                OnPropertyChanged("profileManager");
+            }
+        }
 
 
         /// <summary>
@@ -61,6 +91,25 @@ namespace Anno1800ModLauncher.Views
             if (ModListBox.HasItems)
                 ModListBox.SelectedIndex = 0;
             ModListBox.AllowDrop = true;
+            profilesManager = new ProfilesManager();
+            SetProfilesOptions();
+            OriginalBannerSource = ModBannerImg.Source;
+
+            //
+            LanguageManager.LanguageChanged += LanguageChanged;
+        }
+
+        private void SetProfilesOptions()
+        {
+            while (ProfileCombo.Items.Count > 1)
+            {
+                ProfileCombo.Items.RemoveAt(1);
+            }
+
+            foreach (string profile in profilesManager)
+            {
+                ProfileCombo.Items.Add(new ComboBoxItem() { Content = profile });
+            }
         }
 
         private void Activate_Mod(object sender, RoutedEventArgs e)
@@ -68,21 +117,22 @@ namespace Anno1800ModLauncher.Views
             if (modDirectoryManager.modList != null && modDirectoryManager.modList.Count > 0 && ModListBox.SelectedItems.Count > 0)
             {
                 var list = ModListBox.SelectedItems.Cast<ModModel>().ToList();
-                list.ForEach(m => {
+                list.ForEach(m =>
+                {
                     if (!m.IsActive)
                     {
                         if (modDirectoryManager.ActivateMod(m))
                         {
                             m.IsActive = true;
                             m.Icon = "CheckBold";
-                            m.Color = "DarkGreen";                            
+                            m.Color = "DarkGreen";
                         }
                     }
                 });
                 modDirectoryManager.LoadMods();
                 FilterMods();
             }
-            
+
         }
 
         private void Deactivate_Mod(object sender, RoutedEventArgs e)
@@ -107,13 +157,96 @@ namespace Anno1800ModLauncher.Views
             }
         }
 
+        private void LanguageChanged(object source, EventArgs args) {
+            ModListBox_SelectionChanged(source, null);
+        }
+
         private void ModListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ModListBox.Items.Count > 0 && ModListBox.SelectedIndex >= 0)
             {
                 var i = ModListBox.SelectedItems.Count > 0 ? ModListBox.SelectedItems[ModListBox.SelectedItems.Count - 1] as ModModel : ModListBox.SelectedItem as ModModel;
-                ReadMeTextBox.Text = modDirectoryManager.GetReadMeText(i);
-                ModBannerImg.Source = modDirectoryManager.GetModBanner(i);
+
+                //use bound variable modDescriptionText instead of text setting here for binding to ReadMeTextBox in ModListView.xaml
+                modDescriptionText = modDirectoryManager.GetReadMeText(i);
+                //ReadMeTextBox.Text = modDirectoryManager.GetReadMeText(i);
+
+                ModBannerImg.Source = modDirectoryManager.GetModBanner(i) ?? OriginalBannerSource;
+            }
+        }
+
+        private void Save_Profile(object sender, RoutedEventArgs e)
+        {
+            string name;
+            if(ProfileCombo.SelectedItem == newProfileItem)
+            {
+                name = ProfileTextBox.Text;
+                ProfileTextBox.Text = "";
+            }
+            else
+            {
+                name = (string)((ComboBoxItem)ProfileCombo.SelectedItem).Content;
+            }
+            profilesManager.Persist(name, modDirectoryManager);
+            SetProfilesOptions();
+            foreach (ComboBoxItem item in ProfileCombo.Items)
+            {
+                if(name == (string)item.Content)
+                {
+                    ProfileCombo.SelectedItem = item;
+                    break;
+                }
+            }
+
+        }
+
+        private void Load_Profile(object sender, RoutedEventArgs e)
+        {
+            profilesManager.Load(ProfileCombo.Text, modDirectoryManager);
+            FilterMods();
+        }
+
+        private void Delete_Profile(object sender, RoutedEventArgs e)
+        {
+            profilesManager.Delete(ProfileCombo.Text);
+            ProfileCombo.SelectedIndex = -1;
+            SetProfilesOptions();
+        }
+
+        private void NewProfile_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ProfileTextBox.Text != "")
+            {
+                ProfileCombo.SelectedItem = newProfileItem;
+                SaveProfile.IsEnabled = true;
+                LoadProfile.IsEnabled = false;
+                DeleteProfile.IsEnabled = false;
+            }
+            else
+            {
+                ProfileCombo.SelectedIndex = -1;
+            }
+        }
+
+        private void ProfileCOmbo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProfileCombo.SelectedIndex == -1)// no selection
+            {
+                SaveProfile.IsEnabled = false;
+                LoadProfile.IsEnabled = false;
+                DeleteProfile.IsEnabled = false;
+            }
+            else if (ProfileCombo.SelectedItem == newProfileItem && ProfileTextBox.Text != "")// named new profile
+            {
+                SaveProfile.IsEnabled = true;
+                LoadProfile.IsEnabled = false;
+                DeleteProfile.IsEnabled = false;
+            }
+            else// existing profile
+            {
+                SaveProfile.IsEnabled = true;
+                LoadProfile.IsEnabled = true;
+                DeleteProfile.IsEnabled = true;
             }
         }
 
@@ -150,15 +283,23 @@ namespace Anno1800ModLauncher.Views
 
         private bool? ConvertStatus(ComboBoxItem filterStatusRaw)
         {
-            switch (filterStatusRaw.Content)
+            /*switch (filterStatusRaw.ToString())
             {
-                case "Active":
+                case FilterComboBoxActive.ToString():
                     return true;
-                case "Inactive":
+                case FilterComboBoxInactive.ToString():
                     return false;
                 default:
                     return false;
+            }*/
+            if (filterStatusRaw.Equals(FilterComboBoxActive)) {
+                return true;
             }
+            else if (filterStatusRaw.Equals(FilterComboBoxInactive))
+            {
+                return false;
+            }
+            return false; 
         }
 
         private void FilterCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -228,6 +369,11 @@ namespace Anno1800ModLauncher.Views
                     }
                 }
             );
+        }
+
+        private void ReadMeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

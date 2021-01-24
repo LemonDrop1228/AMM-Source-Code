@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="Anno1800ModLauncher.Views.SettingsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Anno1800ModLauncher.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="800"
+             
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal" 
+      TextOptions.TextRenderingMode="Auto" FontSize="24" FontWeight="Bold" >
+
+    <Grid Background ="{DynamicResource PrimaryHueBackgroundBrush}">
+        <Grid.Resources>
+            <ControlTemplate x:Key="NonScrollableListView" TargetType="ListView">
+                <ItemsPresenter/>
+            </ControlTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="r0" Height="33*"/>
+            <RowDefinition x:Name="r1" Height="34*"/>
+            <RowDefinition x:Name="r2" Height="34*"/>
+            <RowDefinition x:Name="r3" Height="34*"/>
+            <RowDefinition x:Name="r4" Height="34*"/>
+            <RowDefinition x:Name="r5" Height="34*"/>
+            <RowDefinition x:Name="r6" Height="34*"/>
+            <RowDefinition x:Name="r7" Height="34*"/>
+            <RowDefinition x:Name="r8" Height="34*"/>
+            <RowDefinition x:Name="r9" Height="34*"/>
+            <RowDefinition x:Name="r10" Height="34*"/>
+            <RowDefinition x:Name="r11" Height="34*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="c0" />
+            <ColumnDefinition x:Name="c1" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.RowSpan="2"/>
+        <GroupBox Grid.Column="0" Grid.RowSpan="12" Margin="0,0,2,0" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                      Kind="ClipboardList"
+                      Height="24"
+                      Width="24"
+                            Margin="4,5,0,5"
+                      VerticalAlignment="Center" />
+                        <TextBlock
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                      Text="{DynamicResource SettingsViewThemeListText}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <ScrollViewer Grid.Column="0">
+                <StackPanel>
+                    <StackPanel Margin="20 20">
+                        <ListView Template ="{StaticResource NonScrollableListView}" x:Name="ListViewThemes" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=themeLoadingHelper.themeList}" SelectionChanged="ThemeSelection_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="10" Width="110" Height="130">
+                                        <StackPanel DataContext="{Binding Path=Theme}">
+                                            <Border Width="100" Height="100" CornerRadius="5" Margin="5">
+                                                <Border.Effect>
+                                                    <DropShadowEffect ShadowDepth="1"/>
+                                                </Border.Effect>
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="{Binding Path=GradientColorLight}" Offset ="0.175"/>
+                                                        <GradientStop Color="{Binding Path=GradientColorDark}" Offset ="0.7"/>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                            </Border>
+                                            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" HorizontalAlignment="Center" Margin="0,0,0,0" Text="{Binding Path=ShowName}" FontSize="14"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan ="3" Grid.RowSpan="12" Margin="2,0,0,0" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                      Kind="ClipboardList"
+                      Height="24"
+                      Width="24"
+                            Margin="4,5,0,5"
+                      VerticalAlignment="Center" />
+                        <TextBlock
+                      Margin="4,0,0,0"
+                      VerticalAlignment="Center"
+                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                      Text="{DynamicResource SettingsViewGeneralSettingsText}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+        </GroupBox>
+        <materialDesign:Card Grid.Column="1" Grid.Row="1" Grid.RowSpan="1"
+				Margin="0,0,0,0" Background="Transparent">
+            <StackPanel>
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="True">
+                    <ComboBox x:Name ="LanguageComboBox" Margin="0,0,20,20" IsReadOnly="true" IsEditable="false"
+                            materialDesign:TextFieldAssist.HasClearButton="True" 
+                            materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightBrush}"
+                            FontSize="12" MinWidth="250" Foreground="{DynamicResource PrimaryHueLightBrush}"
+                              SelectionChanged ="LanguageSelection_LanguageChanged">
+                        <ComboBoxItem x:Name="LanguageComboBoxItemEnglish">English</ComboBoxItem>
+                        <ComboBoxItem x:Name="LanguageComboBoxItemGerman">Deutsch</ComboBoxItem>
+                    </ComboBox>
+                </DockPanel>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

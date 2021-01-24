@@ -25,6 +25,7 @@ using CefSharp.Wpf;
 using CefSharp;
 using Anno1800ModLauncher.CustomDialogs;
 using Anno1800ModLauncher.Helpers.ModInstaller;
+using Anno1800ModLauncher.Helpers;
 
 namespace Anno1800ModLauncher.Views
 {
@@ -45,11 +46,17 @@ namespace Anno1800ModLauncher.Views
         [Browsable(true)]
         public event ModLoaderInstalledEventHandler ModLoaderInstalledEvent;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _ModDirText;
+
+        public string ModDirText { get => _ModDirText; set => SetPropertyField("ModDirText", ref _ModDirText, value); }
+        
+
         [Obsolete]
         public HomeView()
         {
             InitializeComponent();
-
             //webBrowser = new ChromiumWebBrowser();
             //webBrowser.Loaded += W_Loaded;
             //BrowserPanel.Children.Add(webBrowser);
@@ -66,6 +73,7 @@ namespace Anno1800ModLauncher.Views
             if (!string.IsNullOrEmpty(message))
                 Console.WriteLine(message);
 
+            //TODO (taubenangriff) buttons might not have correct bindings. see through this pretty pls 
             switch (state)
             {
                 case HelperEnums.DetectionState.None:
@@ -74,7 +82,7 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Salmon);
-                    MidDirText.Text = "Create Mod Folder";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Salmon);
@@ -87,7 +95,7 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Salmon);
-                    MidDirText.Text = "Create Mod Folder";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Salmon);
@@ -100,7 +108,7 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Green);
-                    MidDirText.Text = "Open Mod Directory";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Salmon);
@@ -113,11 +121,11 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Salmon);
-                    MidDirText.Text = "Create Mod Folder";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Green);
-                    LoaderButtonText.Text = "Re-Install Mod Loader";
+                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
                     #endregion
                     break;
@@ -127,7 +135,7 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Salmon);
-                    MidDirText.Text = "Create Mod Folder";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewCreateModfolderText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Yellow);
@@ -140,11 +148,11 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Green);
-                    MidDirText.Text = "Open Mod Directory";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewOpenModDirectoryText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Green);
-                    LoaderButtonText.Text = "Re-Install Mod Loader";
+                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
                     #endregion
                     break;
@@ -154,11 +162,11 @@ namespace Anno1800ModLauncher.Views
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Green);
-                    MidDirText.Text = "Open Mod Directory";
+                    MidDirText.SetResourceReference(TextBlock.TextProperty, "HomeViewOpenModDirectoryText");
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Yellow);
-                    LoaderButtonText.Text = "Re-Install Mod Loader";
+                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Exclamation, Width = 24, Height = 24 };
                     #endregion
                     break;
@@ -268,7 +276,7 @@ namespace Anno1800ModLauncher.Views
             using (var dialog = new OpenFileDialog() { 
                 Filter = "Archive Files|*.zip;*.7z;*.rar",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Title = "Select a mod archive to install",
+                Title = this.FindResource("DialogSearchArchiveHeaderText").ToString(),
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Multiselect = true       
@@ -303,6 +311,43 @@ namespace Anno1800ModLauncher.Views
             }
         }
 
+        private void SearchProfile_Click(object sender, RoutedEventArgs e)
+        {
+            string[] fileList = null;
+
+            using (var dialog = new OpenFileDialog()
+            {
+                Filter = "Profile Files|*.ammp",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = this.FindResource("DialogSearchProfileHeaderText").ToString(),
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Multiselect = true
+            })
+            {
+                dialog.FileOk += (s, e) => {
+                    var d = (s as OpenFileDialog);
+                    if (d != null)
+                        fileList = d.FileNames;
+                };
+                dialog.ShowDialog();
+            }
+
+            if (fileList != null)
+                ProcessProfileInstallationRequest(fileList);
+        }
+
+        private void ProcessProfileInstallationRequest(string[] fileNames)
+        {
+            if (fileNames.Count() > 0)
+            {
+                foreach (var file in fileNames)
+                {
+                    ProfilesManager.Instance.ImportProfile(file);
+                }
+            }
+        }
+
         private string GetModMessageForInstallation(string[] fileNames)
         {
             var nr = Environment.NewLine;
@@ -319,6 +364,27 @@ namespace Anno1800ModLauncher.Views
             }
 
             return fileNames;
+        }
+
+        protected void SetPropertyField<T>(string propertyName, ref T field, T newValue)
+        {
+            if (!EqualityComparer<T>.Default.Equals(field, newValue))
+            {
+                field = newValue;
+                OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        /// <summary>
+        /// Raises the PropertyChanged notification in a thread safe manner
+        /// </summary>
+        /// <param name="propertyName"></param>
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
     }
 }

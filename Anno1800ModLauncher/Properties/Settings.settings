@@ -18,10 +18,22 @@
       <Value Profile="(Default)">Bin\Win64\</Value>
     </Setting>
     <Setting Name="CurrentModLoaderVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Version 0.7.8</Value>
+      <Value Profile="(Default)">Version 0.7.12</Value>
     </Setting>
     <Setting Name="NewsUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://www.anno-union.com</Value>
+    </Setting>
+    <Setting Name="ProfilesDirectory" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">profiles</Value>
+    </Setting>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default.json</Value>
+    </Setting>
+    <Setting Name="Language" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-1</Value>
+    </Setting>
+    <Setting Name="NewsUrlDE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://anno-union.com/de/</Value>
     </Setting>
   </Settings>
 </SettingsFile>

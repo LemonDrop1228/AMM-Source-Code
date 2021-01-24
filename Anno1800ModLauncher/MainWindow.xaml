@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
         xmlns:local="clr-namespace:Anno1800ModLauncher"
+        xmlns:p="clr-namespace:Anno1800ModLauncher.Properties"
         mc:Ignorable="d"
         Title="AML" Height="723.428" Width="1323.928" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -16,7 +17,7 @@
         TextOptions.TextRenderingMode="Auto"  MouseDown="Window_MouseDown"
         FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" MinWidth="1266.428" MinHeight="736.428" Loaded="Window_Loaded" Closing="MainWindow1_Closing">
     <Window.Background>
-        <ImageBrush ImageSource="Images/anno_1800_goes_treasure_hunting-21051.jpg"/>
+        <ImageBrush ImageSource="{DynamicResource BackgroundImageBrush}"/>
     </Window.Background>
 
     <Grid>
@@ -31,7 +32,7 @@
             <materialDesign:Card
                 Margin="5"
                 Padding="3"
-                UniformCornerRadius="5" Background="#B22F3334" >
+                UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -53,7 +54,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0">Play</TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource PlayButtonText}"/>
                             </DockPanel>
                         </Button>
                         <Separator Style="{StaticResource MaterialDesignDarkSeparator}" Margin="3 7 3 7"></Separator>
@@ -67,7 +68,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0">News</TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource NewsButtonText}"/>
                             </DockPanel>
                         </Button>
                         <Button Opacity="1" Margin="3" HorizontalContentAlignment="Left" Click="Home_Clicked">
@@ -80,7 +81,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="10,0,0,0">Home</TextBlock>
+                                DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource HomeButtonText}" />
                             </DockPanel>
                         </Button>
                         <Button Margin="3" HorizontalContentAlignment="Left" Click="Mods_Clicked">
@@ -93,7 +94,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="12 0 0 0">Mods</TextBlock>
+                                DockPanel.Dock="Right" Margin="12 0 0 0" Text="{DynamicResource ModsButtonText}" />
                             </DockPanel>
                         </Button>
                         <Button Margin="3" HorizontalContentAlignment="Left" Click="Settings_Clicked">
@@ -106,10 +107,10 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="12 0 0 0">Settings</TextBlock>
+                                DockPanel.Dock="Right" Margin="12 0 0 0" Text="{DynamicResource SettingsButtonText}" />
                             </DockPanel>
                         </Button>
-                        <Button Margin="3" HorizontalContentAlignment="Left" Click="Export_Clicked">
+                        <!--<Button Margin="3" HorizontalContentAlignment="Left" Click="Export_Clicked">
                             <DockPanel>
                                 <materialDesign:PackIcon
                             Kind="Export"
@@ -134,7 +135,7 @@
                                 HorizontalAlignment="Right"
                                 DockPanel.Dock="Right" Margin="12 0 0 0">Import</TextBlock>
                             </DockPanel>
-                        </Button>
+                        </Button>-->
                         <Button Margin="3" HorizontalContentAlignment="Left" Click="About_Clicked">
                             <DockPanel>
                                 <materialDesign:PackIcon
@@ -145,7 +146,7 @@
                                 <TextBlock 
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="12 0 0 0">About</TextBlock>
+                                DockPanel.Dock="Right" Margin="12 0 0 0" Text="{DynamicResource AboutButtonText}" />
                             </DockPanel>
                         </Button>
                     </StackPanel>                    
@@ -156,12 +157,12 @@
                     Margin="3"
                     Padding="5"
                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                    UniformCornerRadius="5" Background="#B22F3334" DockPanel.Dock="Bottom" Height="100">
+                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" DockPanel.Dock="Bottom" Height="100">
 
                     <!--Console Output-->
                     <ScrollViewer x:Name="LogScollViewer" Grid.Column="0" Grid.Row="6" Grid.RowSpan="4" Grid.ColumnSpan="3">
                         <TextBox x:Name="LogRTB" 
-                                 Background="#002F3334" 
+                                 Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" 
                                  Padding="3" 
                                  AcceptsReturn="True" 
                                  AcceptsTab="True" 
@@ -177,7 +178,7 @@
                     Margin="5"
                     Padding="10"
                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                    UniformCornerRadius="5" Background="#B22F3334" DockPanel.Dock="Top" MinHeight="545">
+                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueBackgroundBrush}" DockPanel.Dock="Top" MinHeight="545">
 
                     <TabControl x:Name="MainTabControl" Style="{StaticResource MaterialDesignTabControl}" SelectionChanged="TabControl_SelectionChanged" BorderBrush="#00ACACAC">
                         <TabControl.ItemContainerStyle>
@@ -199,7 +200,9 @@
                         <TabItem Name="Mods" Header="MODS">
                             <Views:ModListView x:Name="ModListView"/>
                         </TabItem>
-                        <TabItem Name="Settings" Header="SETTINGS"></TabItem>
+                        <TabItem Name="Settings" Header="SETTINGS">
+                            <Views:SettingsView x:Name="SettingsView"/>
+                        </TabItem>
                         <TabItem Name="About" Header="ABOUT">
                             <Views:AboutView />
                         </TabItem>

@@ -103,6 +103,7 @@ namespace Anno1800ModLauncher.Helpers.ModInstaller
         private void InstallSingle(ZipFile modArchive, string destinationPath)
         {   
             modArchive.ExtractAll(destinationPath, ExtractExistingFileAction.OverwriteSilently);
+            ModDirectoryManager.Instance.LoadMods();
         }
 
         private void InstallMulti()

@@ -65,7 +65,7 @@
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/elephant.jpg",
+      "Value": "/Images/elephant.jpg",
       "ReadAs": 1
     }
   ]

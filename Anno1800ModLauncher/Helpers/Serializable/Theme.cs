@@ -57,7 +57,8 @@ namespace Anno1800ModLauncher.Helpers.Serializable
                     case ResourceType.Image:
                         try
                         {
-                            ImageSource image = new BitmapImage(new Uri(Key.Value));
+                            var uri = new Uri(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase) + Key.Value);
+                            ImageSource image = new BitmapImage(uri);
                             res.Add(Key.Key, image);
                         }
                         catch { }                        

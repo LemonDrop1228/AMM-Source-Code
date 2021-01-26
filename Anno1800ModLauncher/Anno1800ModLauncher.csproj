@@ -292,30 +292,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ANNO1800_LOGO_white_Shaded3.png" />
-    <Resource Include="Images\sunken_treasures.jpg">
+    <Content Include="Images\sunken_treasures.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\baker.jpg">
+    </Content>
+    <Content Include="Images\baker.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\elephant.jpg">
+    </Content>
+    <Content Include="Images\elephant.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\botanica.jpg">
+    </Content>
+    <Content Include="Images\botanica.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\passage.jpg">
+    </Content>
+    <Content Include="Images\passage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\colorblind.jpg">
+    </Content>
+    <Content Include="Images\colorblind.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\workshop.jpg">
+    </Content>
+    <Content Include="Images\workshop.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\worldsfair.jpg">
+    </Content>
+    <Content Include="Images\worldsfair.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Content Include="Libs\python35.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

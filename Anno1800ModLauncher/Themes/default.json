@@ -65,7 +65,7 @@
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/sunken_treasures.jpg",
+      "Value": "/Images/sunken_treasures.jpg",
       "ReadAs": 1
     }
   ]

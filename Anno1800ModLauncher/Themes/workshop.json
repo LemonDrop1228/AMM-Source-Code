@@ -65,7 +65,7 @@
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/workshop.jpg",
+      "Value": "/Images/workshop.jpg",
       "ReadAs": 1
     }
   ]

@@ -58,7 +58,6 @@ namespace Anno1800ModLauncher.Views
 
         private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e) 
         {
-            Console.WriteLine("Changed Theme");
             ThemeWrap theme = (ThemeWrap)ListViewThemes.SelectedItems[0];
             ThemeManager.SetTheme(theme);
         }

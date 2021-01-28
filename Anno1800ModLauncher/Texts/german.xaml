@@ -78,6 +78,10 @@
     <system:String x:Key="ModsViewStepTwoText">Schritt 2</system:String>
     <system:String x:Key="ModsViewStepThreeText">Schritt 3</system:String>
     <system:String x:Key="ModsViewStepFourText">Schritt 4</system:String>
+
+    <system:String x:Key="ModsViewDLCRequiredText">Zwingend benötigte DLC:</system:String>
+    <system:String x:Key="ModsViewDLCPartlyRequiredText">Teilweise benötigte DLC:</system:String>
+    <system:String x:Key="ModsViewDLCAtLeastOneRequiredText">Benötigt eines der DLC:</system:String>
     
     <!-- Dialogs-->
     <system:String x:Key="DialogSearchProfileHeaderText">Ein Profil zum installieren auswählen</system:String>
@@ -86,7 +90,24 @@
     <!-- Settings view -->
     <system:String x:Key="SettingsViewThemeListText">Erscheinungsbild</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Einstellungen</system:String>
+    <system:String x:Key="SettingsViewLanguageText">Sprache:</system:String>
 
+    <system:String x:Key="ReadMeTextVersion">Version:</system:String>
     <system:String x:Key="ReadMeTextCreator">Ersteller: </system:String>
-    <system:String x:Key="ReadMeTextKnownIssues">Bekannte Probleme: </system:String>
+    <system:String x:Key="ReadMeTextKnownIssues">Bekannte Probleme:</system:String>
+
+    <!-- DLC Texts -->
+    <system:String x:Key="DLCAnarchistText">Der Anarchist</system:String>
+    <system:String x:Key="DLCSunkenTreasuresText">Gesunkene Schätze</system:String>
+    <system:String x:Key="DLCBotanicaText">Botanika</system:String>
+    <system:String x:Key="DLCThePassageText">Die Passage</system:String>
+    <system:String x:Key="DLCSeatOfPowerText">Paläste der Macht</system:String>
+    <system:String x:Key="DLCBrightHarvestText">Reiche Ernte</system:String>
+    <system:String x:Key="DLCLandOfLionsText">Land der Löwen</system:String>
+    <system:String x:Key="DLCChristmasText">Weihnachtsmarkt</system:String>
+    <system:String x:Key="DLCAmusementParkText">Vergnügungspark</system:String>
+    <system:String x:Key="DLCCityLifeText">Lichter der Stadt</system:String>
+    <system:String x:Key="DLCS301Text">Season 3, DLC 1</system:String>
+    <system:String x:Key="DLCS302Text">Season 3, DLC 2</system:String>
+    <system:String x:Key="DLCS303Text">Season 3, DLC 3</system:String>
 </ResourceDictionary>

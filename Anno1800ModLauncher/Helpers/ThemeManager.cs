@@ -25,6 +25,8 @@ namespace Anno1800ModLauncher.Helpers
             {
                 Application.Current.Resources[key] = dict[key];
             }
+
+            Console.WriteLine("Changed Theme to {0}", wrap.Theme.ThemeName.English);
         }
         public static void SetTheme(ThemeWrap theme) {
             ChangeTheme(theme);

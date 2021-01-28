@@ -65,7 +65,7 @@
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/colorblind.jpg",
+      "Value": "/Images/colorblind.jpg",
       "ReadAs": 1
     }
   ]

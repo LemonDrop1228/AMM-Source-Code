@@ -65,7 +65,7 @@
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/botanica.jpg",
+      "Value": "/Images/botanica.jpg",
       "ReadAs": 1
     }
   ]

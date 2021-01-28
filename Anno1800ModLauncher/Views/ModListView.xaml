@@ -80,7 +80,7 @@
             </GroupBox.HeaderTemplate>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.40*"/>
                     <RowDefinition Height="0.75*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -88,8 +88,10 @@
                 </Grid.ColumnDefinitions>
                 <Image x:Name="ModBannerImg" 
                        Margin="0" 
-                       Source="/Images/ModImg_PlaceHolder.png" 
-                       Grid.Row="0" Stretch="Fill"/>
+                       Source="/Images/ModImg_PlaceHolder_2.png" 
+                       Grid.Row="0" Stretch="UniformToFill"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
                 <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
                     <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Text ="{Binding Path=modDescriptionText, UpdateSourceTrigger=PropertyChanged}" x:Name="ReadMeTextBox"  Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
                 </ScrollViewer>

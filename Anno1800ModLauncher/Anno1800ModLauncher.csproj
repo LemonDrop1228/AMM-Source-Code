@@ -292,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ANNO1800_LOGO_white_Shaded3.png" />
+    <Resource Include="Images\ModImg_PlaceHolder_2.png" />
     <Content Include="Images\sunken_treasures.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

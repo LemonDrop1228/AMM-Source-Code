@@ -78,6 +78,10 @@
     <system:String x:Key="ModsViewStepTwoText">Step 2</system:String>
     <system:String x:Key="ModsViewStepThreeText">Step 3</system:String>
     <system:String x:Key="ModsViewStepFourText">Step 4</system:String>
+
+    <system:String x:Key="ModsViewDLCRequiredText">Required DLCs:</system:String>
+    <system:String x:Key="ModsViewDLCPartlyRequiredText">Partly Required DLCs:</system:String>
+    <system:String x:Key="ModsViewDLCAtLeastOneRequiredText">Needs at least one of those DLCs:</system:String>
     <!-- Dialogs-->
     <system:String x:Key="DialogSearchProfileHeaderText">Select a profile file to install</system:String>
     <system:String x:Key="DialogSearchArchiveHeaderText">Select a mod archive to install</system:String>
@@ -85,7 +89,24 @@
     <!-- Settings view -->
     <system:String x:Key="SettingsViewThemeListText">Theme</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Preferences</system:String>
+    <system:String x:Key="SettingsViewLanguageText">Language:</system:String>
 
+    <system:String x:Key="ReadMeTextVersion">Version:</system:String>
     <system:String x:Key="ReadMeTextCreator">Creator: </system:String>
-    <system:String x:Key="ReadMeTextKnownIssues">Known Issues: </system:String>
+    <system:String x:Key="ReadMeTextKnownIssues">Known Issues:</system:String>
+
+    <!-- DLC Texts -->
+    <system:String x:Key="DLCAnarchistText">The Anarchist</system:String>
+    <system:String x:Key="DLCSunkenTreasuresText">Sunken Treasures</system:String>
+    <system:String x:Key="DLCBotanicaText">Botanica</system:String>
+    <system:String x:Key="DLCThePassageText">The Passage</system:String>
+    <system:String x:Key="DLCSeatOfPowerText">Seat of Power</system:String>
+    <system:String x:Key="DLCBrightHarvestText">Bright Harvest</system:String>
+    <system:String x:Key="DLCLandOfLionsText">Land of Lions</system:String>
+    <system:String x:Key="DLCChristmasText">Holiday Pack</system:String>
+    <system:String x:Key="DLCAmusementParkText">Amusement Park</system:String>
+    <system:String x:Key="DLCCityLifeText">City Lights Pack</system:String>
+    <system:String x:Key="DLCS301Text">Season 3, DLC 1</system:String>
+    <system:String x:Key="DLCS302Text">Season 3, DLC 2</system:String>
+    <system:String x:Key="DLCS303Text">Season 3, DLC 3</system:String>
 </ResourceDictionary>

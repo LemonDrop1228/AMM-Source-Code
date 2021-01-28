@@ -145,22 +145,125 @@ namespace Anno1800ModLauncher.Helpers
                 res += Environment.NewLine + File.ReadAllText(readmePath);
             //prefer Modinfo over the old way 
             
-            if (i.Metadata != null) {
-                res = i.Metadata.Description.getText() + "\n";
+            if (i.Metadata != null) 
+            {
+                res = ""; 
+                //Version
+                if (i.Metadata.Version != null) {
+                    res += "\n\n" +Application.Current.TryFindResource("ReadMeTextVersion") + " " + i.Metadata.Version;
+                }
+                
+                //Description
+                if (i.Metadata.Description != null) {
+                    res += "\n\n" + i.Metadata.Description.getText();
+                }
+                
+
+                //Known Issues
                 if (i.Metadata.KnownIssues != null) {
-                    res += "\n"+ Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
+                    res += "\n\n" + Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
                     foreach (Localized KnownIssue in i.Metadata.KnownIssues)
                     {
                         res += "\n" + "> " + KnownIssue.getText();
                     }
-                    res += "\n";
                 }
+
+                //DLC Dependency
+                if (i.Metadata.DLCDependencies != null) 
+                {
+                    res += "\n";
+                    Dlc[] DlcDependencies = i.Metadata.DLCDependencies;
+
+                    //sort this array by dlc dependency
+                    Array.Sort(DlcDependencies, Comparer<Dlc>.Create((x, y) => y.Dependant.CompareTo(x.Dependant)));
+
+                    //these bools will indicate wether the respective paragraph of DLCs has already been added in the description. 
+                    bool requiredSet = false;
+                    bool partlySet = false;
+                    bool atLeastSet = false; 
+
+                    //due to the array of DLCs being sorted by DLC dependency, we can add the Dependency Header once and all DLCs will be in the right paragraph without further checks. 
+                    foreach (Dlc dlc in DlcDependencies)
+                    {
+                        string DlcDescription = ""; 
+                        switch (dlc.Dependant) {
+                            case "required":
+                                if (!requiredSet) 
+                                {
+                                    DlcDescription += "\n"+ Application.Current.TryFindResource("ModsViewDLCRequiredText");
+                                    requiredSet = true; 
+                                }
+                                break;
+                            case "partly":
+                                if (!partlySet) 
+                                {
+                                    DlcDescription += "\n" + Application.Current.TryFindResource("ModsViewDLCPartlyRequiredText"); 
+                                    partlySet = true; 
+                                }
+                                break;
+                            case "atLeastOneRequired":
+                                if (!atLeastSet)
+                                {
+                                    DlcDescription += "\n" + Application.Current.TryFindResource("ModsViewDLCAtLeastOneRequiredText");
+                                    atLeastSet = true; 
+                                }
+                                break;
+                        }
+
+                        switch (dlc.DLC) {
+                            case "Anarchist":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCAnarchistText");
+                                break;
+                            case "SunkenTreasures":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCSunkenTreasuresText");
+                                break;
+                            case "Botanica":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCBotanicaText");
+                                break;
+                            case "ThePassage":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCThePassageText");
+                                break;
+                            case "SeatOfPower":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCSeatOfPowerText");
+                                break;
+                            case "BrightHarvest":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCBrightHarvestText");
+                                break;
+                            case "LandOfLions":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCLandOfLionsText");
+                                break;
+                            case "Christmas":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCChristmasText");
+                                break;
+                            case "AmusementPark":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCAmusementParkText");
+                                break;
+                            case "CityLife":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCCityLifeText");
+                                break;
+                            //change those later as soon as we get Season 3 info. 
+                            case "UntitledS301":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS301Text");
+                                break;
+                            case "UntitledS302":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS302Text");
+                                break;
+                            case "UntitledS303":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS303Text");
+                                break;
+
+                        }
+                        res += DlcDescription;
+                    }
+                }
+
+                //Creator
                 if (i.Metadata.CreatorName != null) {
-                    res += "\n" + Application.Current.TryFindResource("ReadMeTextCreator") + " " + i.Metadata.CreatorName;
+                    res += "\n\n" + Application.Current.TryFindResource("ReadMeTextCreator") + " " + i.Metadata.CreatorName;
                 }
             }
             
-            return res;
+            return res.TrimStart();
         }
 
         internal ImageSource GetModBanner(ModModel i)

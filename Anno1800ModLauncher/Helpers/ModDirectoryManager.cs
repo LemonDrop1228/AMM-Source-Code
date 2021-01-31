@@ -102,7 +102,11 @@ namespace Anno1800ModLauncher.Helpers
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
-                string destDirName = $"{v}{i.Name}";
+                string[] PathArr = i.Path.Split('\\');
+                string Name = PathArr[PathArr.Length - 1];
+                if (Name.StartsWith("-"))
+                    Name = Name.Substring(1);
+                string destDirName = $"{v}{Name}";
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
                 Console.WriteLine($"Activated - {i.Name}");
@@ -120,7 +124,9 @@ namespace Anno1800ModLauncher.Helpers
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
-                string destDirName = $@"{v}-{i.Name}";
+                string[] PathArr = i.Path.Split('\\');
+                string Name = PathArr[PathArr.Length - 1];
+                string destDirName = $@"{v}-{Name}";
                 File.SetAttributes(i.Path, FileAttributes.Normal);
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
@@ -403,21 +409,26 @@ namespace Anno1800ModLauncher.Helpers
             Icon = pIcon;
             Color = pColor;
 
+            //try to deserialize mod metadata here.
             try
             {
                 Metadata = JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(Path + "\\modinfo.json"));
                 if (Metadata != null)
                 {
-                    
+
                     name = "[" + Metadata.Category.getText() + "] " + Metadata.ModName.getText();
                 }
             }
-            catch { }
+            catch (JsonSerializationException e)
+            {
+                Console.WriteLine("Json Serialization failed:{0}", Path);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("No modinfo found for {0}", Path);
+            }
+            LanguageManager.Instance.LanguageChanged += LanguageManager_LanguageChanged;
 
-            //buttons should have a listener to change their displayed names etc. 
-            //NOTE: LanguageManager.LanguageChanged is a static event.
-            //reloading mods with new modModels can result in a memory leak. 
-            LanguageManager.LanguageChanged += LanguageManager_LanguageChanged;
         }
 
         private void LanguageManager_LanguageChanged(object source, EventArgs args)
@@ -428,6 +439,19 @@ namespace Anno1800ModLauncher.Helpers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>The non localized directory name of a mod without "-" in the front</returns>
+        public String getDirectoryName() {
+            String[] PathArr = Path.Split('\\');
+            var DirectoryName = PathArr[PathArr.Length - 1];
+            if (DirectoryName.StartsWith("-"))
+            {
+                DirectoryName = DirectoryName.Substring(1);
+            }
+            return DirectoryName;
+        }
         public bool hasMetadata() {
             return Metadata != null; 
         }
@@ -458,7 +482,6 @@ namespace Anno1800ModLauncher.Helpers
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
-
 
         public override string ToString()
         {

@@ -8,7 +8,7 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="ignore"
         xmlns:local="clr-namespace:Anno1800ModLauncher.CustomDialogs"
-        Title="Mod Installer" Height="501.104" Width="425.669" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" x:Name="ModInstallWindow" TitleBarIcon="/Anno1800ModManager;component/AML.ico" WindowStyle="ToolWindow" Background="#FF6C787E">
+        Title="{DynamicResource InstallDialogWindowTitleText}" Height="501.104" Width="425.669" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" x:Name="ModInstallWindow" TitleBarIcon="/Anno1800ModManager;component/AML.ico" WindowStyle="ToolWindow" Background="#FF6C787E">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -34,12 +34,12 @@
                           Margin="8,0,0,0"
                           VerticalAlignment="Center"
                           Style="{StaticResource MaterialDesignTextBlock}"
-                          Text="Mod List" />
+                          Text="{DynamicResource InstallDialogModListText}" />
                         </StackPanel>
                         <Button DockPanel.Dock="Right" Margin="5"
                             Style="{StaticResource MaterialDesignRaisedDarkButton}"
                             Width="100"
-                            ToolTip="Set all mods to be activated after installation." HorizontalAlignment="Right" Content="Activate All" Padding="1" Click="ActivateAll_Click"/>
+                            ToolTip="{DynamicResource InstallDialogActivateButtonTooltipText}" HorizontalAlignment="Right" Content="{DynamicResource InstallDialogActivateButtonText}" Padding="1" Click="ActivateAll_Click"/>
                     </DockPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
@@ -130,16 +130,14 @@
                 <CheckBox x:Name="OpenModDetailsCB" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignLightCheckBox}"/>
                 <CheckBox Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignLightCheckBox}" IsChecked="{Binding ElementName=ModInstallWindow, Path=ModInstallationManager.BackupAfterInstall, Mode=TwoWay}"/>
 
-                <Label Grid.Column="1" Grid.Row="0" Content="Delete all archives after installation" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <Label Grid.Column="1" Grid.Row="1" Content="Open Mod Details after installation" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <Label Grid.Column="1" Grid.Row="2" Content="Backup archives after installation" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <Label Grid.Column="1" Grid.Row="0" Content="{DynamicResource InstallDialogDeleteArchivesLabelText}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <Label Grid.Column="1" Grid.Row="1" Content="{DynamicResource InstallDialogOpenDetailsLabelText}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <Label Grid.Column="1" Grid.Row="2" Content="{DynamicResource InstallDialogBackupLabelText}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
                 <Button x:Name="InstallButton" Grid.Column="3" Grid.RowSpan="3" IsDefault="True"
                   Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
                   materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                  materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding Installing}" HorizontalAlignment="Right" Margin="0,0,15,0" Click="InstallMods_Clicked">
-                    INSTALL
-                </Button>
+                  materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding Installing}" HorizontalAlignment="Right" Margin="0,0,15,0" Click="InstallMods_Clicked" Content="{DynamicResource InstallDialogInstallButtonText}"/>
             </Grid>
         </GroupBox>
     </Grid>

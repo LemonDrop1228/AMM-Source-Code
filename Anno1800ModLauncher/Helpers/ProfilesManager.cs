@@ -180,7 +180,7 @@ namespace Anno1800ModLauncher.Helpers
         public Profile(string name, ModDirectoryManager manager)
         {
             Name = name;
-            mods = new ObservableCollection<string>(manager.modList.Where(m => m.IsActive).Select(m => m.Name));
+            mods = new ObservableCollection<string>(manager.modList.Where(m => m.IsActive).Select(m => m.getDirectoryName()));
         }
 
         internal void Persist(string directory)
@@ -194,7 +194,7 @@ namespace Anno1800ModLauncher.Helpers
         {
             foreach (ModModel m in modDirectoryManager.modList)
             {
-                if(Mods.Contains(m.Name))
+                if(Mods.Contains(m.getDirectoryName()))
                 {
                     if (!m.IsActive)
                     {
@@ -272,7 +272,7 @@ namespace Anno1800ModLauncher.Helpers
 
         internal void UpdateMods(ModDirectoryManager manager)
         {
-            mods = new ObservableCollection<string>(manager.modList.Where(m => m.IsActive).Select(m => m.Name));
+            mods = new ObservableCollection<string>(manager.modList.Where(m => m.IsActive).Select(m => m.getDirectoryName()));
         }
 
         internal void Refresh(string path)

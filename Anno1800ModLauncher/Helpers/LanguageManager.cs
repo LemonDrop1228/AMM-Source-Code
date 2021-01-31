@@ -9,21 +9,33 @@ using Anno1800ModLauncher.Helpers.Enums;
 namespace Anno1800ModLauncher.Helpers
 {
     /// <summary>
-    /// the language manager is a static helper that can set and return the current language easily from anywhere within the application. 
+    /// the language manager is a helper that can set and return the current language easily from anywhere within the application by accessing the static LanguageManager.Instance
     /// All Strings that have to be localized have to be a dynamic resource. 
     /// Any change to language is automatically saved in the application property "Language".
     /// This is needed for returning localized values from modinfos. 
     /// Currently supports German and English. 
     /// </summary>
-    public static class LanguageManager {
+    public class LanguageManager {
 
+
+        #region Events
         public delegate void LanguageChangedHandler(object source, EventArgs args);
 
-        public static event LanguageChangedHandler LanguageChanged = delegate { };
-        public static void OnLanguageChanged() {
-            LanguageChanged(null, EventArgs.Empty);
+        public event LanguageChangedHandler LanguageChanged = delegate { };
+
+        #endregion
+
+        public static LanguageManager Instance;
+
+        #region Constructors
+        public LanguageManager()
+        {
+            Instance = this;
         }
-        public static void SetLanguage(HelperEnums.Language lang) {
+        #endregion
+
+        #region LanguageModifying Members
+        public void SetLanguage(HelperEnums.Language lang) {
             //get language file name
             string langCode = ""; 
             switch (lang) {
@@ -51,10 +63,15 @@ namespace Anno1800ModLauncher.Helpers
             OnLanguageChanged();
         }
 
-        public static HelperEnums.Language GetLanguage() {
+        public HelperEnums.Language GetLanguage() {
             int langInt = Properties.Settings.Default.Language;
             return (HelperEnums.Language)langInt;
         }
+        #endregion
 
+        public void OnLanguageChanged()
+        {
+            LanguageChanged(null, EventArgs.Empty);
+        }
     }
 }

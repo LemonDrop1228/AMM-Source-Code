@@ -12,50 +12,6 @@ using System.Collections.ObjectModel;
 
 namespace Anno1800ModLauncher.Helpers
 {
-    public static class ThemeManager
-    {
-        private static void ChangeTheme(ThemeWrap wrap)
-        {
-            //save path of the theme
-            SaveTheme(wrap.Path);
-
-            //change the theme to json file format to provide meta info about the themes
-            var dict = wrap.Theme.toResourceDictionary(); 
-            foreach (var key in dict.Keys) 
-            {
-                Application.Current.Resources[key] = dict[key];
-            }
-
-            Console.WriteLine("Changed Theme to {0}", wrap.Theme.ThemeName.English);
-        }
-        public static void SetTheme(ThemeWrap theme) {
-            ChangeTheme(theme);
-        }
-
-        private static void SaveTheme(String path)
-        {
-            Properties.Settings.Default.Theme = path;
-            Properties.Settings.Default.Save();
-        }
-        public static void SetTheme(String theme)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(theme)) {
-                    ChangeTheme(new ThemeWrap 
-                        { 
-                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText("Themes/" + theme)), Path = "Themes/" + theme 
-                        });
-                    SaveTheme(theme);
-                }
-
-            }
-            catch {
-                Console.WriteLine("Theme {0}.json couldn't be loaded", theme);
-            }
-        }
-    }
-
     public class ThemeWrap 
     {
         public String Path { get; set; }
@@ -66,30 +22,11 @@ namespace Anno1800ModLauncher.Helpers
         }
     }
 
-    public class ThemeLoadingHelper : INotifyPropertyChanged
+    public class ThemeManager : INotifyPropertyChanged
     {
         private string themePath = "Themes";
-        public ThemeLoadingHelper() {
-            LoadThemes();
-        }
 
-        public void LoadThemes() {
-            if (Directory.Exists(themePath)) {
-                themeList = new ObservableCollection<ThemeWrap>(Directory.EnumerateFiles(themePath, "*.json").
-                    Select(
-                        d => new ThemeWrap
-                        {
-                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText(d, Encoding.UTF8)),
-                            //need to delete the themepath here so we just get the filename. maybe there is a better way to do this. 
-                            Path = d.Replace(themePath + "\\", "")
-                        }
-                    ).Where(w => w != null).ToList()) ;;
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private ObservableCollection<ThemeWrap> _themeList; 
+        private ObservableCollection<ThemeWrap> _themeList;
         public ObservableCollection<ThemeWrap> themeList
         {
             get { return _themeList; }
@@ -99,6 +36,23 @@ namespace Anno1800ModLauncher.Helpers
                 OnPropertyChanged("themeList");
             }
         }
+
+        public static ThemeManager Instance { get; private set; }
+
+        #region Constructors
+        public ThemeManager()
+        {
+            LoadThemes();
+            Instance = this;
+        }
+
+        #endregion
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -107,5 +61,92 @@ namespace Anno1800ModLauncher.Helpers
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
+
+        #region ThemeChanging Members 
+        /// <summary>
+        /// loads themes from the Themes directory into a collection of ThemeWraps 
+        /// </summary>
+        public void LoadThemes()
+        {
+            if (Directory.Exists(themePath))
+            {
+                //lets do this the stoneage way for better exception handling
+                themeList = new ObservableCollection<ThemeWrap>();
+                var files = Directory.EnumerateFiles(themePath, "*.json");
+                foreach (string file in files) {
+                    try
+                    {
+                        var theme = new ThemeWrap
+                        {
+                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText(file, Encoding.UTF8)),
+                            //need to delete the themepath here so we just get the filename. maybe there is a better way to do this. 
+                            Path = file.Replace(themePath + "\\", "")
+                        };
+                        if (theme != null)
+                            themeList.Add(theme);
+                    }
+                    catch (JsonSerializationException e)
+                    {
+                        Console.WriteLine("couldn't deserialize theme: {0}", file);
+                    }
+                    catch (JsonReaderException e){
+                        Console.WriteLine("Error parsing theme: {0}", file);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Changes the theme of the application and automatically stores it as the new default in the application properties
+        /// </summary>
+        /// <param name="wrap">The themeWrap that the theme should be changed to.</param>
+        public void ChangeTheme(ThemeWrap wrap)
+        {
+            //save themepath in the application properties.
+            SaveTheme(wrap.Path);
+
+            var dict = wrap.Theme.toResourceDictionary();
+            foreach (var key in dict.Keys)
+            {
+                Application.Current.Resources[key] = dict[key];
+            }
+            Console.WriteLine("Changed Theme to {0}", wrap.Theme.ThemeName.English);
+        }
+
+        /// <summary>
+        /// Saves the theme in the application properties. 
+        /// </summary>
+        /// <param name="path">the path of the theme</param>
+        private void SaveTheme(String path)
+        {
+            Properties.Settings.Default.Theme = path;
+            Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Changes the theme of the application
+        /// </summary>
+        /// <param name="theme">The filename of the theme file that should be changed to.</param>
+        public void ChangeTheme(String theme)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(theme))
+                {
+                    ChangeTheme(new ThemeWrap
+                    {
+                        Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText("Themes/" + theme)),
+                        Path = "Themes/" + theme
+                    });
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Theme {0}.json couldn't be loaded", theme);
+            }
+        }
+        #endregion 
+
+       
     }
 }

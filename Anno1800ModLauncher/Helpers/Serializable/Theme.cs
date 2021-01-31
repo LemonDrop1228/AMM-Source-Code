@@ -25,7 +25,7 @@ namespace Anno1800ModLauncher.Helpers.Serializable
         public event PropertyChangedEventHandler PropertyChanged;
         
         public Theme() {
-            LanguageManager.LanguageChanged += UpdateLanguage;
+            LanguageManager.Instance.LanguageChanged += UpdateLanguage;
         }
 
         public void UpdateLanguage(object sender, EventArgs e) {

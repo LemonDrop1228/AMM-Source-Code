@@ -109,4 +109,19 @@
     <system:String x:Key="DLCS301Text">Season 3, DLC 1</system:String>
     <system:String x:Key="DLCS302Text">Season 3, DLC 2</system:String>
     <system:String x:Key="DLCS303Text">Season 3, DLC 3</system:String>
+    
+    <!-- Mod Installing Dialog -->
+    <system:String x:Key="InstallDialogWindowTitleText">Install from Archive</system:String>
+    <system:String x:Key="InstallDialogModListText">Mod List</system:String>
+    <system:String x:Key="InstallDialogActivateButtonTooltipText">Set all mods to be activated after installation.</system:String>
+    <system:String x:Key="InstallDialogActivateButtonText">Activate all</system:String>
+    <system:String x:Key="InstallDialogDeleteArchivesLabelText">Delete all archives after installation</system:String>
+    <system:String x:Key="InstallDialogOpenDetailsLabelText">Open Mod Details after installation</system:String>
+    <system:String x:Key="InstallDialogBackupLabelText">Backup archives after installation</system:String>
+    <system:String x:Key="InstallDialogInstallButtonText">INSTALL</system:String>
+    
+    <!-- Duplicate Profile Dialog -->
+    <system:String x:Key="DuplicateProfileDialogMainText">You already have a profile with this name. Do you want to overwrite it?</system:String>
+    <system:String x:Key="DuplicateProfileDialogCancelButtonText">Cancel</system:String>
+    <system:String x:Key="DuplicateProfileDialogOverrideButtonText">Overwrite</system:String>
 </ResourceDictionary>

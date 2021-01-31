@@ -24,22 +24,22 @@ namespace Anno1800ModLauncher.Views
     /// </summary>
     public partial class SettingsView : UserControl, INotifyPropertyChanged
     {
-        private ThemeLoadingHelper _themeLoadingHelper;
-        public ThemeLoadingHelper themeLoadingHelper
+        private ThemeManager _ThemeManager;
+        public ThemeManager ThemeManager
         {
-            get { return _themeLoadingHelper; }
+            get { return _ThemeManager; }
             set
             {
-                _themeLoadingHelper = value;
-                OnPropertyChanged("themeLoadingHelper");
+                _ThemeManager = value;
+                OnPropertyChanged("ThemeManager");
             }
         }
         public SettingsView()
         {
             InitializeComponent();
-            themeLoadingHelper = new ThemeLoadingHelper();
+            ThemeManager = new ThemeManager();
             this.DataContext = this;
-            LanguageComboBox.SelectedIndex = (int)LanguageManager.GetLanguage();
+            LanguageComboBox.SelectedIndex = (int)LanguageManager.Instance.GetLanguage();
         }
         private void OnPropertyChanged(string propertyName)
         {
@@ -59,7 +59,7 @@ namespace Anno1800ModLauncher.Views
         private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e) 
         {
             ThemeWrap theme = (ThemeWrap)ListViewThemes.SelectedItems[0];
-            ThemeManager.SetTheme(theme);
+            ThemeManager.Instance.ChangeTheme(theme);
         }
 
         public void LanguageSelection_LanguageChanged(object sender, RoutedEventArgs e) {
@@ -67,20 +67,20 @@ namespace Anno1800ModLauncher.Views
             {
                 if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemEnglish))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.English);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.English);
                 }
                 else if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemGerman))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.German);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.German);
                 }
             }
             //disallow user to clear the combo box ^^
             else {
-                if (LanguageManager.GetLanguage() == HelperEnums.Language.English)
+                if (LanguageManager.Instance.GetLanguage() == HelperEnums.Language.English)
                 {
                     LanguageComboBox.SelectedValue =(LanguageComboBoxItemEnglish);
                 }
-                else if (LanguageManager.GetLanguage() == HelperEnums.Language.German)
+                else if (LanguageManager.Instance.GetLanguage() == HelperEnums.Language.German)
                 {
                     LanguageComboBox.SelectedValue = (LanguageComboBoxItemGerman);
                 }

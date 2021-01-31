@@ -71,25 +71,29 @@ namespace Anno1800ModLauncher.Helpers
         {
             if (Directory.Exists(themePath))
             {
-                try
-                {
-                    themeList = new ObservableCollection<ThemeWrap>(Directory.EnumerateFiles(themePath, "*.json").
-                    Select(
-                        d => new ThemeWrap
+                //lets do this the stoneage way for better exception handling
+                themeList = new ObservableCollection<ThemeWrap>();
+                var files = Directory.EnumerateFiles(themePath, "*.json");
+                foreach (string file in files) {
+                    try
+                    {
+                        var theme = new ThemeWrap
                         {
-                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText(d, Encoding.UTF8)),
+                            Theme = JsonConvert.DeserializeObject<Theme>(File.ReadAllText(file, Encoding.UTF8)),
                             //need to delete the themepath here so we just get the filename. maybe there is a better way to do this. 
-                            Path = d.Replace(themePath + "\\", "")
-                        }
-                    ).Where(w => w != null).ToList()); ;
+                            Path = file.Replace(themePath + "\\", "")
+                        };
+                        if (theme != null)
+                            themeList.Add(theme);
+                    }
+                    catch (JsonSerializationException e)
+                    {
+                        Console.WriteLine("couldn't deserialize theme: {0}", file);
+                    }
+                    catch (JsonReaderException e){
+                        Console.WriteLine("Error parsing theme: {0}", file);
+                    }
                 }
-                //catch serialization errors when trying to read a theme.
-                catch (JsonSerializationException e)
-                {
-                    Console.WriteLine("There was an error during serialization of a theme.");
-                    Console.WriteLine(e.Message);
-                }
-                
             }
         }
         /// <summary>

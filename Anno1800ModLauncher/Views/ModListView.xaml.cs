@@ -96,7 +96,7 @@ namespace Anno1800ModLauncher.Views
             OriginalBannerSource = ModBannerImg.Source;
 
             //
-            LanguageManager.LanguageChanged += LanguageChanged;
+            LanguageManager.Instance.LanguageChanged += LanguageChanged;
         }
 
         private void SetProfilesOptions()

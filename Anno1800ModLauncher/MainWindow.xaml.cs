@@ -58,6 +58,8 @@ namespace Anno1800ModLauncher
         private ManagerStatus Status = ManagerStatus.bad;
         private bool IsUpdating;
 
+        public LanguageManager LanguageManager = new LanguageManager(); 
+
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr h, uint dwVolume);
 
@@ -74,17 +76,17 @@ namespace Anno1800ModLauncher
                 var lang = CultureInfo.InstalledUICulture.Name;
                 if (lang.StartsWith("en"))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.English);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.English);
                 }
                 else if (lang.StartsWith("de"))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.German);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.German);
                 }
             }
             else {
-                LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
+                LanguageManager.Instance.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
             }
-            ThemeManager.SetTheme(Properties.Settings.Default.Theme);
+            ThemeManager.Instance.ChangeTheme(Properties.Settings.Default.Theme);
         }
 
         private void CheckSelfVersion()

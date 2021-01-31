@@ -102,7 +102,11 @@ namespace Anno1800ModLauncher.Helpers
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
-                string destDirName = $"{v}{i.Name}";
+                string[] PathArr = i.Path.Split('\\');
+                string Name = PathArr[PathArr.Length - 1];
+                if (Name.StartsWith("-"))
+                    Name = Name.Substring(1);
+                string destDirName = $"{v}{Name}";
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
                 Console.WriteLine($"Activated - {i.Name}");
@@ -120,7 +124,9 @@ namespace Anno1800ModLauncher.Helpers
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
-                string destDirName = $@"{v}-{i.Name}";
+                string[] PathArr = i.Path.Split('\\');
+                string Name = PathArr[PathArr.Length - 1];
+                string destDirName = $@"{v}-{Name}";
                 File.SetAttributes(i.Path, FileAttributes.Normal);
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
@@ -417,7 +423,7 @@ namespace Anno1800ModLauncher.Helpers
             //buttons should have a listener to change their displayed names etc. 
             //NOTE: LanguageManager.LanguageChanged is a static event.
             //reloading mods with new modModels can result in a memory leak. 
-            LanguageManager.LanguageChanged += LanguageManager_LanguageChanged;
+            LanguageManager.Instance.LanguageChanged += LanguageManager_LanguageChanged;
         }
 
         private void LanguageManager_LanguageChanged(object source, EventArgs args)

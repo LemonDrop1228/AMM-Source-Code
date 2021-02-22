@@ -107,9 +107,9 @@
     <system:String x:Key="DLCChristmasText">Weihnachtsmarkt</system:String>
     <system:String x:Key="DLCAmusementParkText">Vergnügungspark</system:String>
     <system:String x:Key="DLCCityLifeText">Lichter der Stadt</system:String>
-    <system:String x:Key="DLCS301Text">Season 3, DLC 1</system:String>
-    <system:String x:Key="DLCS302Text">Season 3, DLC 2</system:String>
-    <system:String x:Key="DLCS303Text">Season 3, DLC 3</system:String>
+    <system:String x:Key="DLCS301Text">Speicherstadt</system:String>
+    <system:String x:Key="DLCS302Text">Reisezeit</system:String>
+    <system:String x:Key="DLCS303Text">Dächer der Stadt</system:String>
 
     <!-- Mod Installing Dialog -->
     <system:String x:Key="InstallDialogWindowTitleText">Aus Archiv installieren</system:String>

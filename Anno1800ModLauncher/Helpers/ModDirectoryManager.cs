@@ -248,13 +248,13 @@ namespace Anno1800ModLauncher.Helpers
                                 DlcDescription += "\n> " + Application.Current.TryFindResource("DLCCityLifeText");
                                 break;
                             //change those later as soon as we get Season 3 info. 
-                            case "UntitledS301":
+                            case "Docklands":
                                 DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS301Text");
                                 break;
-                            case "UntitledS302":
+                            case "Tourism":
                                 DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS302Text");
                                 break;
-                            case "UntitledS303":
+                            case "Highlife":
                                 DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS303Text");
                                 break;
 

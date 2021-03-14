@@ -125,7 +125,7 @@ namespace Anno1800ModLauncher.Views
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.EmoticonSad, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Green);
-                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
+                    LoaderButtonText.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
                     #endregion
                     break;
@@ -145,6 +145,7 @@ namespace Anno1800ModLauncher.Views
                 case HelperEnums.DetectionState.Golden:
                     #region Configurtion is ready
                     GameStatus.Background = new SolidColorBrush(Colors.Green);
+                    GameDirectoryText.SetResourceReference(TextBlock.TextProperty, "HomeViewChangeGamePathText");
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Green);
@@ -152,13 +153,14 @@ namespace Anno1800ModLauncher.Views
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Green);
-                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
+                    LoaderButtonText.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
                     #endregion
                     break;
                 case HelperEnums.DetectionState.GoldenButOld:
                     #region Configurtion is ready
                     GameStatus.Background = new SolidColorBrush(Colors.Green);
+                    GameDirectoryText.SetResourceReference(TextBlock.TextProperty, "HomeViewChangeGamePathText");
                     GameStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModDirStatus.Background = new SolidColorBrush(Colors.Green);
@@ -166,7 +168,7 @@ namespace Anno1800ModLauncher.Views
                     ModDirStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Check, Width = 24, Height = 24 };
 
                     ModLoaderStatus.Background = new SolidColorBrush(Colors.Yellow);
-                    ModLoaderStatus.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
+                    LoaderButtonText.SetResourceReference(TextBlock.TextProperty, "HomeViewReinstallModloaderText");
                     ModLoaderStatus.Content = new MaterialDesignThemes.Wpf.PackIcon() { Kind = MaterialDesignThemes.Wpf.PackIconKind.Exclamation, Width = 24, Height = 24 };
                     #endregion
                     break;

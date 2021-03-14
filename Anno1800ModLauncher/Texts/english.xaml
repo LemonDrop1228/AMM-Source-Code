@@ -31,6 +31,7 @@
     <system:String x:Key="HomeViewRepoComboBoxSIURepoText">Spice it Up repo</system:String>
     <system:String x:Key="HomeViewSearchTooltipText">Search and select from local drives.</system:String>
     <system:String x:Key="HomeViewSetGamePathText">Set Game Path</system:String>
+    <system:String x:Key="HomeViewChangeGamePathText">Change Game Path</system:String>
     <system:String x:Key="HomeViewTooltipInstallFromLocal">Search and select from local drives</system:String>
     <system:String x:Key="HomeViewTooltipInstallText">Install using the built-in mod browser.</system:String>
     <system:String x:Key="HomeViewSourceText">Source:</system:String>
@@ -78,6 +79,10 @@
     <system:String x:Key="ModsViewStepTwoText">Step 2</system:String>
     <system:String x:Key="ModsViewStepThreeText">Step 3</system:String>
     <system:String x:Key="ModsViewStepFourText">Step 4</system:String>
+    <system:String x:Key="ModsViewActiveModsText">Active</system:String>
+    <system:String x:Key="ModsViewInactiveModsText">Inactive</system:String>
+    <system:String x:Key="ModsViewReloadModsTooltip">Reload Mods</system:String>
+    <system:String x:Key="ModsViewSelectAllText">Select All</system:String>
 
     <system:String x:Key="ModsViewDLCRequiredText">Required DLCs:</system:String>
     <system:String x:Key="ModsViewDLCPartlyRequiredText">Partly Required DLCs:</system:String>
@@ -90,6 +95,7 @@
     <system:String x:Key="SettingsViewThemeListText">Theme</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Preferences</system:String>
     <system:String x:Key="SettingsViewLanguageText">Language:</system:String>
+    <system:String x:Key="SettingsViewConsoleText">Show Console:</system:String>
 
     <system:String x:Key="ReadMeTextVersion">Version:</system:String>
     <system:String x:Key="ReadMeTextCreator">Creator: </system:String>
@@ -106,9 +112,10 @@
     <system:String x:Key="DLCChristmasText">Holiday Pack</system:String>
     <system:String x:Key="DLCAmusementParkText">Amusement Park</system:String>
     <system:String x:Key="DLCCityLifeText">City Lights Pack</system:String>
-    <system:String x:Key="DLCS301Text">Season 3, DLC 1</system:String>
-    <system:String x:Key="DLCS302Text">Season 3, DLC 2</system:String>
-    <system:String x:Key="DLCS303Text">Season 3, DLC 3</system:String>
+    <system:String x:Key="DLCS301Text">Docklands</system:String>
+    <system:String x:Key="DLCS302Text">Tourist Season</system:String>
+    <system:String x:Key="DLCS303Text">the High Life</system:String>
+
     
     <!-- Mod Installing Dialog -->
     <system:String x:Key="InstallDialogWindowTitleText">Install from Archive</system:String>

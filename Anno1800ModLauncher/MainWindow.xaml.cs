@@ -39,7 +39,7 @@ namespace Anno1800ModLauncher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MaterialWindow
+    public partial class MainWindow : MaterialWindow, INotifyPropertyChanged
     {
         //Test
         private const string WindowTitle = "AMM";
@@ -58,7 +58,9 @@ namespace Anno1800ModLauncher
         private ManagerStatus Status = ManagerStatus.bad;
         private bool IsUpdating;
 
-        public LanguageManager LanguageManager = new LanguageManager(); 
+        public LanguageManager LanguageManager = new LanguageManager();
+
+        public SettingsManager SettingsManager { get; set; }
 
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr h, uint dwVolume);
@@ -66,6 +68,9 @@ namespace Anno1800ModLauncher
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this; 
+
+            SettingsManager = new SettingsManager();
 
             //set language to the one that is saved as default in the application properties
 
@@ -401,5 +406,21 @@ namespace Anno1800ModLauncher
                 }
             }
         }
+
+
+        #region INotifyPropertyChanged Members
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
     }
 }

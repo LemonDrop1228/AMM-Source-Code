@@ -33,6 +33,28 @@ namespace Anno1800ModLauncher.Helpers
         private string modPath { get => Path.Combine(Properties.Settings.Default.GameRootPath, Properties.Settings.Default.ModDirectory); }
         public Ookii.Dialogs.Wpf.ProgressDialog currentProgDiag { get; private set; }
 
+        private int _activeMods { get; set; }
+        private int _inactiveMods { get; set; }
+
+        public int activeMods
+        {
+            get { return _activeMods; }
+            set
+            {
+                _activeMods = value;
+                OnPropertyChanged("activeMods");
+            }
+        }
+        public int inactiveMods
+        {
+            get { return _inactiveMods; }
+            set
+            {
+                _inactiveMods = value;
+                OnPropertyChanged("inactiveMods");
+            }
+        }
+
         /// <summary>
         /// Raises the PropertyChanged notification in a thread safe manner
         /// </summary>
@@ -56,8 +78,15 @@ namespace Anno1800ModLauncher.Helpers
 
         public ModDirectoryManager()
         {
+            activeMods = 0;
+            inactiveMods = 0;
             Instance = Instance ?? this;
             LoadMods();
+        }
+
+        private void UpdateModCounts() { 
+            activeMods = modList.Count(i => i.IsActive);
+            inactiveMods = modList.Count(i => !i.IsActive);
         }
 
         public void LoadMods()
@@ -86,11 +115,13 @@ namespace Anno1800ModLauncher.Helpers
                             (Path.GetFileName(d).IsActive()) ? "CheckBold" : "NoEntry", 
                             (Path.GetFileName(d).IsActive()) ? "DarkGreen" : "Red")
                         
-                        ).Where(w => w.Name != ".cache").ToList().OrderByDescending(s => s.IsActive));; ; ;
+                        ).Where(w => w.Name != ".cache").ToList().OrderBy(s => s.Name).OrderByDescending(s => s.IsActive));; ; ;
                 if (modList.Count > 0)
                     Console.WriteLine($"Found {modList.Count} mods! Active: {modList.Count(i => i.IsActive)} / Inactive: {modList.Count(i => !i.IsActive)}");
                 else
                     Console.WriteLine("Found no mods! You should check out NexusMods for some sweet mods...");
+
+                UpdateModCounts();
             }
             else
                 modList = null;
@@ -98,7 +129,6 @@ namespace Anno1800ModLauncher.Helpers
 
         internal bool ActivateMod(ModModel i)
         {
-
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
@@ -110,6 +140,7 @@ namespace Anno1800ModLauncher.Helpers
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
                 Console.WriteLine($"Activated - {i.Name}");
+                UpdateModCounts();
             }
             catch (Exception ex)
             {
@@ -131,6 +162,7 @@ namespace Anno1800ModLauncher.Helpers
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
                 Console.WriteLine($"De-Activated - {i.Name}");
+                UpdateModCounts();
             }
             catch (Exception ex)
             {
@@ -320,7 +352,6 @@ namespace Anno1800ModLauncher.Helpers
                 return _baseData.Where(o => o.Name.ToLower().Contains(filterText.ToLower()) && o.IsActive == filterStatus).ToObservableCollection();
             }
         }
-
         internal void DownloadInstallNewMod(string v)
         {
             currentProgDiag = new ProgressDialog();

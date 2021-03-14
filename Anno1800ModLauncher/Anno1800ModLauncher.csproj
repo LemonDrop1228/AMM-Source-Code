@@ -147,6 +147,7 @@
     <Compile Include="Helpers\Serializable\ModIdActiveTouple.cs" />
     <Compile Include="Helpers\Serializable\Modinfo.cs" />
     <Compile Include="Helpers\Serializable\Theme.cs" />
+    <Compile Include="Helpers\SettingsManager.cs" />
     <Compile Include="Helpers\ThemeManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>

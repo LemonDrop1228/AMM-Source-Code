@@ -31,6 +31,7 @@
     <system:String x:Key="HomeViewRepoComboBoxSIURepoText">Spice it Up Repository</system:String>
     <system:String x:Key="HomeViewSearchTooltipText">Durchsuchen</system:String>
     <system:String x:Key="HomeViewSetGamePathText">Spielpfad festlegen</system:String>
+    <system:String x:Key="HomeViewChangeGamePathText">Spielpfad ändern</system:String>
     <system:String x:Key="HomeViewTooltipInstallFromLocal">Durchsuchen</system:String>
     <system:String x:Key="HomeViewTooltipInstallText">Mit dem eingebauten Modbrowser installieren</system:String>
     <system:String x:Key="HomeViewSourceText">Quelle:</system:String>
@@ -61,7 +62,7 @@
     <system:String x:Key="ModsViewLoadProfileText">Profil laden</system:String>
     <system:String x:Key="ModsViewManageText">Verwalten</system:String>
     <system:String x:Key="ModsViewModDetailsText">Mod-Details:</system:String>
-    <system:String x:Key="ModsViewModListText">Liste der Mods</system:String>
+    <system:String x:Key="ModsViewModListText">Mods</system:String>
     <system:String x:Key="ModsViewModSearchHint">In installierten Mods suchen</system:String>
     <system:String x:Key="ModsViewNewProfileNameLabelText">Name des neuen Profils</system:String>
     <system:String x:Key="ModsViewProfileFilterComboActiveText">Aktiv</system:String>
@@ -78,6 +79,11 @@
     <system:String x:Key="ModsViewStepTwoText">Schritt 2</system:String>
     <system:String x:Key="ModsViewStepThreeText">Schritt 3</system:String>
     <system:String x:Key="ModsViewStepFourText">Schritt 4</system:String>
+
+    <system:String x:Key="ModsViewActiveModsText">Aktiv</system:String>
+    <system:String x:Key="ModsViewInactiveModsText">Inaktiv</system:String>
+    <system:String x:Key="ModsViewReloadModsTooltip">Mods neu laden</system:String>
+    <system:String x:Key="ModsViewSelectAllText">Alles auswählen</system:String>
 
     <system:String x:Key="ModsViewDLCRequiredText">Zwingend benötigte DLC:</system:String>
     <system:String x:Key="ModsViewDLCPartlyRequiredText">Teilweise benötigte DLC:</system:String>

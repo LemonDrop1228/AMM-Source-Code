@@ -32,7 +32,7 @@
             <materialDesign:Card
                 Margin="5"
                 Padding="3"
-                UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" >
+                UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -153,14 +153,17 @@
                 </Grid>
             </materialDesign:Card>
             <DockPanel DockPanel.Dock="Right" LastChildFill="True">
+                <DockPanel.Resources>
+                    <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+                </DockPanel.Resources>
                 <materialDesign:Card
+                    x:Name ="ConsoleWindow"
                     Margin="3"
                     Padding="5"
                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" DockPanel.Dock="Bottom" Height="100">
-
+                    UniformCornerRadius="5" Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" DockPanel.Dock="Bottom" Height="100" Visibility="{Binding Path=SettingsManager.Instance.Visibility, Converter={StaticResource BoolToVisConverter}}" >
                     <!--Console Output-->
-                    <ScrollViewer x:Name="LogScollViewer" Grid.Column="0" Grid.Row="6" Grid.RowSpan="4" Grid.ColumnSpan="3">
+                    <ScrollViewer  x:Name="LogScollViewer" Grid.Column="0" Grid.Row="6" Grid.RowSpan="4" Grid.ColumnSpan="3">
                         <TextBox x:Name="LogRTB" 
                                  Background ="{DynamicResource PrimaryHueMenuBackgroundBrush}" 
                                  Padding="3" 
@@ -170,7 +173,9 @@
                                  TextWrapping="WrapWithOverflow" 
                                  Foreground="#DDFFFFFF" 
                                  FontSize="12" 
-                                 FontFamily="Consolas" TextChanged="LogRTB_TextChanged" BorderBrush="Transparent" />
+                                 FontFamily="Consolas" 
+                                 TextChanged="LogRTB_TextChanged" 
+                                 BorderBrush="Transparent" />
                     </ScrollViewer>
                     <!--Console Output-->
                 </materialDesign:Card>

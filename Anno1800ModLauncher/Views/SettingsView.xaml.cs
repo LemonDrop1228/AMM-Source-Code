@@ -34,10 +34,23 @@ namespace Anno1800ModLauncher.Views
                 OnPropertyChanged("ThemeManager");
             }
         }
+
+        private SettingsManager _SettingsManager;
+        public SettingsManager SettingsManager
+        {
+            get { return _SettingsManager; }
+            set
+            {
+                _SettingsManager = value;
+                OnPropertyChanged("SettingsManager");
+            }
+        }
+
         public SettingsView()
         {
             InitializeComponent();
             ThemeManager = new ThemeManager();
+            SettingsManager = new SettingsManager(); 
             this.DataContext = this;
             LanguageComboBox.SelectedIndex = (int)LanguageManager.Instance.GetLanguage();
         }
@@ -56,10 +69,16 @@ namespace Anno1800ModLauncher.Views
 
         #endregion
 
-        private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e) 
+        private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e)
         {
             ThemeWrap theme = (ThemeWrap)ListViewThemes.SelectedItems[0];
             ThemeManager.Instance.ChangeTheme(theme);
+        }
+
+        private void ConsoleOutput_Toggled(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Show Console Output: {0}", SettingsManager.Instance.Visibility);
+            Properties.Settings.Default.ConsoleVisibility = SettingsManager.Instance.Visibility; 
         }
 
         public void LanguageSelection_LanguageChanged(object sender, RoutedEventArgs e) {

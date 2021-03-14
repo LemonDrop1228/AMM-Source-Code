@@ -139,5 +139,17 @@ namespace Anno1800ModLauncher.Properties {
                 this["NewsUrlDE"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ConsoleVisibility {
+            get {
+                return ((bool)(this["ConsoleVisibility"]));
+            }
+            set {
+                this["ConsoleVisibility"] = value;
+            }
+        }
     }
 }

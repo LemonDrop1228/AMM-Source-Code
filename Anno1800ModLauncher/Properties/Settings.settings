@@ -36,7 +36,7 @@
       <Value Profile="(Default)">https://anno-union.com/de/</Value>
     </Setting>
     <Setting Name="ConsoleVisibility" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,6 +1,6 @@
 # Anno 1800 Mod Manager
 A c# WPF app that helps you to manage your modded Anno 1800 experience.
-Just for some users concerned [Here](https://www.virustotal.com/gui/file/6aa923b86f1298bcd6df08d3d9647ebb15ed4880b78b2ee4f7ab602ba42e6c3d/detection) is the virustotal scan
+Just for some users concerned [Here](https://www.virustotal.com/gui/file/d3792a82721546f7b4b32838210bbb9ddd9930a611b60754f155cd6428b195e4/detection) is the virustotal scan
 # Mod Description
 AMM is a mod manager, game launcher, and news hub for Anno 1800. It uses the processes in place and made popular by xforce for modding. It does NOT replace xforce's Mod Loader, but simply installs it from his github repository, and manages the mods in your mod directory through an easy to use UI.
 # What This Mod Does

@@ -187,7 +187,7 @@ namespace Anno1800ModLauncher.Views
 
         private void Reload_Mods(object sender, RoutedEventArgs e)
         {
-            modDirectoryManager.LoadMods(); 
+            ModDirectoryManager.Instance.LoadMods(); 
         }
 
         private void Select_All(object sender, RoutedEventArgs e)

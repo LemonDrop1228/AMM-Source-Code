@@ -22,7 +22,7 @@
     <system:String x:Key="HomeViewImportButtonText">Importieren</system:String>
     <system:String x:Key="HomeViewInstallFromGithubText">von Github installieren</system:String>
     <system:String x:Key="HomeViewInstallFromNexusText">von Nexusmods installieren</system:String>
-    <system:String x:Key="HomeViewInstallFromZipText">aus ZIP-Archiv installieren</system:String>
+    <system:String x:Key="HomeViewInstallFromZipText">ZIP-Archive zur Installation auswählen</system:String>
     <system:String x:Key="HomeViewInstallModloaderText">Modloader installieren</system:String>
     <system:String x:Key="HomeViewModdingSetupText">Modding-Setup</system:String>
     <system:String x:Key="HomeViewModfolderCreateText">Modordner erstellen</system:String>
@@ -119,8 +119,8 @@
 
     <!-- Mod Installing Dialog -->
     <system:String x:Key="InstallDialogWindowTitleText">Aus Archiv installieren</system:String>
-    <system:String x:Key="InstallDialogModListText">Modliste</system:String>
-    <system:String x:Key="InstallDialogActivateButtonTooltipText">Alle Mods nach Installation aktivieren.</system:String>
+    <system:String x:Key="InstallDialogModListText">Archivliste</system:String>
+    <system:String x:Key="InstallDialogActivateButtonTooltipText">Alle Archive aktivieren.</system:String>
     <system:String x:Key="InstallDialogActivateButtonText">Alle aktivieren</system:String>
     <system:String x:Key="InstallDialogDeleteArchivesLabelText">Alle Archive nach der Installation löschen</system:String>
     <system:String x:Key="InstallDialogOpenDetailsLabelText">Mod-Details nach Installation anzeigen</system:String>

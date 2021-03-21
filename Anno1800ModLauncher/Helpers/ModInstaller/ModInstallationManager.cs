@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Ionic.Zip;
 using Ionic.Zlib;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Anno1800ModLauncher.Helpers.ModInstaller
 {
@@ -54,6 +55,7 @@ namespace Anno1800ModLauncher.Helpers.ModInstaller
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
+
         public delegate void InstallationCompleteEventHandler(MessageBoxResult Result);
         public event InstallationCompleteEventHandler InstallationComplete;
 
@@ -73,7 +75,7 @@ namespace Anno1800ModLauncher.Helpers.ModInstaller
 
         public void Install()
         {
-            Task.Run(async () => await InstallAsync().ConfigureAwait(false)).ContinueWith((e) => InstallationComplete(e.Result));
+            Task.Run(async () => await InstallAsync().ConfigureAwait(true)).ContinueWith((e) => InstallationComplete(e.Result));
         }
 
         private async Task<MessageBoxResult> InstallAsync()
@@ -100,9 +102,75 @@ namespace Anno1800ModLauncher.Helpers.ModInstaller
             return msgRes;
         }
 
+        /// <summary>
+        /// Installs mods from a single zip archive. 
+        /// 
+        /// If the mod in question is already in the mods folder, it will automatically overwrite and take over the activated status. 
+        /// </summary>
+        /// <param name="modArchive"></param>
+        /// <param name="destinationPath"></param>
         private void InstallSingle(ZipFile modArchive, string destinationPath)
-        {   
-            modArchive.ExtractAll(destinationPath, ExtractExistingFileAction.OverwriteSilently);
+        {
+            //temporary directory path for all unpacks
+            string TmpDirPath = Path.Combine(Properties.Settings.Default.GameRootPath, "amm_unpack");
+            //temporary unpack directory path
+            string TmpModPath = Path.Combine(TmpDirPath, modArchive.Name.Split('\\')[modArchive.Name.Split('\\').Length - 1]);
+            string modDir = Path.Combine(Properties.Settings.Default.GameRootPath, Properties.Settings.Default.ModDirectory);
+
+            //in case it doesn't already exists, create the unpack directory.
+            if (!Directory.Exists(TmpDirPath)) {
+                Directory.CreateDirectory(TmpDirPath);
+            }
+
+            //extract to the temporary directory
+            modArchive.ExtractAll(TmpModPath, ExtractExistingFileAction.OverwriteSilently);
+
+            //enumerate mods in the directory
+            var directories = Directory.EnumerateDirectories(TmpModPath);
+            //for each mod in the directory, check wether a mod with the same folder name is already installed. currently just don't copy in this case.
+            foreach (string s in directories) {
+                //get folder name alone
+                string folderName = s.Split('\\')[s.Split('\\').Length - 1];
+                string folderNameTrimmed = folderName.TrimStart('-').TrimStart(' ');
+
+                //determine what should happen if installation would lead to mod duplications
+                if (
+                    //no directory of the same name exists
+                    !(Directory.Exists(Path.Combine(modDir, folderNameTrimmed)) ||
+                    //no directory with the same name but deactivated exists.
+                    Directory.Exists(Path.Combine(modDir, "-" + folderNameTrimmed)))
+                    )
+                {
+                    FileSystem.MoveDirectory(s, Path.Combine(modDir, folderName));
+                    Console.WriteLine("No mod duplication problems found, copying {0}", folderNameTrimmed);
+                }
+                else if (
+                    //activated directory exists
+                    Directory.Exists(Path.Combine(modDir, folderNameTrimmed))
+                    )
+                {
+                    //delete the old one, paste in the new one, activate the new one
+                    FileSystem.DeleteDirectory(Path.Combine(modDir, folderNameTrimmed), DeleteDirectoryOption.DeleteAllContents);
+                    FileSystem.MoveDirectory(s, Path.Combine(modDir, folderNameTrimmed));
+                    Console.WriteLine("Mod Duplication found: replacing", folderNameTrimmed);
+                }
+                else if (
+                    //deactivated directory exists
+                    Directory.Exists(Path.Combine(modDir, "-" + folderNameTrimmed))
+                    ) 
+                {
+                    //delete the old one, paste in the new one, deactivate the new one
+                    FileSystem.DeleteDirectory(Path.Combine(modDir, "-" + folderNameTrimmed), DeleteDirectoryOption.DeleteAllContents);
+                    FileSystem.MoveDirectory(s, Path.Combine(modDir, "-" + folderNameTrimmed));
+                    Console.WriteLine("Mod Duplication found: replacing", "-"+folderNameTrimmed);
+                }
+            }
+
+            //delete temp directories - note: TmpDirPath can be used by other unpacks at the same time, so ONLY delete it if there are no files in it, which is default behavior for Directory.Delete method.
+                Directory.Delete(TmpModPath);
+                Directory.Delete(TmpDirPath);
+
+            //reload mods
             ModDirectoryManager.Instance.LoadMods();
         }
 

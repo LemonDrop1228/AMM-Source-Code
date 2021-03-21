@@ -181,8 +181,8 @@ namespace Anno1800ModLauncher.Helpers
                 res = File.ReadAllText(contentPath);
             if (File.Exists(readmePath))
                 res += Environment.NewLine + File.ReadAllText(readmePath);
+
             //prefer Modinfo over the old way 
-            
             if (i.Metadata != null) 
             {
                 res = ""; 
@@ -196,7 +196,6 @@ namespace Anno1800ModLauncher.Helpers
                     res += "\n\n" + i.Metadata.Description.getText();
                 }
                 
-
                 //Known Issues
                 if (i.Metadata.KnownIssues != null) {
                     res += "\n\n" + Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
@@ -324,12 +323,17 @@ namespace Anno1800ModLauncher.Helpers
             { 
                 if (i.Metadata.Image != null)
                 {
-                    var bytes = Convert.FromBase64String(i.Metadata.Image);
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.StreamSource = new MemoryStream(bytes);
-                    bitmap.EndInit();
-                    res = bitmap; 
+                    try {
+                        var bytes = Convert.FromBase64String(i.Metadata.Image);
+                        BitmapImage bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.StreamSource = new MemoryStream(bytes);
+                        bitmap.EndInit();
+                        res = bitmap;
+                        bitmap.StreamSource.Dispose();
+                    } catch ( System.FormatException e) {
+                        Console.WriteLine(i.Metadata.ModID + " contains a corrupted Base64 image. Fallback to normal image");
+                    }
                 }
             }
             return res;
@@ -367,7 +371,6 @@ namespace Anno1800ModLauncher.Helpers
         {
             using (var w = new WebClient())
             {
-
                 W_DownloadDataCompleted(w.DownloadData(uri));
             }
         }

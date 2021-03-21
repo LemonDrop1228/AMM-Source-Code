@@ -19,11 +19,9 @@
             <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.ColumnSpan="3" FontSize="24" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center">
-            You already have a profile with this name.
-            <LineBreak/>Do you want to overwrite it?
+        <TextBlock Grid.ColumnSpan="3" FontSize="24" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource DuplicateProfileDialogMainText}">
         </TextBlock>
-        <Button Grid.Row="1" Margin="5" Click="Cancel_Click">
+        <Button Grid.Row="1" Grid.Column="2" Margin="5" Click="Cancel_Click">
             <DockPanel>
                 <materialDesign:PackIcon
                     Kind="Cancel"
@@ -33,10 +31,10 @@
                 <TextBlock 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Right"
-                    DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="Cancel"/></TextBlock>
+                    DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="{DynamicResource DuplicateProfileDialogCancelButtonText}"/></TextBlock>
             </DockPanel>
         </Button>
-        <Button Grid.Row="1" Grid.Column="2" Margin="5" Click="Overwrite_Click">
+        <Button Grid.Row="1"  Margin="5" Click="Overwrite_Click">
             <DockPanel>
                 <materialDesign:PackIcon
                     Kind="ContentSave"
@@ -46,7 +44,7 @@
                 <TextBlock 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Right"
-                    DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="Overwrite"/></TextBlock>
+                    DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="{DynamicResource DuplicateProfileDialogOverrideButtonText}"/></TextBlock>
             </DockPanel>
         </Button>
     </Grid>

@@ -33,6 +33,28 @@ namespace Anno1800ModLauncher.Helpers
         private string modPath { get => Path.Combine(Properties.Settings.Default.GameRootPath, Properties.Settings.Default.ModDirectory); }
         public Ookii.Dialogs.Wpf.ProgressDialog currentProgDiag { get; private set; }
 
+        private int _activeMods { get; set; }
+        private int _inactiveMods { get; set; }
+
+        public int activeMods
+        {
+            get { return _activeMods; }
+            set
+            {
+                _activeMods = value;
+                OnPropertyChanged("activeMods");
+            }
+        }
+        public int inactiveMods
+        {
+            get { return _inactiveMods; }
+            set
+            {
+                _inactiveMods = value;
+                OnPropertyChanged("inactiveMods");
+            }
+        }
+
         /// <summary>
         /// Raises the PropertyChanged notification in a thread safe manner
         /// </summary>
@@ -56,8 +78,15 @@ namespace Anno1800ModLauncher.Helpers
 
         public ModDirectoryManager()
         {
+            activeMods = 0;
+            inactiveMods = 0;
             Instance = Instance ?? this;
             LoadMods();
+        }
+
+        private void UpdateModCounts() { 
+            activeMods = modList.Count(i => i.IsActive);
+            inactiveMods = modList.Count(i => !i.IsActive);
         }
 
         public void LoadMods()
@@ -86,11 +115,13 @@ namespace Anno1800ModLauncher.Helpers
                             (Path.GetFileName(d).IsActive()) ? "CheckBold" : "NoEntry", 
                             (Path.GetFileName(d).IsActive()) ? "DarkGreen" : "Red")
                         
-                        ).Where(w => w.Name != ".cache").ToList().OrderByDescending(s => s.IsActive));; ; ;
+                        ).Where(w => w.Name != ".cache").ToList().OrderBy(s => s.Name).OrderByDescending(s => s.IsActive));; ; ;
                 if (modList.Count > 0)
                     Console.WriteLine($"Found {modList.Count} mods! Active: {modList.Count(i => i.IsActive)} / Inactive: {modList.Count(i => !i.IsActive)}");
                 else
                     Console.WriteLine("Found no mods! You should check out NexusMods for some sweet mods...");
+
+                UpdateModCounts();
             }
             else
                 modList = null;
@@ -98,14 +129,18 @@ namespace Anno1800ModLauncher.Helpers
 
         internal bool ActivateMod(ModModel i)
         {
-
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
-                string destDirName = $"{v}{i.Name}";
+                string[] PathArr = i.Path.Split('\\');
+                string Name = PathArr[PathArr.Length - 1];
+                if (Name.StartsWith("-"))
+                    Name = Name.Substring(1);
+                string destDirName = $"{v}{Name}";
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
                 Console.WriteLine($"Activated - {i.Name}");
+                UpdateModCounts();
             }
             catch (Exception ex)
             {
@@ -120,11 +155,14 @@ namespace Anno1800ModLauncher.Helpers
             string v = Path.GetDirectoryName(i.Path) + @"\";
             try
             {
-                string destDirName = $@"{v}-{i.Name}";
+                string[] PathArr = i.Path.Split('\\');
+                string Name = PathArr[PathArr.Length - 1];
+                string destDirName = $@"{v}-{Name}";
                 File.SetAttributes(i.Path, FileAttributes.Normal);
                 Directory.Move(i.Path, destDirName);
                 i.Path = destDirName;
                 Console.WriteLine($"De-Activated - {i.Name}");
+                UpdateModCounts();
             }
             catch (Exception ex)
             {
@@ -143,24 +181,126 @@ namespace Anno1800ModLauncher.Helpers
                 res = File.ReadAllText(contentPath);
             if (File.Exists(readmePath))
                 res += Environment.NewLine + File.ReadAllText(readmePath);
+
             //prefer Modinfo over the old way 
-            
-            if (i.Metadata != null) {
-                res = i.Metadata.Description.getText() + "\n";
+            if (i.Metadata != null) 
+            {
+                res = ""; 
+                //Version
+                if (i.Metadata.Version != null) {
+                    res += "\n\n" +Application.Current.TryFindResource("ReadMeTextVersion") + " " + i.Metadata.Version;
+                }
+                
+                //Description
+                if (i.Metadata.Description != null) {
+                    res += "\n\n" + i.Metadata.Description.getText();
+                }
+                
+                //Known Issues
                 if (i.Metadata.KnownIssues != null) {
-                    res += "\n"+ Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
+                    res += "\n\n" + Application.Current.TryFindResource("ReadMeTextKnownIssues") + " ";
                     foreach (Localized KnownIssue in i.Metadata.KnownIssues)
                     {
                         res += "\n" + "> " + KnownIssue.getText();
                     }
-                    res += "\n";
                 }
+
+                //DLC Dependency
+                if (i.Metadata.DLCDependencies != null) 
+                {
+                    res += "\n";
+                    Dlc[] DlcDependencies = i.Metadata.DLCDependencies;
+
+                    //sort this array by dlc dependency
+                    Array.Sort(DlcDependencies, Comparer<Dlc>.Create((x, y) => y.Dependant.CompareTo(x.Dependant)));
+
+                    //these bools will indicate wether the respective paragraph of DLCs has already been added in the description. 
+                    bool requiredSet = false;
+                    bool partlySet = false;
+                    bool atLeastSet = false; 
+
+                    //due to the array of DLCs being sorted by DLC dependency, we can add the Dependency Header once and all DLCs will be in the right paragraph without further checks. 
+                    foreach (Dlc dlc in DlcDependencies)
+                    {
+                        string DlcDescription = ""; 
+                        switch (dlc.Dependant) {
+                            case "required":
+                                if (!requiredSet) 
+                                {
+                                    DlcDescription += "\n"+ Application.Current.TryFindResource("ModsViewDLCRequiredText");
+                                    requiredSet = true; 
+                                }
+                                break;
+                            case "partly":
+                                if (!partlySet) 
+                                {
+                                    DlcDescription += "\n" + Application.Current.TryFindResource("ModsViewDLCPartlyRequiredText"); 
+                                    partlySet = true; 
+                                }
+                                break;
+                            case "atLeastOneRequired":
+                                if (!atLeastSet)
+                                {
+                                    DlcDescription += "\n" + Application.Current.TryFindResource("ModsViewDLCAtLeastOneRequiredText");
+                                    atLeastSet = true; 
+                                }
+                                break;
+                        }
+
+                        switch (dlc.DLC) {
+                            case "Anarchist":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCAnarchistText");
+                                break;
+                            case "SunkenTreasures":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCSunkenTreasuresText");
+                                break;
+                            case "Botanica":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCBotanicaText");
+                                break;
+                            case "ThePassage":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCThePassageText");
+                                break;
+                            case "SeatOfPower":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCSeatOfPowerText");
+                                break;
+                            case "BrightHarvest":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCBrightHarvestText");
+                                break;
+                            case "LandOfLions":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCLandOfLionsText");
+                                break;
+                            case "Christmas":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCChristmasText");
+                                break;
+                            case "AmusementPark":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCAmusementParkText");
+                                break;
+                            case "CityLife":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCCityLifeText");
+                                break;
+                            //change those later as soon as we get Season 3 info. 
+                            case "Docklands":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS301Text");
+                                break;
+                            case "Tourism":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS302Text");
+                                break;
+                            case "Highlife":
+                                DlcDescription += "\n> " + Application.Current.TryFindResource("DLCS303Text");
+                                break;
+
+                        }
+                        res += DlcDescription;
+                    }
+                }
+
+                //Creator
                 if (i.Metadata.CreatorName != null) {
-                    res += "\n" + Application.Current.TryFindResource("ReadMeTextCreator") + " " + i.Metadata.CreatorName;
+                    res += "\n\n" + Application.Current.TryFindResource("ReadMeTextCreator") + " " + i.Metadata.CreatorName;
                 }
             }
             
-            return res;
+            return res.TrimStart();
         }
 
         internal ImageSource GetModBanner(ModModel i)
@@ -183,12 +323,17 @@ namespace Anno1800ModLauncher.Helpers
             { 
                 if (i.Metadata.Image != null)
                 {
-                    var bytes = Convert.FromBase64String(i.Metadata.Image);
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.StreamSource = new MemoryStream(bytes);
-                    bitmap.EndInit();
-                    res = bitmap; 
+                    try {
+                        var bytes = Convert.FromBase64String(i.Metadata.Image);
+                        BitmapImage bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.StreamSource = new MemoryStream(bytes);
+                        bitmap.EndInit();
+                        res = bitmap;
+                        bitmap.StreamSource.Dispose();
+                    } catch ( System.FormatException e) {
+                        Console.WriteLine(i.Metadata.ModID + " contains a corrupted Base64 image. Fallback to normal image");
+                    }
                 }
             }
             return res;
@@ -211,7 +356,6 @@ namespace Anno1800ModLauncher.Helpers
                 return _baseData.Where(o => o.Name.ToLower().Contains(filterText.ToLower()) && o.IsActive == filterStatus).ToObservableCollection();
             }
         }
-
         internal void DownloadInstallNewMod(string v)
         {
             currentProgDiag = new ProgressDialog();
@@ -227,7 +371,6 @@ namespace Anno1800ModLauncher.Helpers
         {
             using (var w = new WebClient())
             {
-
                 W_DownloadDataCompleted(w.DownloadData(uri));
             }
         }
@@ -300,21 +443,26 @@ namespace Anno1800ModLauncher.Helpers
             Icon = pIcon;
             Color = pColor;
 
+            //try to deserialize mod metadata here.
             try
             {
                 Metadata = JsonConvert.DeserializeObject<Modinfo>(File.ReadAllText(Path + "\\modinfo.json"));
                 if (Metadata != null)
                 {
-                    
+
                     name = "[" + Metadata.Category.getText() + "] " + Metadata.ModName.getText();
                 }
             }
-            catch { }
+            catch (JsonSerializationException e)
+            {
+                Console.WriteLine("Json Serialization failed:{0}", Path);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("No modinfo found for {0}", Path);
+            }
+            LanguageManager.Instance.LanguageChanged += LanguageManager_LanguageChanged;
 
-            //buttons should have a listener to change their displayed names etc. 
-            //NOTE: LanguageManager.LanguageChanged is a static event.
-            //reloading mods with new modModels can result in a memory leak. 
-            LanguageManager.LanguageChanged += LanguageManager_LanguageChanged;
         }
 
         private void LanguageManager_LanguageChanged(object source, EventArgs args)
@@ -325,6 +473,19 @@ namespace Anno1800ModLauncher.Helpers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>The non localized directory name of a mod without "-" in the front</returns>
+        public String getDirectoryName() {
+            String[] PathArr = Path.Split('\\');
+            var DirectoryName = PathArr[PathArr.Length - 1];
+            if (DirectoryName.StartsWith("-"))
+            {
+                DirectoryName = DirectoryName.Substring(1);
+            }
+            return DirectoryName;
+        }
         public bool hasMetadata() {
             return Metadata != null; 
         }
@@ -355,7 +516,6 @@ namespace Anno1800ModLauncher.Helpers
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
-
 
         public override string ToString()
         {

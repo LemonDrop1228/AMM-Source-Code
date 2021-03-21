@@ -137,6 +137,7 @@
                             Width="24" 
                             DockPanel.Dock="Left"/>
                         <TextBlock 
+                                x:Name="GameDirectoryText"
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Right"
                                 DockPanel.Dock="Right" Margin="10,0,0,0" Text="{DynamicResource HomeViewSetGamePathText}"/>
@@ -171,7 +172,7 @@
 				                Header="{DynamicResource ModsViewLocalTitleText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="0,0,0,15">
                                 <DockPanel VerticalAlignment="Center" LastChildFill="True">
-                                    <Button x:Name="InstallLocalButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center" Click="InstallZip_Click">
+                                    <Button x:Name="InstallLocalButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1" HorizontalContentAlignment="Center" Click="SearchZip_Click">
                                         <DockPanel>
                                             <materialDesign:PackIcon
                                         Kind="Hdd"
@@ -184,7 +185,7 @@
                                             DockPanel.Dock="Right" Margin="5,0,0,0" Text="{DynamicResource HomeViewInstallFromZipText}"/>
                                         </DockPanel>
                                     </Button>
-                                    <Button x:Name="SearchLocalButton" 
+                                    <!--<Button x:Name="SearchLocalButton" 
                                             Margin="5,0,0,0" 
                                             MinWidth="35" 
                                             DockPanel.Dock="Left" 
@@ -206,7 +207,7 @@
                                       materialDesign:HintAssist.HelperText="{DynamicResource HomeViewHintAssistLocalFile}"
                                       VerticalAlignment="Center"
                                       materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
-                                    </TextBox>
+                                    </TextBox>-->
                                 </DockPanel>
                             </StackPanel>
                         </Expander>
@@ -215,7 +216,7 @@
 				Height="1"
 				HorizontalAlignment="Stretch"
 				SnapsToDevicePixels="True" />
-                        <Expander IsExpanded="True"
+                        <Expander Visibility="Collapsed"  IsExpanded="True"
 				HorizontalAlignment="Stretch"
 				Header="{DynamicResource ModsViewNexusTitleText}"  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="5,5,5,15">
@@ -265,7 +266,7 @@
 				Height="1"
 				HorizontalAlignment="Stretch"
 				SnapsToDevicePixels="True" />
-                        <Expander IsExpanded="True"
+                        <Expander Visibility="Collapsed" IsExpanded="True"
 				HorizontalAlignment="Stretch"
 				Header="{DynamicResource ModsViewGithubTitleText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="5">
@@ -306,7 +307,7 @@
 				            Header="{DynamicResource ModsViewImportProfileTitleText}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Background ="{DynamicResource PrimaryHueBackgroundBrush}">
                             <StackPanel Orientation="Vertical" Margin="0,0,0,15">
                                 <DockPanel VerticalAlignment="Center" LastChildFill="True">
-                                    <Button x:Name="ImportProfileButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center">
+                                    <Button x:Name="ImportProfileButton" MinWidth="181" DockPanel.Dock="Right" Opacity="1"  HorizontalContentAlignment="Center" Click="SearchProfile_Click">
                                         <DockPanel>
                                             <materialDesign:PackIcon
                                                 Kind="Import"
@@ -319,7 +320,7 @@
                                                 DockPanel.Dock="Right" Margin="5,0,0,0" Text="{DynamicResource HomeViewImportButtonText}"/>
                                         </DockPanel>
                                     </Button>
-                                    <Button x:Name="SearchProfileButton" 
+                                    <!--<Button x:Name="SearchProfileButton" 
                                             Margin="5,0,0,0" 
                                             MinWidth="35" 
                                             DockPanel.Dock="Left" 
@@ -341,7 +342,7 @@
                                       materialDesign:HintAssist.HelperText="{DynamicResource HomeViewHintAssistLocalFile}"
                                       VerticalAlignment="Center"
                                       materialDesign:TextFieldAssist.HasClearButton="True" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" FontSize="13" CaretBrush="#FFE4E4E4">
-                                    </TextBox>
+                                    </TextBox>-->
                                 </DockPanel>
                             </StackPanel>
                         </Expander>

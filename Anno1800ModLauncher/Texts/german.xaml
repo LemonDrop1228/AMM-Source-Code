@@ -22,7 +22,7 @@
     <system:String x:Key="HomeViewImportButtonText">Importieren</system:String>
     <system:String x:Key="HomeViewInstallFromGithubText">von Github installieren</system:String>
     <system:String x:Key="HomeViewInstallFromNexusText">von Nexusmods installieren</system:String>
-    <system:String x:Key="HomeViewInstallFromZipText">aus ZIP-Archiv installieren</system:String>
+    <system:String x:Key="HomeViewInstallFromZipText">ZIP-Archive zur Installation auswählen</system:String>
     <system:String x:Key="HomeViewInstallModloaderText">Modloader installieren</system:String>
     <system:String x:Key="HomeViewModdingSetupText">Modding-Setup</system:String>
     <system:String x:Key="HomeViewModfolderCreateText">Modordner erstellen</system:String>
@@ -31,6 +31,7 @@
     <system:String x:Key="HomeViewRepoComboBoxSIURepoText">Spice it Up Repository</system:String>
     <system:String x:Key="HomeViewSearchTooltipText">Durchsuchen</system:String>
     <system:String x:Key="HomeViewSetGamePathText">Spielpfad festlegen</system:String>
+    <system:String x:Key="HomeViewChangeGamePathText">Spielpfad ändern</system:String>
     <system:String x:Key="HomeViewTooltipInstallFromLocal">Durchsuchen</system:String>
     <system:String x:Key="HomeViewTooltipInstallText">Mit dem eingebauten Modbrowser installieren</system:String>
     <system:String x:Key="HomeViewSourceText">Quelle:</system:String>
@@ -61,7 +62,7 @@
     <system:String x:Key="ModsViewLoadProfileText">Profil laden</system:String>
     <system:String x:Key="ModsViewManageText">Verwalten</system:String>
     <system:String x:Key="ModsViewModDetailsText">Mod-Details:</system:String>
-    <system:String x:Key="ModsViewModListText">Liste der Mods</system:String>
+    <system:String x:Key="ModsViewModListText">Mods</system:String>
     <system:String x:Key="ModsViewModSearchHint">In installierten Mods suchen</system:String>
     <system:String x:Key="ModsViewNewProfileNameLabelText">Name des neuen Profils</system:String>
     <system:String x:Key="ModsViewProfileFilterComboActiveText">Aktiv</system:String>
@@ -78,6 +79,15 @@
     <system:String x:Key="ModsViewStepTwoText">Schritt 2</system:String>
     <system:String x:Key="ModsViewStepThreeText">Schritt 3</system:String>
     <system:String x:Key="ModsViewStepFourText">Schritt 4</system:String>
+
+    <system:String x:Key="ModsViewActiveModsText">Aktiv</system:String>
+    <system:String x:Key="ModsViewInactiveModsText">Inaktiv</system:String>
+    <system:String x:Key="ModsViewReloadModsTooltip">Mods neu laden</system:String>
+    <system:String x:Key="ModsViewSelectAllText">Alles auswählen</system:String>
+
+    <system:String x:Key="ModsViewDLCRequiredText">Zwingend benötigte DLC:</system:String>
+    <system:String x:Key="ModsViewDLCPartlyRequiredText">Teilweise benötigte DLC:</system:String>
+    <system:String x:Key="ModsViewDLCAtLeastOneRequiredText">Benötigt eines der DLC:</system:String>
     
     <!-- Dialogs-->
     <system:String x:Key="DialogSearchProfileHeaderText">Ein Profil zum installieren auswählen</system:String>
@@ -86,7 +96,39 @@
     <!-- Settings view -->
     <system:String x:Key="SettingsViewThemeListText">Erscheinungsbild</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Einstellungen</system:String>
+    <system:String x:Key="SettingsViewLanguageText">Sprache:</system:String>
 
+    <system:String x:Key="ReadMeTextVersion">Version:</system:String>
     <system:String x:Key="ReadMeTextCreator">Ersteller: </system:String>
-    <system:String x:Key="ReadMeTextKnownIssues">Bekannte Probleme: </system:String>
+    <system:String x:Key="ReadMeTextKnownIssues">Bekannte Probleme:</system:String>
+
+    <!-- DLC Texts -->
+    <system:String x:Key="DLCAnarchistText">Der Anarchist</system:String>
+    <system:String x:Key="DLCSunkenTreasuresText">Gesunkene Schätze</system:String>
+    <system:String x:Key="DLCBotanicaText">Botanika</system:String>
+    <system:String x:Key="DLCThePassageText">Die Passage</system:String>
+    <system:String x:Key="DLCSeatOfPowerText">Paläste der Macht</system:String>
+    <system:String x:Key="DLCBrightHarvestText">Reiche Ernte</system:String>
+    <system:String x:Key="DLCLandOfLionsText">Land der Löwen</system:String>
+    <system:String x:Key="DLCChristmasText">Weihnachtsmarkt</system:String>
+    <system:String x:Key="DLCAmusementParkText">Vergnügungspark</system:String>
+    <system:String x:Key="DLCCityLifeText">Lichter der Stadt</system:String>
+    <system:String x:Key="DLCS301Text">Speicherstadt</system:String>
+    <system:String x:Key="DLCS302Text">Reisezeit</system:String>
+    <system:String x:Key="DLCS303Text">Dächer der Stadt</system:String>
+
+    <!-- Mod Installing Dialog -->
+    <system:String x:Key="InstallDialogWindowTitleText">Aus Archiv installieren</system:String>
+    <system:String x:Key="InstallDialogModListText">Archivliste</system:String>
+    <system:String x:Key="InstallDialogActivateButtonTooltipText">Alle Archive aktivieren.</system:String>
+    <system:String x:Key="InstallDialogActivateButtonText">Alle aktivieren</system:String>
+    <system:String x:Key="InstallDialogDeleteArchivesLabelText">Alle Archive nach der Installation löschen</system:String>
+    <system:String x:Key="InstallDialogOpenDetailsLabelText">Mod-Details nach Installation anzeigen</system:String>
+    <system:String x:Key="InstallDialogBackupLabelText">Backup der Archive nach Installation</system:String>
+    <system:String x:Key="InstallDialogInstallButtonText">LOS!</system:String>
+
+    <!-- Duplicate Profile Dialog -->
+    <system:String x:Key="DuplicateProfileDialogMainText">Ein Profil mit diesem Namen existiert bereits. Überschreiben?</system:String>
+    <system:String x:Key="DuplicateProfileDialogCancelButtonText">Abbrechen</system:String>
+    <system:String x:Key="DuplicateProfileDialogOverrideButtonText">Überschreiben</system:String>
 </ResourceDictionary>

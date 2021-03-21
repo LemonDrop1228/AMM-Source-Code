@@ -44,7 +44,7 @@
                     <StackPanel
                     Orientation="Horizontal">
                         <materialDesign:PackIcon
-                      Kind="ClipboardList"
+                      Kind="Paintbrush"
                       Height="24"
                       Width="24"
                             Margin="4,5,0,5"
@@ -60,7 +60,7 @@
             <ScrollViewer Grid.Column="0">
                 <StackPanel>
                     <StackPanel Margin="20 20">
-                        <ListView Template ="{StaticResource NonScrollableListView}" x:Name="ListViewThemes" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=themeLoadingHelper.themeList}" SelectionChanged="ThemeSelection_SelectionChanged">
+                        <ListView Template ="{StaticResource NonScrollableListView}" x:Name="ListViewThemes" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=ThemeManager.themeList}" SelectionChanged="ThemeSelection_SelectionChanged">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Margin="10" Width="110" Height="130">
@@ -97,7 +97,7 @@
                     <StackPanel
                     Orientation="Horizontal">
                         <materialDesign:PackIcon
-                      Kind="ClipboardList"
+                      Kind="Gear"
                       Height="24"
                       Width="24"
                             Margin="4,5,0,5"
@@ -110,21 +110,35 @@
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
-        </GroupBox>
-        <materialDesign:Card Grid.Column="1" Grid.Row="1" Grid.RowSpan="1"
-				Margin="0,0,0,0" Background="Transparent">
-            <StackPanel>
-                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="True">
-                    <ComboBox x:Name ="LanguageComboBox" Margin="0,0,20,20" IsReadOnly="true" IsEditable="false"
+            <materialDesign:Card Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"
+				    Margin="0,0,0,0" Background="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" MaxHeight="30"/>
+                        <RowDefinition />
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3">
+                        <Label Content="{DynamicResource SettingsViewLanguageText}" MinWidth="100" Margin="20,0,20,20" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Left" Grid.RowSpan="1"/>
+                        <Label Content="{DynamicResource SettingsViewConsoleText}" MinWidth="100" Margin="20,0,20,20" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Left" Grid.RowSpan="1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                        <ComboBox x:Name ="LanguageComboBox" VerticalAlignment="Center" Margin="0,0,20,20" IsReadOnly="true" IsEditable="false"
                             materialDesign:TextFieldAssist.HasClearButton="True" 
                             materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightBrush}"
                             FontSize="12" MinWidth="250" Foreground="{DynamicResource PrimaryHueLightBrush}"
                               SelectionChanged ="LanguageSelection_LanguageChanged">
-                        <ComboBoxItem x:Name="LanguageComboBoxItemEnglish">English</ComboBoxItem>
-                        <ComboBoxItem x:Name="LanguageComboBoxItemGerman">Deutsch</ComboBoxItem>
-                    </ComboBox>
-                </DockPanel>
-            </StackPanel>
-        </materialDesign:Card>
+                            <ComboBoxItem x:Name="LanguageComboBoxItemEnglish">English</ComboBoxItem>
+                            <ComboBoxItem x:Name="LanguageComboBoxItemGerman">Deutsch</ComboBoxItem>
+                        </ComboBox>
+                        <CheckBox Margin="0,5,20,20" x:Name="ConsoleOutputCheckbox" Style="{StaticResource MaterialDesignLightCheckBox}" IsChecked="{Binding Path=SettingsManager.Instance.Visibility, Mode=TwoWay}" Click="ConsoleOutput_Toggled" VerticalAlignment="Center" HorizontalAlignment="Left"></CheckBox>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </GroupBox>
     </Grid>
 </UserControl>

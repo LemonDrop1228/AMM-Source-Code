@@ -65,7 +65,7 @@
     },
     {
       "Key": "BackgroundImageBrush",
-      "Value": "pack://application:,,,/Images/worldsfair.jpg",
+      "Value": "/Images/worldsfair.jpg",
       "ReadAs": 1
     }
   ]

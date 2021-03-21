@@ -63,6 +63,17 @@ namespace Anno1800ModLauncher.Views
             }
         }
 
+        private String _activeMods { get; set; }
+
+        public String activeMods
+        {
+            get { return _activeMods; }
+            set
+            {
+                _activeMods = value;
+                OnPropertyChanged("activeMods");
+            }
+        }
 
         /// <summary>
         /// Raises the PropertyChanged notification in a thread safe manner
@@ -94,9 +105,8 @@ namespace Anno1800ModLauncher.Views
             profilesManager = new ProfilesManager();
             SetProfilesOptions();
             OriginalBannerSource = ModBannerImg.Source;
-
-            //
-            LanguageManager.LanguageChanged += LanguageChanged;
+            LanguageManager.Instance.LanguageChanged += LanguageChanged;
+            activeMods = "500";
         }
 
         private void SetProfilesOptions()
@@ -173,6 +183,16 @@ namespace Anno1800ModLauncher.Views
 
                 ModBannerImg.Source = modDirectoryManager.GetModBanner(i) ?? OriginalBannerSource;
             }
+        }
+
+        private void Reload_Mods(object sender, RoutedEventArgs e)
+        {
+            ModDirectoryManager.Instance.LoadMods(); 
+        }
+
+        private void Select_All(object sender, RoutedEventArgs e)
+        {
+            ModListBox.SelectAll(); 
         }
 
         private void Save_Profile(object sender, RoutedEventArgs e)

@@ -24,22 +24,35 @@ namespace Anno1800ModLauncher.Views
     /// </summary>
     public partial class SettingsView : UserControl, INotifyPropertyChanged
     {
-        private ThemeLoadingHelper _themeLoadingHelper;
-        public ThemeLoadingHelper themeLoadingHelper
+        private ThemeManager _ThemeManager;
+        public ThemeManager ThemeManager
         {
-            get { return _themeLoadingHelper; }
+            get { return _ThemeManager; }
             set
             {
-                _themeLoadingHelper = value;
-                OnPropertyChanged("themeLoadingHelper");
+                _ThemeManager = value;
+                OnPropertyChanged("ThemeManager");
             }
         }
+
+        private SettingsManager _SettingsManager;
+        public SettingsManager SettingsManager
+        {
+            get { return _SettingsManager; }
+            set
+            {
+                _SettingsManager = value;
+                OnPropertyChanged("SettingsManager");
+            }
+        }
+
         public SettingsView()
         {
             InitializeComponent();
-            themeLoadingHelper = new ThemeLoadingHelper();
+            ThemeManager = new ThemeManager();
+            SettingsManager = new SettingsManager(); 
             this.DataContext = this;
-            LanguageComboBox.SelectedIndex = (int)LanguageManager.GetLanguage();
+            LanguageComboBox.SelectedIndex = (int)LanguageManager.Instance.GetLanguage();
         }
         private void OnPropertyChanged(string propertyName)
         {
@@ -56,11 +69,16 @@ namespace Anno1800ModLauncher.Views
 
         #endregion
 
-        private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e) 
+        private void ThemeSelection_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Changed Theme");
             ThemeWrap theme = (ThemeWrap)ListViewThemes.SelectedItems[0];
-            ThemeManager.SetTheme(theme);
+            ThemeManager.Instance.ChangeTheme(theme);
+        }
+
+        private void ConsoleOutput_Toggled(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Show Console Output: {0}", SettingsManager.Instance.Visibility);
+            Properties.Settings.Default.ConsoleVisibility = SettingsManager.Instance.Visibility; 
         }
 
         public void LanguageSelection_LanguageChanged(object sender, RoutedEventArgs e) {
@@ -68,20 +86,20 @@ namespace Anno1800ModLauncher.Views
             {
                 if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemEnglish))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.English);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.English);
                 }
                 else if (LanguageComboBox.SelectedValue.Equals(LanguageComboBoxItemGerman))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.German);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.German);
                 }
             }
             //disallow user to clear the combo box ^^
             else {
-                if (LanguageManager.GetLanguage() == HelperEnums.Language.English)
+                if (LanguageManager.Instance.GetLanguage() == HelperEnums.Language.English)
                 {
                     LanguageComboBox.SelectedValue =(LanguageComboBoxItemEnglish);
                 }
-                else if (LanguageManager.GetLanguage() == HelperEnums.Language.German)
+                else if (LanguageManager.Instance.GetLanguage() == HelperEnums.Language.German)
                 {
                     LanguageComboBox.SelectedValue = (LanguageComboBoxItemGerman);
                 }

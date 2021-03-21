@@ -22,20 +22,59 @@
         <GroupBox Grid.Column="0" Grid.Row="0" Margin="0,0,2,3" Padding="0" Style="{DynamicResource MaterialDesignGroupBox}">
             <GroupBox.HeaderTemplate>
                 <DataTemplate>
-                    <StackPanel
-                    Orientation="Horizontal">
-                        <materialDesign:PackIcon
-                      Kind="ClipboardList"
-                      Height="24"
-                      Width="24"
-                            Margin="4,5,0,5"
-                      VerticalAlignment="Center" />
-                        <TextBlock
-                      Margin="4,0,0,0"
-                      VerticalAlignment="Center"
-                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                      Text="{DynamicResource ModsViewModListText}"/>
-                    </StackPanel>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                  Kind="ClipboardList"
+                                  Height="24"
+                                  Width="24"
+                                        Margin="4,5,0,5"
+                                  VerticalAlignment="Center" />
+                            <TextBlock
+                                  Margin="4,0,0,0"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                  Text="{DynamicResource ModsViewModListText}"/>
+                            <TextBlock
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}">
+                                <Run Text="{Binding Path=DataContext.modDirectoryManager.activeMods}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}"/>
+                                <Run Text="{DynamicResource ModsViewActiveModsText}"></Run>
+                                <Run Text=", "></Run>
+                                <Run Text="{Binding Path=DataContext.modDirectoryManager.inactiveMods}" DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}"/>
+                                <Run Text="{DynamicResource ModsViewInactiveModsText}"></Run>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation ="Horizontal" HorizontalAlignment="Right">
+                            <Button Grid.Column="2" Opacity="1" Margin="3" HorizontalContentAlignment="Center" Click="Select_All">
+                                <DockPanel>
+                                    <materialDesign:PackIcon
+                            Kind="SelectAll"
+                            Height="24"
+                            Width="24" 
+                            DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                                    <TextBlock 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="10,0,0,0"><Run Text="{DynamicResource ModsViewSelectAllText}"/></TextBlock>
+                                </DockPanel>
+                            </Button>
+                            <Button x:Name ="ButtonReloadMods" 
+                                Margin="0,0,5,0" 
+                                Click="Reload_Mods"
+                                ToolTip="{DynamicResource ModsViewReloadModsTooltip}">
+                                <DockPanel>
+                                    <materialDesign:PackIcon
+                                  Kind="Reload"
+                                  Height="24"
+                                  Width="24"
+                                        Margin="0,0,0,0"
+                                  VerticalAlignment="Center" />
+                                </DockPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
             <ListBox x:Name="ModListBox" 
@@ -80,7 +119,7 @@
             </GroupBox.HeaderTemplate>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.40*"/>
                     <RowDefinition Height="0.75*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -88,8 +127,10 @@
                 </Grid.ColumnDefinitions>
                 <Image x:Name="ModBannerImg" 
                        Margin="0" 
-                       Source="/Images/ModImg_PlaceHolder.png" 
-                       Grid.Row="0" Stretch="Fill"/>
+                       Source="/Images/ModImg_PlaceHolder_2.png" 
+                       Grid.Row="0" Stretch="UniformToFill"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
                 <ScrollViewer Grid.Row="1" Margin="0" BorderBrush="#00000000">
                     <TextBox Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" Text ="{Binding Path=modDescriptionText, UpdateSourceTrigger=PropertyChanged}" x:Name="ReadMeTextBox"  Margin="0" TextWrapping="Wrap" IsReadOnly="True" Background="#3F444444" BorderBrush="#00000000" TextChanged="ReadMeTextBox_TextChanged" />
                 </ScrollViewer>
@@ -120,6 +161,80 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Margin="5, 0" Grid.Row="0">
+                        <ComboBox x:Name="FilterCombo"
+                            materialDesign:HintAssist.Hint="{DynamicResource ModsViewStatusFilterHint}"
+                              materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:ComboBoxAssist.ShowSelectedItem="true"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            Margin="0,8,0,5"
+                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightBrush}" Width="120">
+                            <ComboBoxItem x:Name="FilterComboBoxActive" Content="{DynamicResource ModsViewProfileFilterComboActiveText}" />
+                            <ComboBoxItem x:Name="FilterComboBoxInactive" Content="{DynamicResource ModsViewProfileFilterComboInactiveText}"/>
+                        </ComboBox>
+                        <TextBox 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    x:Name="FilterTextBox" 
+                    Margin="10,0,0,0" 
+                    MinWidth="350" VerticalAlignment="Center" MinHeight="30" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" TextChanged="FilterTextBox_TextChanged">
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
+                          Orientation="Horizontal"
+                          Margin="-2 0 0 0">
+                                    <materialDesign:PackIcon
+                                Kind="Search" />
+                                    <TextBlock>
+                                        <Run Text="{DynamicResource ModsViewModSearchHint}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5, 0" Grid.Row="1">
+                        <ComboBox x:Name="ProfileCombo"
+                            materialDesign:HintAssist.Hint="{DynamicResource ModsViewProfileHint}"
+                            materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:ComboBoxAssist.ShowSelectedItem="true"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            Margin="0,8,0,5"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource PrimaryHueLightBrush}"
+                            Width="120"
+                            SelectionChanged="ProfileCOmbo_SelectionChanged">
+                            <ComboBoxItem x:Name="newProfileItem" Content="{DynamicResource ModsViewCreateProfileButtonText}" />
+                        </ComboBox>
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            x:Name="ProfileTextBox" 
+                            Margin="10,0,0,0" 
+                            MinWidth="350"
+                            VerticalAlignment="Center"
+                            MinHeight="30"
+                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            TextChanged="NewProfile_TextChanged">
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel
+                          Orientation="Horizontal"
+                          Margin="-2 0 0 0">
+                                    <materialDesign:PackIcon
+                                Kind="Account" />
+                                    <TextBlock>
+                                        <Run Text="{DynamicResource ModsViewNewProfileNameLabelText}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -206,76 +321,7 @@
                         </Button>
                     </Grid>
                 </Grid>
-                <StackPanel Orientation="Vertical" Grid.Column="0">
-                    <StackPanel Orientation="Horizontal" Margin="5, 0">
-                        <ComboBox x:Name="FilterCombo"
-                            materialDesign:HintAssist.Hint="{DynamicResource ModsViewStatusFilterHint}"
-                              materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                            materialDesign:TextFieldAssist.HasClearButton="True"
-                            materialDesign:ComboBoxAssist.ShowSelectedItem="true"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            Margin="0,8,0,5"
-                            HorizontalAlignment="Left" SelectionChanged="FilterCombo_SelectionChanged" Foreground="{DynamicResource PrimaryHueLightBrush}" Width="120">
-                            <ComboBoxItem x:Name="FilterComboBoxActive" Content="{DynamicResource ModsViewProfileFilterComboActiveText}" />
-                            <ComboBoxItem x:Name="FilterComboBoxInactive" Content="{DynamicResource ModsViewProfileFilterComboInactiveText}"/>
-                        </ComboBox>
-                        <TextBox 
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    x:Name="FilterTextBox" 
-                    Margin="10,0,0,0" 
-                    MinWidth="350" VerticalAlignment="Center" MinHeight="30" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" TextChanged="FilterTextBox_TextChanged">
-                            <materialDesign:HintAssist.Hint>
-                                <StackPanel
-                          Orientation="Horizontal"
-                          Margin="-2 0 0 0">
-                                    <materialDesign:PackIcon
-                                Kind="Search" />
-                                    <TextBlock>
-                                        <Run Text="{DynamicResource ModsViewModSearchHint}"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </materialDesign:HintAssist.Hint>
-                        </TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5, 0">
-                        <ComboBox x:Name="ProfileCombo"
-                            materialDesign:HintAssist.Hint="{DynamicResource ModsViewProfileHint}"
-                            materialDesign:HintAssist.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                            materialDesign:TextFieldAssist.HasClearButton="True"
-                            materialDesign:ComboBoxAssist.ShowSelectedItem="true"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            Margin="0,8,0,5"
-                            HorizontalAlignment="Left"
-                            Foreground="{DynamicResource PrimaryHueLightBrush}"
-                            Width="120"
-                            SelectionChanged="ProfileCOmbo_SelectionChanged">
-                            <ComboBoxItem x:Name="newProfileItem" Content="{DynamicResource ModsViewCreateProfileButtonText}" />
-                        </ComboBox>
-                        <TextBox 
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            materialDesign:TextFieldAssist.HasClearButton="True"
-                            x:Name="ProfileTextBox" 
-                            Margin="10,0,0,0" 
-                            MinWidth="350"
-                            VerticalAlignment="Center"
-                            MinHeight="30"
-                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                            TextChanged="NewProfile_TextChanged">
-                            <materialDesign:HintAssist.Hint>
-                                <StackPanel
-                          Orientation="Horizontal"
-                          Margin="-2 0 0 0">
-                                    <materialDesign:PackIcon
-                                Kind="Account" />
-                                    <TextBlock>
-                                        <Run Text="{DynamicResource ModsViewNewProfileNameLabelText}"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </materialDesign:HintAssist.Hint>
-                        </TextBox>
-                    </StackPanel>
-                </StackPanel>
+                
             </Grid>
         </GroupBox>
     </Grid>

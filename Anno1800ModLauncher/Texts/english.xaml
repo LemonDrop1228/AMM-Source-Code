@@ -22,7 +22,7 @@
     <system:String x:Key="HomeViewImportButtonText">Import</system:String>
     <system:String x:Key="HomeViewInstallFromGithubText">Install from Github</system:String>
     <system:String x:Key="HomeViewInstallFromNexusText">Install from Nexusmods</system:String>
-    <system:String x:Key="HomeViewInstallFromZipText">Install from ZIP</system:String>
+    <system:String x:Key="HomeViewInstallFromZipText">Select ZIP Archives to install from</system:String>
     <system:String x:Key="HomeViewInstallModloaderText">Install Modloader</system:String>
     <system:String x:Key="HomeViewModdingSetupText">Modding Setup</system:String>
     <system:String x:Key="HomeViewModfolderCreateText">Create Mod Folder</system:String>
@@ -31,6 +31,7 @@
     <system:String x:Key="HomeViewRepoComboBoxSIURepoText">Spice it Up repo</system:String>
     <system:String x:Key="HomeViewSearchTooltipText">Search and select from local drives.</system:String>
     <system:String x:Key="HomeViewSetGamePathText">Set Game Path</system:String>
+    <system:String x:Key="HomeViewChangeGamePathText">Change Game Path</system:String>
     <system:String x:Key="HomeViewTooltipInstallFromLocal">Search and select from local drives</system:String>
     <system:String x:Key="HomeViewTooltipInstallText">Install using the built-in mod browser.</system:String>
     <system:String x:Key="HomeViewSourceText">Source:</system:String>
@@ -78,6 +79,14 @@
     <system:String x:Key="ModsViewStepTwoText">Step 2</system:String>
     <system:String x:Key="ModsViewStepThreeText">Step 3</system:String>
     <system:String x:Key="ModsViewStepFourText">Step 4</system:String>
+    <system:String x:Key="ModsViewActiveModsText">Active</system:String>
+    <system:String x:Key="ModsViewInactiveModsText">Inactive</system:String>
+    <system:String x:Key="ModsViewReloadModsTooltip">Reload Mods</system:String>
+    <system:String x:Key="ModsViewSelectAllText">Select All</system:String>
+
+    <system:String x:Key="ModsViewDLCRequiredText">Required DLCs:</system:String>
+    <system:String x:Key="ModsViewDLCPartlyRequiredText">Partly Required DLCs:</system:String>
+    <system:String x:Key="ModsViewDLCAtLeastOneRequiredText">Needs at least one of those DLCs:</system:String>
     <!-- Dialogs-->
     <system:String x:Key="DialogSearchProfileHeaderText">Select a profile file to install</system:String>
     <system:String x:Key="DialogSearchArchiveHeaderText">Select a mod archive to install</system:String>
@@ -85,7 +94,41 @@
     <!-- Settings view -->
     <system:String x:Key="SettingsViewThemeListText">Theme</system:String>
     <system:String x:Key="SettingsViewGeneralSettingsText">Preferences</system:String>
+    <system:String x:Key="SettingsViewLanguageText">Language:</system:String>
+    <system:String x:Key="SettingsViewConsoleText">Show Console:</system:String>
 
+    <system:String x:Key="ReadMeTextVersion">Version:</system:String>
     <system:String x:Key="ReadMeTextCreator">Creator: </system:String>
-    <system:String x:Key="ReadMeTextKnownIssues">Known Issues: </system:String>
+    <system:String x:Key="ReadMeTextKnownIssues">Known Issues:</system:String>
+
+    <!-- DLC Texts -->
+    <system:String x:Key="DLCAnarchistText">The Anarchist</system:String>
+    <system:String x:Key="DLCSunkenTreasuresText">Sunken Treasures</system:String>
+    <system:String x:Key="DLCBotanicaText">Botanica</system:String>
+    <system:String x:Key="DLCThePassageText">The Passage</system:String>
+    <system:String x:Key="DLCSeatOfPowerText">Seat of Power</system:String>
+    <system:String x:Key="DLCBrightHarvestText">Bright Harvest</system:String>
+    <system:String x:Key="DLCLandOfLionsText">Land of Lions</system:String>
+    <system:String x:Key="DLCChristmasText">Holiday Pack</system:String>
+    <system:String x:Key="DLCAmusementParkText">Amusement Park</system:String>
+    <system:String x:Key="DLCCityLifeText">City Lights Pack</system:String>
+    <system:String x:Key="DLCS301Text">Docklands</system:String>
+    <system:String x:Key="DLCS302Text">Tourist Season</system:String>
+    <system:String x:Key="DLCS303Text">the High Life</system:String>
+
+    
+    <!-- Mod Installing Dialog -->
+    <system:String x:Key="InstallDialogWindowTitleText">Install from Archive</system:String>
+    <system:String x:Key="InstallDialogModListText">Archive List</system:String>
+    <system:String x:Key="InstallDialogActivateButtonTooltipText">Set all Archives to be installed.</system:String>
+    <system:String x:Key="InstallDialogActivateButtonText">Activate all</system:String>
+    <system:String x:Key="InstallDialogDeleteArchivesLabelText">Delete all archives after installation</system:String>
+    <system:String x:Key="InstallDialogOpenDetailsLabelText">Open Mod Details after installation</system:String>
+    <system:String x:Key="InstallDialogBackupLabelText">Backup archives after installation</system:String>
+    <system:String x:Key="InstallDialogInstallButtonText">INSTALL</system:String>
+    
+    <!-- Duplicate Profile Dialog -->
+    <system:String x:Key="DuplicateProfileDialogMainText">You already have a profile with this name. Do you want to overwrite it?</system:String>
+    <system:String x:Key="DuplicateProfileDialogCancelButtonText">Cancel</system:String>
+    <system:String x:Key="DuplicateProfileDialogOverrideButtonText">Overwrite</system:String>
 </ResourceDictionary>

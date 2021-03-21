@@ -22,7 +22,7 @@ namespace SerializableModinfo
         public String Taiwanese { get; set; }
 
         public String getText() {
-            switch (LanguageManager.GetLanguage()) {
+            switch (LanguageManager.Instance.GetLanguage()) {
                 case HelperEnums.Language.English: return English;
                 case HelperEnums.Language.German: return German;
                 default: return English; 

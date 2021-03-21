@@ -39,7 +39,7 @@ namespace Anno1800ModLauncher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MaterialWindow
+    public partial class MainWindow : MaterialWindow, INotifyPropertyChanged
     {
         //Test
         private const string WindowTitle = "AMM";
@@ -58,12 +58,19 @@ namespace Anno1800ModLauncher
         private ManagerStatus Status = ManagerStatus.bad;
         private bool IsUpdating;
 
+        public LanguageManager LanguageManager = new LanguageManager();
+
+        public SettingsManager SettingsManager { get; set; }
+
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr h, uint dwVolume);
 
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this; 
+
+            SettingsManager = new SettingsManager();
 
             //set language to the one that is saved as default in the application properties
 
@@ -74,17 +81,17 @@ namespace Anno1800ModLauncher
                 var lang = CultureInfo.InstalledUICulture.Name;
                 if (lang.StartsWith("en"))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.English);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.English);
                 }
                 else if (lang.StartsWith("de"))
                 {
-                    LanguageManager.SetLanguage(HelperEnums.Language.German);
+                    LanguageManager.Instance.SetLanguage(HelperEnums.Language.German);
                 }
             }
             else {
-                LanguageManager.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
+                LanguageManager.Instance.SetLanguage((HelperEnums.Language)Properties.Settings.Default.Language);
             }
-            ThemeManager.SetTheme(Properties.Settings.Default.Theme);
+            ThemeManager.Instance.ChangeTheme(Properties.Settings.Default.Theme);
         }
 
         private void CheckSelfVersion()
@@ -399,5 +406,21 @@ namespace Anno1800ModLauncher
                 }
             }
         }
+
+
+        #region INotifyPropertyChanged Members
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
     }
 }

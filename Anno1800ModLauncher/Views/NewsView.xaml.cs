@@ -44,10 +44,10 @@ namespace Anno1800ModLauncher.Views
                 //or if app is set to german and the address doesn't equal german URL
                 //then set language
                 if (chromiumWebBrowser.Address == null ||
-                    (!LanguageManager.GetLanguage().Equals(HelperEnums.Language.German) && !chromiumWebBrowser.Address.Contains(Properties.Settings.Default.NewsUrl)) ||
-                     (LanguageManager.GetLanguage().Equals(HelperEnums.Language.German) && !chromiumWebBrowser.Address.Contains(Properties.Settings.Default.NewsUrlDE)))
+                    (!LanguageManager.Instance.GetLanguage().Equals(HelperEnums.Language.German) && !chromiumWebBrowser.Address.Contains(Properties.Settings.Default.NewsUrl)) ||
+                     (LanguageManager.Instance.GetLanguage().Equals(HelperEnums.Language.German) && !chromiumWebBrowser.Address.Contains(Properties.Settings.Default.NewsUrlDE)))
                 {
-                    if (LanguageManager.GetLanguage().Equals(HelperEnums.Language.German))
+                    if (LanguageManager.Instance.GetLanguage().Equals(HelperEnums.Language.German))
                         chromiumWebBrowser.Load(Properties.Settings.Default.NewsUrlDE);
                     else
                         chromiumWebBrowser.Load(Properties.Settings.Default.NewsUrl);
